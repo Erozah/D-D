@@ -1,7 +1,5 @@
 # Donjons et Dragons - Jeu de Plateau
 
-![Dungeons and Dragons Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Dungeons_%26_Dragons_logo.svg/1200px-Dungeons_%26_Dragons_logo.svg.png)
-
 **Un jeu de plateau inspiré de l'univers Donjons et Dragons, développé en Java.**
 
 ---
@@ -32,12 +30,12 @@ Ce projet est une implémentation simplifiée d'un jeu de plateau de type Donjon
 
 1. Clone ce dépôt :
    ```bash
-   git clone https://github.com/tu-utilisateur/DungeonsAndDragonsGame.git
+   git clone https://github.com/Erozah/D-D.git
    ```
 
 2. Accède au répertoire du projet :
    ```bash
-   cd DungeonsAndDragonsGame
+   cd D-D
    ```
 
 3. Compile le projet :
