@@ -1,0 +1,110 @@
+@startuml
+
+' Classes abstraites
+abstract class Character {
+  - type: String
+  - name: String
+  - lifePoints: int
+  - damagePoint: int
+  - offensiveEquipment: String
+  - defensiveEquipment: String
+  + getType(): String
+  + setType(type: String): void
+  + getName(): String
+  + setName(name: String): void
+  + getLifePoints(): int
+  + setLifePoints(lifePoints: int): void
+  + getDamagePoint(): int
+  + setDamagePoint(damagePoint: int): void
+  + getOffensiveEquipment(): String
+  + setOffensiveEquipment(offensiveEquipment: String): void
+  + getDefensiveEquipment(): String
+  + setDefensiveEquipment(defensiveEquipment: String): void
+  + toString(): String
+}
+
+abstract class OffensiveEquipment {
+  - weaponType: String
+  - weaponDamage: int
+  - name: String
+  + toString(): String
+}
+
+abstract class DefensiveEquipment {
+  - defensiveType: String
+  - name: String
+  - defensivePoints: int
+  + toString(): String
+}
+
+' Classes concrètes
+class Warrior {
+  + Warrior(type: String, name: String)
+  + toString(): String
+}
+
+class Wizard {
+  + Wizard(type: String, name: String)
+  + toString(): String
+}
+
+class Weapon {
+  + toString(): String
+}
+
+class Spell {
+  + toString(): String
+}
+
+class Shield {
+  + toString(): String
+}
+
+class Potion {
+  + toString(): String
+}
+
+' Autres classes
+class Board {
+  - currentCase: int
+  - MAX_CASE: int
+  + getCurrentCase(): int
+  + setCurrentCase(currentCase: int): void
+  + getMaxCase(): int
+  + toString(): String
+}
+
+class Dice {
+  + roll(): int
+  + toString(): String
+}
+
+class Game {
+  + start(): void
+  + toString(): String
+}
+
+class Menu {
+  + displayMenu(): void
+  + toString(): String
+}
+
+class OutOfBoardException {
+  + OutOfBoardException(message: String)
+}
+
+' Relations d'héritage
+Character <|-- Warrior
+Character <|-- Wizard
+OffensiveEquipment <|-- Weapon
+OffensiveEquipment <|-- Spell
+DefensiveEquipment <|-- Shield
+DefensiveEquipment <|-- Potion
+Exception <|-- OutOfBoardException
+
+' Relations d'association
+Game --> Board
+Game --> Dice
+Menu --> Game
+
+@enduml

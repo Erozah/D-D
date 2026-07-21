@@ -4,6 +4,9 @@
  */
 package fr.campus.d_and_d.characters;
 
+import fr.campus.d_and_d.items.DefensiveEquipment;
+import fr.campus.d_and_d.items.OffensiveEquipment;
+
 public class Warrior extends Character {
 	/**
 	 * Crée un nouveau guerrier avec un type et un nom spécifiés.
@@ -11,11 +14,12 @@ public class Warrior extends Character {
 	 * @param name Le nom du guerrier.
 	 */
 	public Warrior(String type, String name) {
-		super(type, name);
-		setLifePoints(10);
-		setDamagePoint(7);
-		setOffensiveEquipment("Arme");
-		setDefensiveEquipment("Bouclier");
+		super(type,
+				name,
+				10,
+				7,
+				new OffensiveEquipment("Arme", "Epée", 5),
+				new DefensiveEquipment("Bouclier", "Bouclier en bois", 5));
 	}
 
 	@Override

@@ -6,7 +6,7 @@ package fr.campus.d_and_d;//
 final class Main {
 	public static void main(String[] args) {
 		System.out.println("Hello and welcome!");
-		Menu menu = new Menu();
-		menu.displayMenu();
+		Game game = new Game();
+		game.mainMenu();
 	}
 }

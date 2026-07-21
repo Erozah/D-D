@@ -5,26 +5,40 @@
  */
 package fr.campus.d_and_d.characters;
 
+import fr.campus.d_and_d.items.DefensiveEquipment;
+import fr.campus.d_and_d.items.OffensiveEquipment;
+
 public class Character {
-	private String type;
-	private String name;
-	private int lifePoints;
-	private int damagePoint;
-	private String offensiveEquipment;
-	private String defensiveEquipment;
+	private String type = "Settler";
+	private String name = "Juan Carlos";
+	private int lifePoints = 1;
+	private int damagePoint = 1;
+	private OffensiveEquipment offensiveEquipment =
+			new OffensiveEquipment("Hand", "Fist", 1);
+	private DefensiveEquipment defensiveEquipment =
+			new DefensiveEquipment("Armor", "LeatherArmor", 1);
 
 	/**
 	 * Crée un nouveau personnage avec un type et un nom spécifiés.
 	 * @param type Le type du personnage (ex: "Guerrier" ou "Magicien").
 	 * @param name Le nom du personnage.
+	 * @param lifePoints Le nombre de points de vie du personnage.
+	 * @param damagePoint Le nombre de points de dégâts que le personnage inflige.
+	 * @param offensiveEquipment L'équipement offensif du personnage.
+	 * @param defensiveEquipment  L'équipement défensif du personnage.
 	 */
-	public Character(String type, String name) {
+	public Character(String type,
+	                 String name,
+	                 int lifePoints,
+	                 int damagePoint,
+	                 OffensiveEquipment offensiveEquipment,
+	                 DefensiveEquipment defensiveEquipment) {
 		this.type = type;
 		this.name = name;
-		this.lifePoints = 1;
-		this.damagePoint = 1;
-		this.offensiveEquipment = "None";
-		this.defensiveEquipment = "None";
+		this.lifePoints = lifePoints;
+		this.damagePoint = damagePoint;
+		this.offensiveEquipment = offensiveEquipment;
+		this.defensiveEquipment = defensiveEquipment;
 	}
 	//* Méthodes
 	// Actions
@@ -53,16 +67,16 @@ public class Character {
 	public void setDamagePoint(int damagePoint) {
 		this.damagePoint = damagePoint;
 	}
-	public String getOffensiveEquipment() {
+	public OffensiveEquipment getOffensiveEquipment() {
 		return offensiveEquipment;
 	}
-	public void setOffensiveEquipment(String offensiveEquipment) {
+	public void setOffensiveEquipment(OffensiveEquipment offensiveEquipment) {
 		this.offensiveEquipment = offensiveEquipment;
 	}
-	public String getDefensiveEquipment() {
+	public DefensiveEquipment getDefensiveEquipment() {
 		return defensiveEquipment;
 	}
-	public void setDefensiveEquipment(String defensiveEquipment) {
+	public void setDefensiveEquipment(DefensiveEquipment defensiveEquipment) {
 		this.defensiveEquipment = defensiveEquipment;
 	}
 	public String toString() {
