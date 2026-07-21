@@ -4,6 +4,8 @@
  */
 package fr.campus.d_and_d.gameLogic;
 
+import fr.campus.d_and_d.board.Board;
+import fr.campus.d_and_d.board.Cell;
 import fr.campus.d_and_d.characters.Warrior;
 import fr.campus.d_and_d.characters.Wizard;
 
@@ -38,6 +40,29 @@ public class Game {
 
 
 	}
+
+	/**
+	 * Boucle qui fait lancer le dé
+	 */
+	public void playTurn(Board board, Dice dice) {
+		Scanner scanner = new Scanner(System.in);
+		Menu menu = new Menu();
+		menu.askPlayerString("Appuyez sur 'Entrée' pour lancer le dé...");
+		int diceResult = dice.roll();
+		try {
+			int newPosition = board.getCurrentCase() + diceResult;
+			board.setCurrentCase(newPosition);
+			System.out.println(board.toString());
+			Cell currenntCell = board.getCurrentCell();
+			System.out.println(currenntCell.interact());
+		} catch (OutOfBoardException e) {
+			System.out.println("Erreur : " + e.getMessage());
+		}
+	}
+
+	public void end() {
+		System.out.println("Félicitations ! Vous avez terminé le plateau.");
+	}
 	/**
 	 * Lance la boucle principale du jeu. Le joueur avance sur le plateau en lançant le dé
 	 * jusqu'à atteindre la dernière case (64). Affiche la position du joueur à chaque tour.
@@ -46,20 +71,10 @@ public class Game {
 		Board board = new Board();
 		Dice dice = new Dice();
 		Scanner scanner = new Scanner(System.in);
-
-		while (board.getCurrentCase() < board.getMaxCase()) {
-			Menu menu = new Menu();
-			menu.askPlayerString("Appuyez sur 'Entrée' pour lancer le dé...");
-			int diceResult = dice.roll();
-			try {
-				board.setCurrentCase(board.getCurrentCase() + diceResult);
-				System.out.println(board.toString());
-			} catch (OutOfBoardException e) {
-				System.out.println("Erreur : " + e.getMessage());
-			}
-		}
+		while (board.getCurrentCase() < board.getMaxCase())
+			playTurn(board, dice);
+		end();
 		scanner.close();
-		System.out.println("Félicitations ! Vous avez terminé le plateau.");
 	}
 
 	@Override

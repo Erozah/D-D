@@ -3,7 +3,6 @@
  * et de démarrer une partie.
  */
 package fr.campus.d_and_d.gameLogic;
-
 import java.util.Scanner;
 
 public class Menu {
