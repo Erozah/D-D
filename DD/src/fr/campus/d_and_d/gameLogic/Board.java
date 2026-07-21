@@ -2,7 +2,7 @@
  * Représente le plateau de jeu du jeu Donjons et Dragons.
  * Le plateau contient 64 cases, et le joueur avance en lançant un dé.
  */
-package fr.campus.d_and_d;
+package fr.campus.d_and_d.gameLogic;
 
 public class Board {
 	/** Position actuelle du joueur sur le plateau. */

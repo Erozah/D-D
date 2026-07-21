@@ -3,6 +3,8 @@ package fr.campus.d_and_d;//
 // (powered by Fernflower decompiler)
 //
 
+import fr.campus.d_and_d.gameLogic.Game;
+
 final class Main {
 	public static void main(String[] args) {
 		System.out.println("Hello and welcome!");

@@ -2,10 +2,7 @@
  * Gère l'interface utilisateur du jeu, permettant aux joueurs de créer un personnage
  * et de démarrer une partie.
  */
-package fr.campus.d_and_d;
-
-import fr.campus.d_and_d.characters.Warrior;
-import fr.campus.d_and_d.characters.Wizard;
+package fr.campus.d_and_d.gameLogic;
 
 import java.util.Scanner;
 

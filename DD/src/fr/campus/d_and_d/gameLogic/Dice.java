@@ -2,7 +2,7 @@
  * Représente un dé utilisé pour déterminer le déplacement du joueur sur le plateau.
  * Cette classe génère un nombre aléatoire entre 1 et 6.
  */
-package fr.campus.d_and_d;
+package fr.campus.d_and_d.gameLogic;
 
 import java.util.Random;
 

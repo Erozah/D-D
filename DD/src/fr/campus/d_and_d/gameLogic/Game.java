@@ -2,7 +2,7 @@
  * Gère la logique principale du jeu, incluant le déplacement du joueur sur le plateau.
  * Cette classe utilise un plateau (Board) et un dé (Dice) pour simuler le jeu.
  */
-package fr.campus.d_and_d;
+package fr.campus.d_and_d.gameLogic;
 
 import fr.campus.d_and_d.characters.Warrior;
 import fr.campus.d_and_d.characters.Wizard;

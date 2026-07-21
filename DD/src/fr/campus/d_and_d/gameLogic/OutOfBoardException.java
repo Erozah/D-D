@@ -1,4 +1,4 @@
-package fr.campus.d_and_d;
+package fr.campus.d_and_d.gameLogic;
 
 /**
  * Exception levée quand le joueur dépasse la dernière case

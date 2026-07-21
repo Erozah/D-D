@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="Update Warrior, Wizard, Weapon, Spell, Shield and Potion">
-      <change afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/OutOfBoardException.java" afterDir="false" />
+    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="Added OutOfBoardException">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Dice.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Dice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Potion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Shield.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Shield.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Spell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Weapon.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,61 +45,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="3.111197522867337E-8" />
-      <entry key="MS500" value="0.054624710724017325" />
-      <entry key="S2" value="0.8144967788478003" />
-      <entry key="S5" value="1.5117994968848227" />
-      <entry key="S10" value="2.2645497891877646" />
-      <entry key="S30" value="3.9649331402129846" />
-      <entry key="S60" value="5.305988116529776" />
-      <entry key="M2" value="7.88224788552535" />
-      <entry key="M5" value="15.227908868315193" />
-      <entry key="M10" value="23.373844170551408" />
-      <entry key="M15" value="28.733447061307817" />
-      <entry key="M30" value="42.41378024189498" />
-      <entry key="H1" value="77.9628560426759" />
-      <entry key="H2" value="165.61209643440972" />
-      <entry key="H4" value="309.96926492662624" />
-      <entry key="D1" value="617.4708654064632" />
-      <entry key="W1" value="705.787464286649" />
+      <entry key="MS100" value="1.0000000000000122" />
+      <entry key="MS500" value="1.0029700455429371" />
+      <entry key="S2" value="1.7114864617561016" />
+      <entry key="S5" value="3.7677457389640896" />
+      <entry key="S10" value="5.615001526382833" />
+      <entry key="S30" value="7.804109477624834" />
+      <entry key="S60" value="9.393784292625087" />
+      <entry key="M2" value="12.244101761206016" />
+      <entry key="M5" value="19.997826739856198" />
+      <entry key="M10" value="28.923730353545476" />
+      <entry key="M15" value="34.846251641754996" />
+      <entry key="M30" value="49.24047906076135" />
+      <entry key="H1" value="84.9503924902194" />
+      <entry key="H2" value="172.46794404740868" />
+      <entry key="H4" value="316.9589707832679" />
+      <entry key="D1" value="625.8021541805977" />
+      <entry key="W1" value="714.6782306414985" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.000000018498753" />
-      <entry key="S2" value="1.0122146062730024" />
-      <entry key="S5" value="1.239627870698929" />
-      <entry key="S10" value="1.783463140610299" />
-      <entry key="S30" value="2.896953518664633" />
-      <entry key="S60" value="3.6726201889724233" />
-      <entry key="M2" value="5.37150744775871" />
-      <entry key="M5" value="10.327467235577231" />
-      <entry key="M10" value="15.622520932583171" />
-      <entry key="M15" value="18.859268132443702" />
-      <entry key="M30" value="24.599855700765534" />
-      <entry key="H1" value="34.7794308997895" />
-      <entry key="H2" value="61.2468709250236" />
-      <entry key="H4" value="106.41781639908152" />
-      <entry key="D1" value="201.3183348921479" />
-      <entry key="W1" value="228.10383790709832" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="5.57937610850857E-82" />
+      <entry key="S2" value="4.919477827245758E-21" />
+      <entry key="S5" value="9.28859217173591E-9" />
+      <entry key="S10" value="1.5438084709181805E-4" />
+      <entry key="S30" value="0.12814980634152953" />
+      <entry key="S60" value="0.7724390674483417" />
+      <entry key="M2" value="2.463430357373209" />
+      <entry key="M5" value="7.5608647351375255" />
+      <entry key="M10" value="13.367184320998245" />
+      <entry key="M15" value="16.997460844197683" />
+      <entry key="M30" value="23.3540479050701" />
+      <entry key="H1" value="33.8873239892714" />
+      <entry key="H2" value="60.45626424865452" />
+      <entry key="H4" value="105.72873698143607" />
+      <entry key="D1" value="201.1004827609878" />
+      <entry key="W1" value="228.06855904764592" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.5134539712053757E-4" />
-      <entry key="MS500" value="0.2101710209225985" />
-      <entry key="S2" value="1.3821932446533165" />
-      <entry key="S5" value="2.469476494681974" />
-      <entry key="S10" value="3.8241860470940594" />
-      <entry key="S30" value="6.734933952096869" />
-      <entry key="S60" value="8.894964641998458" />
-      <entry key="M2" value="13.188378069549056" />
-      <entry key="M5" value="25.50048375081366" />
-      <entry key="M10" value="38.95317338024037" />
-      <entry key="M15" value="47.557355906982146" />
-      <entry key="M30" value="66.9887335313776" />
-      <entry key="H1" value="112.72100273040789" />
-      <entry key="H2" value="226.8366273715732" />
-      <entry key="H4" value="416.3659246557428" />
-      <entry key="D1" value="818.782120169334" />
-      <entry key="W1" value="933.8901457657064" />
+      <entry key="MS100" value="3.051757812959767E-5" />
+      <entry key="MS500" value="0.1276163503573429" />
+      <entry key="S2" value="1.2933744092442034" />
+      <entry key="S5" value="3.5657095667333416" />
+      <entry key="S10" value="5.506176601265978" />
+      <entry key="S30" value="7.888234601959828" />
+      <entry key="S60" value="10.129140092833818" />
+      <entry key="M2" value="14.66773007558595" />
+      <entry key="M5" value="27.51455837199479" />
+      <entry key="M10" value="42.2519824040913" />
+      <entry key="M15" value="51.81052596730231" />
+      <entry key="M30" value="72.57022637763158" />
+      <entry key="H1" value="118.81664847836298" />
+      <entry key="H2" value="232.90199179433606" />
+      <entry key="H4" value="422.6666056386118" />
+      <entry key="D1" value="826.8955507314529" />
+      <entry key="W1" value="942.745631476732" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -262,7 +253,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784634108013</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added OutOfBoardException">
+      <option name="closed" value="true" />
+      <created>1784636251189</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1784636251189</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,7 +335,8 @@
     <MESSAGE value="Applie singleton method and add UML" />
     <MESSAGE value="Change abstract character and equipment and created Weapon, Spell, Shield and Potion" />
     <MESSAGE value="Update Warrior, Wizard, Weapon, Spell, Shield and Potion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Warrior, Wizard, Weapon, Spell, Shield and Potion" />
+    <MESSAGE value="Added OutOfBoardException" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added OutOfBoardException" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/D_and_D$Main.ic" NAME="Main Coverage Results" MODIFIED="1784296176756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
