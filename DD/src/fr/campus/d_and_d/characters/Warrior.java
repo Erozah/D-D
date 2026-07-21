@@ -17,8 +17,8 @@ public class Warrior extends Character {
 				name,
 				10,
 				7,
-				new Weapon(),
-				new Shield());
+				new Weapon("Weapon", "Sword", 5),
+				new Shield("Shield", "WoodenShield", 5));
 	}
 
 	@Override

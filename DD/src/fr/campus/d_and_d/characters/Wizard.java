@@ -17,8 +17,8 @@ public class Wizard extends Character {
 				name,
 				7,
 				7,
-				new Spell(),
-				new Potion());
+				new Spell("Spell", "FireBall", 6),
+				new Potion("Potion", "IronPotion", 4));
 	}
 
 	@Override
