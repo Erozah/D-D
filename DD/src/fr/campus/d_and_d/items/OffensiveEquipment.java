@@ -4,7 +4,7 @@
  */
 package fr.campus.d_and_d.items;
 
-public class OffensiveEquipment {
+public abstract class OffensiveEquipment {
 	private String weaponType = "Hand";
 	private String name = "Fist";
 	private int weaponDamage = 1;

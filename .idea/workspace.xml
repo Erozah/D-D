@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="moved README">
+    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="Applie singleton method and add UML">
+      <change afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Potion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Shield.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Spell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Weapon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Character.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Warrior.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Wizard.java" afterDir="false" />
@@ -53,61 +54,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0000000000190092" />
-      <entry key="S10" value="1.0000044235807333" />
-      <entry key="S30" value="1.0296803127987497" />
-      <entry key="S60" value="1.5135377595021944" />
-      <entry key="M2" value="4.044620588627613" />
-      <entry key="M5" value="15.163338742439608" />
-      <entry key="M10" value="30.68977097084899" />
-      <entry key="M15" value="41.23434243795236" />
-      <entry key="M30" value="63.677580826700535" />
-      <entry key="H1" value="110.7544447210877" />
-      <entry key="H2" value="207.82855913123862" />
-      <entry key="H4" value="337.27902583204315" />
-      <entry key="D1" value="561.3481470491633" />
-      <entry key="W1" value="618.7085593356474" />
+      <entry key="MS100" value="5.786847450345977E-17" />
+      <entry key="MS500" value="5.655726592747279E-4" />
+      <entry key="S2" value="0.1542134905371035" />
+      <entry key="S5" value="0.47497224595545723" />
+      <entry key="S10" value="0.7300375488734491" />
+      <entry key="S30" value="1.7198438271757406" />
+      <entry key="S60" value="3.518951710237194" />
+      <entry key="M2" value="5.899809489226133" />
+      <entry key="M5" value="10.468774837799858" />
+      <entry key="M10" value="20.92027270313407" />
+      <entry key="M15" value="31.713486972243118" />
+      <entry key="M30" value="58.12936375802658" />
+      <entry key="H1" value="107.5901271160782" />
+      <entry key="H2" value="205.79037469758424" />
+      <entry key="H4" value="339.2267445312194" />
+      <entry key="D1" value="576.2840285226712" />
+      <entry key="W1" value="637.9093639170691" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="1.2339017948680705E-122" />
-      <entry key="S2" value="3.3328842509354444E-31" />
-      <entry key="S5" value="6.456770423359642E-13" />
-      <entry key="S10" value="8.391908723424137E-7" />
-      <entry key="S30" value="0.013755980218696293" />
-      <entry key="S60" value="0.22444764071117437" />
-      <entry key="M2" value="1.2695480208684125" />
-      <entry key="M5" value="5.1720720099730775" />
-      <entry key="M10" value="9.30674307902922" />
-      <entry key="M15" value="11.61908561260121" />
-      <entry key="M30" value="16.925737253445106" />
-      <entry key="H1" value="32.21308851384592" />
-      <entry key="H2" value="65.64195609688927" />
-      <entry key="H4" value="108.43298551360886" />
-      <entry key="D1" value="178.5384445693531" />
-      <entry key="W1" value="195.90453646167526" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.000000742039849" />
+      <entry key="S2" value="1.0293499146855682" />
+      <entry key="S5" value="1.2441639471804726" />
+      <entry key="S10" value="1.5127104039117394" />
+      <entry key="S30" value="2.0569668953435056" />
+      <entry key="S60" value="2.4053509829406625" />
+      <entry key="M2" value="2.663509624763705" />
+      <entry key="M5" value="3.249933879712899" />
+      <entry key="M10" value="5.502881098932543" />
+      <entry key="M15" value="7.887134158971356" />
+      <entry key="M30" value="14.008463445723345" />
+      <entry key="H1" value="28.996369240954785" />
+      <entry key="H2" value="61.97689023923757" />
+      <entry key="H4" value="105.78310499435234" />
+      <entry key="D1" value="179.9536078088875" />
+      <entry key="W1" value="198.65516703372168" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.004394759705815663" />
-      <entry key="MS500" value="0.3377435211339094" />
-      <entry key="S2" value="0.7623365751156497" />
-      <entry key="S5" value="0.8971368643556141" />
-      <entry key="S10" value="0.9471780877546637" />
-      <entry key="S30" value="1.0246802709200231" />
-      <entry key="S60" value="1.7219418545988203" />
-      <entry key="M2" value="5.283147620500878" />
-      <entry key="M5" value="20.269375659196463" />
-      <entry key="M10" value="39.92877237130974" />
-      <entry key="M15" value="52.79450544231543" />
-      <entry key="M30" value="80.56134461628673" />
-      <entry key="H1" value="142.93372287826102" />
-      <entry key="H2" value="273.4397209310181" />
-      <entry key="H4" value="445.68735511857153" />
-      <entry key="D1" value="739.8798627397309" />
-      <entry key="W1" value="814.612040104352" />
+      <entry key="MS100" value="1.058167907784351E-6" />
+      <entry key="MS500" value="0.06415713905193084" />
+      <entry key="S2" value="0.6535140599791578" />
+      <entry key="S5" value="1.3965476363341376" />
+      <entry key="S10" value="2.0283462748569008" />
+      <entry key="S30" value="3.65720280528393" />
+      <entry key="S60" value="5.8361610947739795" />
+      <entry key="M2" value="8.504150625298637" />
+      <entry key="M5" value="13.684326596052935" />
+      <entry key="M10" value="26.38852744385301" />
+      <entry key="M15" value="39.56471568817308" />
+      <entry key="M30" value="72.10487907390953" />
+      <entry key="H1" value="136.556365178719" />
+      <entry key="H2" value="267.7381680903796" />
+      <entry key="H4" value="444.9857615760399" />
+      <entry key="D1" value="756.2308475223904" />
+      <entry key="W1" value="836.5634595009205" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -237,7 +238,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784558469061</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Applie singleton method and add UML">
+      <option name="closed" value="true" />
+      <created>1784628408544</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1784628408544</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,7 +317,8 @@
     <MESSAGE value="The game can now start but it's just a dice roll" />
     <MESSAGE value="Deleted out and moved README" />
     <MESSAGE value="moved README" />
-    <option name="LAST_COMMIT_MESSAGE" value="moved README" />
+    <MESSAGE value="Applie singleton method and add UML" />
+    <option name="LAST_COMMIT_MESSAGE" value="Applie singleton method and add UML" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/D_and_D$Main.ic" NAME="Main Coverage Results" MODIFIED="1784296176756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />

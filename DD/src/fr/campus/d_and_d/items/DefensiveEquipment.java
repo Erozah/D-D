@@ -4,7 +4,7 @@
  */
 package fr.campus.d_and_d.items;
 
-public class DefensiveEquipment {
+public abstract class DefensiveEquipment {
 	private String defensiveType = "Armor";
 	private String name = "LeatherArmor";
 	private int defensivePoints = 1;

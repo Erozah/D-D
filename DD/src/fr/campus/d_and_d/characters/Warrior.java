@@ -3,9 +3,8 @@
  * Cette classe hérite de Character et définit les attributs spécifiques à un guerrier.
  */
 package fr.campus.d_and_d.characters;
-
-import fr.campus.d_and_d.items.DefensiveEquipment;
-import fr.campus.d_and_d.items.OffensiveEquipment;
+import fr.campus.d_and_d.items.Shield;
+import fr.campus.d_and_d.items.Weapon;
 
 public class Warrior extends Character {
 	/**
@@ -18,8 +17,8 @@ public class Warrior extends Character {
 				name,
 				10,
 				7,
-				new OffensiveEquipment("Arme", "Epée", 5),
-				new DefensiveEquipment("Bouclier", "Bouclier en bois", 5));
+				new Weapon(),
+				new Shield());
 	}
 
 	@Override

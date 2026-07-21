@@ -8,7 +8,7 @@ package fr.campus.d_and_d.characters;
 import fr.campus.d_and_d.items.DefensiveEquipment;
 import fr.campus.d_and_d.items.OffensiveEquipment;
 
-public class Character {
+public abstract class Character {
 	private String type = "Settler";
 	private String name = "Juan Carlos";
 	private int lifePoints = 1;

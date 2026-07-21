@@ -3,8 +3,8 @@
  * Cette classe hérite de Character et définit les attributs spécifiques à un magicien.
  */
 package fr.campus.d_and_d.characters;
-import fr.campus.d_and_d.items.DefensiveEquipment;
-import fr.campus.d_and_d.items.OffensiveEquipment;
+import fr.campus.d_and_d.items.Potion;
+import fr.campus.d_and_d.items.Spell;
 
 public class Wizard extends Character {
 	/**
@@ -17,8 +17,8 @@ public class Wizard extends Character {
 				name,
 				7,
 				7,
-				new OffensiveEquipment("Sort", "Boule de feu", 5),
-				new DefensiveEquipment("Potion", "Potion de fer", 5));
+				new Spell(),
+				new Potion());
 	}
 
 	@Override
