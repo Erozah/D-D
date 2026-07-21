@@ -27,12 +27,13 @@ public class Board {
 	 * @param currentCase La nouvelle position du joueur. Si la valeur est inférieure à 1,
 	 *                    elle est définie à 1. Si elle est supérieure à MAX_CASE, elle est définie à MAX_CASE.
 	 */
-	public void setCurrentCase(int currentCase) {
+	public void setCurrentCase(int currentCase) throws OutOfBoardException {
 		if (currentCase < 1)
 			this.currentCase = 1;
-		else if (currentCase > MAX_CASE)
-			this.currentCase = MAX_CASE;
-		else 
+		else if (currentCase > MAX_CASE) {
+			throw new OutOfBoardException("La position " + currentCase + " dépasse la limite du plateau de " + MAX_CASE + ".");
+		}
+		else
 			this.currentCase = currentCase;
 	}
 	/**

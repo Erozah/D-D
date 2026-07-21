@@ -4,4 +4,9 @@ public class Shield extends DefensiveEquipment {
 	public Shield(String defensiveType, String name, int defensivePoints) {
 		super(defensiveType, name, defensivePoints);
 	}
+
+	@Override
+	public String toString() {
+		return getName();
+	}
 }

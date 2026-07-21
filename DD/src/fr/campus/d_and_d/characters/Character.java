@@ -7,6 +7,8 @@ package fr.campus.d_and_d.characters;
 
 import fr.campus.d_and_d.items.DefensiveEquipment;
 import fr.campus.d_and_d.items.OffensiveEquipment;
+import fr.campus.d_and_d.items.Shield;
+import fr.campus.d_and_d.items.Weapon;
 
 public abstract class Character {
 	private String type = "Settler";
@@ -14,9 +16,9 @@ public abstract class Character {
 	private int lifePoints = 1;
 	private int damagePoint = 1;
 	private OffensiveEquipment offensiveEquipment =
-			new OffensiveEquipment("Hand", "Fist", 1);
+			new Weapon("Hand", "Fist", 1);
 	private DefensiveEquipment defensiveEquipment =
-			new DefensiveEquipment("Armor", "LeatherArmor", 1);
+			new Shield("Armor", "LeatherArmor", 1);
 
 	/**
 	 * Crée un nouveau personnage avec un type et un nom spécifiés.

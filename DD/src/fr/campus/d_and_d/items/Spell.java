@@ -4,4 +4,9 @@ public class Spell extends OffensiveEquipment {
 	public Spell(String weaponType, String name, int weaponDamage) {
 		super(weaponType, name, weaponDamage);
 	}
+
+	@Override
+	public String toString() {
+		return getName();
+	}
 }

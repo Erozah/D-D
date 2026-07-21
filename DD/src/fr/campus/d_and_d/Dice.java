@@ -17,6 +17,6 @@ public class Dice {
 	}
 	@Override
 	public String toString() {
-		return super.toString();
+		return "Dice roll from 1 to 6";
 	}
 }

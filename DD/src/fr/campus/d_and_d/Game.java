@@ -48,11 +48,15 @@ public class Game {
 		Scanner scanner = new Scanner(System.in);
 
 		while (board.getCurrentCase() < board.getMaxCase()) {
-			System.out.println("Appuyez sur 'Entrée' pour lancer le dé...");
-			scanner.nextLine();
+			Menu menu = new Menu();
+			menu.askPlayerString("Appuyez sur 'Entrée' pour lancer le dé...");
 			int diceResult = dice.roll();
-			board.setCurrentCase(board.getCurrentCase() + diceResult);
-			System.out.println(board.toString());
+			try {
+				board.setCurrentCase(board.getCurrentCase() + diceResult);
+				System.out.println(board.toString());
+			} catch (OutOfBoardException e) {
+				System.out.println("Erreur : " + e.getMessage());
+			}
 		}
 		scanner.close();
 		System.out.println("Félicitations ! Vous avez terminé le plateau.");
