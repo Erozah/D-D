@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="Added database">
+    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="Added ASCII and fix text">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_53_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/LinkDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/D_and_D.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/D_and_D.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/DD.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DD/DD.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Character.db" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/Character.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Menu.java" afterDir="false" />
     </list>
@@ -48,61 +53,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="3.0586320933570954E-238" />
-      <entry key="S2" value="4.182431497564865E-60" />
-      <entry key="S5" value="1.840821896076439E-24" />
-      <entry key="S10" value="1.7145950962724826E-12" />
-      <entry key="S30" value="2.7709173793344225E-4" />
-      <entry key="S60" value="0.043061540709847926" />
-      <entry key="M2" value="0.7117511722982803" />
-      <entry key="M5" value="4.663384433964038" />
-      <entry key="M10" value="9.07915393105007" />
-      <entry key="M15" value="11.450100964367323" />
-      <entry key="M30" value="15.938574743657673" />
-      <entry key="H1" value="28.473036257773042" />
-      <entry key="H2" value="71.97914570353497" />
-      <entry key="H4" value="190.52088456643182" />
-      <entry key="D1" value="668.0604418409984" />
-      <entry key="W1" value="863.3382312706217" />
-    </decayedCancelled>
-    <decayedSelected>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0000000001502496" />
-      <entry key="S30" value="1.0009867783722073" />
-      <entry key="S60" value="1.069579945761091" />
-      <entry key="M2" value="1.7477289641070208" />
-      <entry key="M5" value="4.945640078558796" />
-      <entry key="M10" value="8.442424693484062" />
-      <entry key="M15" value="10.327796906824593" />
-      <entry key="M30" value="12.936688806780136" />
-      <entry key="H1" value="15.946283318671009" />
-      <entry key="H2" value="25.797864416719236" />
-      <entry key="H4" value="58.0526215193097" />
-      <entry key="D1" value="199.06473579821514" />
-      <entry key="W1" value="257.438972776783" />
+      <entry key="S2" value="1.0000000223523229" />
+      <entry key="S5" value="1.0008704204061503" />
+      <entry key="S10" value="1.0295029432879172" />
+      <entry key="S30" value="1.3185965486465907" />
+      <entry key="S60" value="1.7558211439281095" />
+      <entry key="M2" value="2.7009671151567525" />
+      <entry key="M5" value="4.7030483831555445" />
+      <entry key="M10" value="6.791713451280167" />
+      <entry key="M15" value="8.17121781670626" />
+      <entry key="M30" value="10.789354477692209" />
+      <entry key="H1" value="16.857334609097144" />
+      <entry key="H2" value="42.097197406730835" />
+      <entry key="H4" value="133.1854596261029" />
+      <entry key="D1" value="635.2636173285124" />
+      <entry key="W1" value="874.883691710437" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="7.380153652826734E-283" />
+      <entry key="S2" value="2.9310035938778173E-71" />
+      <entry key="S5" value="6.120776765588395E-29" />
+      <entry key="S10" value="7.82353933050023E-15" />
+      <entry key="S30" value="1.985185481361324E-5" />
+      <entry key="S60" value="0.004455696989496062" />
+      <entry key="M2" value="0.06730618100846414" />
+      <entry key="M5" value="0.41430085230534647" />
+      <entry key="M10" value="0.9709069865648243" />
+      <entry key="M15" value="1.371445531524845" />
+      <entry key="M30" value="2.218451990345495" />
+      <entry key="H1" value="4.53842542652599" />
+      <entry key="H2" value="12.068026231445993" />
+      <entry key="H4" value="37.82711424911361" />
+      <entry key="D1" value="185.92265064635916" />
+      <entry key="W1" value="257.34902900409855" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="4.923350581189737E-5" />
-      <entry key="MS500" value="0.13754732617076715" />
-      <entry key="S2" value="0.6089940340104166" />
-      <entry key="S5" value="0.8200592189692595" />
-      <entry key="S10" value="0.9055712115433603" />
-      <entry key="S30" value="0.9686721012526862" />
-      <entry key="S60" value="1.0939915327465008" />
-      <entry key="M2" value="2.439047504346503" />
-      <entry key="M5" value="9.579042304384872" />
-      <entry key="M10" value="17.4946229795283" />
-      <entry key="M15" value="21.755679703749735" />
-      <entry key="M30" value="28.861255735626568" />
-      <entry key="H1" value="44.410322115075644" />
-      <entry key="H2" value="97.76854744465452" />
-      <entry key="H4" value="248.56248892046258" />
-      <entry key="D1" value="867.1182371928132" />
-      <entry key="W1" value="1120.7759061011793" />
+      <entry key="MS100" value="2.011904600477441E-20" />
+      <entry key="MS500" value="1.1500625902158313E-4" />
+      <entry key="S2" value="0.10355722363248186" />
+      <entry key="S5" value="0.4042591405772803" />
+      <entry key="S10" value="0.6587650743851804" />
+      <entry key="S30" value="1.1550046667021912" />
+      <entry key="S60" value="1.6634834229833741" />
+      <entry key="M2" value="2.7093703514364567" />
+      <entry key="M5" value="5.085784068509088" />
+      <entry key="M10" value="7.742999721951933" />
+      <entry key="M15" value="9.528018245229147" />
+      <entry key="M30" value="12.9990904715565" />
+      <entry key="H1" value="21.389940090723655" />
+      <entry key="H2" value="54.15971527182914" />
+      <entry key="H4" value="171.00468468081218" />
+      <entry key="D1" value="821.1796761536729" />
+      <entry key="W1" value="1132.2314077403319" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -118,8 +123,14 @@
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Application.Main.executor": "Run",
+    "Application.Test.executor": "Run",
     "Application.fr.campus.d_and_d.Main.executor": "Run",
+    "Application.linkDB.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -132,14 +143,14 @@
     "git.auto.fetch.suggestion.counter": "1",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/user/Documents/D_and_D/DD/lib",
+    "last_opened_file_path": "/home/user/Documents/D_and_D/DD/lib/mysql-connector-j-9.7.0.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "/home/user/Documents/D_and_D/DD/src/Main.java",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
@@ -147,6 +158,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="fr.campus.d_and_d.board" />
       <recent name="fr.campus.d_and_d.gameLogic" />
@@ -352,7 +366,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784714398625</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added ASCII and fix text">
+      <option name="closed" value="true" />
+      <created>1784721076000</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1784721076000</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,7 +456,8 @@
     <MESSAGE value="Updated documentation, changed some method name to have it in english, added boss cell" />
     <MESSAGE value="Added ASCII art for title and updated README" />
     <MESSAGE value="Added database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added database" />
+    <MESSAGE value="Added ASCII and fix text" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ASCII and fix text" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/D_and_D$Main.ic" NAME="Main Coverage Results" MODIFIED="1784296176756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />

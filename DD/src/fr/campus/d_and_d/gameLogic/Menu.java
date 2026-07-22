@@ -22,15 +22,14 @@ public class Menu {
 	 */
 	public String askPlayerString(String textMessage) {
 		beforeLine();
-		System.out.println(textMessage);
+		System.out.printf(textMessage);
 		afterLine();
 		System.out.print("> ");
 		Scanner scanner = new Scanner(System.in);
 		return scanner.nextLine();
 	}
 	public void beforeLine() {
-		System.out.println("======================================================\n" +
-				"||                                                  ||");
+		System.out.println("=".repeat(54) + "\n" + "||" + " ".repeat(50) + "||");
 	}
 
 	public void afterLine() {

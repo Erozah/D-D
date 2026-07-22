@@ -13,10 +13,7 @@ import java.util.Scanner;
  * player movement, and game state management.
  */
 public class Game {
-	/**
-	 * Displays the main menu and handles user choices for creating a character or starting the game.
-	 */
-	public void mainMenu() {
+	public void displayTitle() {
 		System.out.println("""
 				
 				[0;37;40m█[0;91;1;47m░░[0;97;1;47m░▒▓▒░[0;91;1;47m░[0;37;40m▄                         [0;97;1;47m░[0;37;40m██[0;97;1;47m░[0;37;40m                                       ▄[0;91;1;47m░░[0;97;1;47m░▒▓▒░[0;91;1;47m░[0;37;40m▄      █[0;91;1;47m░░[0;97;1;47m░▒▓▒░[0;91;1;47m░[0;37;40m▄                                                                  [0m
@@ -31,15 +28,25 @@ public class Game {
 				[0;37;40m                                 [0;31;40m▀▀▀▀▀[0;37;40m                                                                                         [0;31;40m▒[0;91;1;40m░░░░░░░[0;90;1;41m▒[0;91;1;40m▀[0;37;40m                                 [0m
 				[0;37;40m                                                                                                                               [0;31;40m▀▀▀▀▀▀▀▀[0;37;40m                                   [0m
 				""");
+	}
+	/**
+	 * Displays the main menu and handles user choices for creating a character or starting the game.
+	 */
+	public void mainMenu() {
+		displayTitle();
 		Menu menu = new Menu();
 		menu.beforeLine();
 		System.out.println("|| Bienvenue dans l'univers de donjons et dragons ! ||");
 		menu.afterLine();
 		String choice = menu.askPlayerString("||               1. Nouveau personnage              ||\n" +
-				"||                   2. Quitter                     ||");
+				"||                   2. Quitter                     ||\n");
 		if (choice.equals("1") )
 			this.createCharacter();
-		choice = menu.askPlayerString("||       Démarrer la partie ? 1. Oui / 2. Non       ||");
+		choice = menu.askPlayerString("""
+				||              1. Démarrer la partie               ||
+				||      2. Voir les statistiques du personnage      ||
+				||                    3. Quitter                    ||
+				""");
 		if (choice.equals("1"))
 			this.start();
 		return;
@@ -52,7 +59,7 @@ public class Game {
 		String characterName = menu.askPlayerString("||               Quel est votre nom ?               ||");
 		String choice = menu.askPlayerString("||            Choisissez votre classe :             ||\n" +
 				"||                   1. Guerrier                    ||\n" +
-				"||                   2. Magicien                    ||");
+				"||                   2. Magicien                    ||\n");
 		if (choice.equals("1")) {
 			Warrior warrior = new Warrior("Guerrier", characterName);
 			System.out.println(warrior);
