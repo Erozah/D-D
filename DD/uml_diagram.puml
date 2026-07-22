@@ -6,8 +6,8 @@ abstract class Character {
   - name: String
   - lifePoints: int
   - damagePoint: int
-  - offensiveEquipment: String
-  - defensiveEquipment: String
+  - offensiveEquipment: OffensiveEquipment
+  - defensiveEquipment: DefensiveEquipment
   + getType(): String
   + setType(type: String): void
   + getName(): String
@@ -16,10 +16,10 @@ abstract class Character {
   + setLifePoints(lifePoints: int): void
   + getDamagePoint(): int
   + setDamagePoint(damagePoint: int): void
-  + getOffensiveEquipment(): String
-  + setOffensiveEquipment(offensiveEquipment: String): void
-  + getDefensiveEquipment(): String
-  + setDefensiveEquipment(defensiveEquipment: String): void
+  + getOffensiveEquipment(): OffensiveEquipment
+  + setOffensiveEquipment(offensiveEquipment: OffensiveEquipment): void
+  + getDefensiveEquipment(): DefensiveEquipment
+  + setDefensiveEquipment(defensiveEquipment: DefensiveEquipment): void
   + toString(): String
 }
 
@@ -34,6 +34,11 @@ abstract class DefensiveEquipment {
   - defensiveType: String
   - name: String
   - defensivePoints: int
+  + toString(): String
+}
+
+abstract class Cell {
+  + interact(): String
   + toString(): String
 }
 
@@ -64,13 +69,32 @@ class Potion {
   + toString(): String
 }
 
+class EmptyCell {
+  + interact(): String
+}
+
+class EnemyCell {
+  + interact(): String
+}
+
+class WeaponCell {
+  + interact(): String
+}
+
+class PotionCell {
+  + interact(): String
+}
+
 ' Autres classes
 class Board {
   - currentCase: int
   - MAX_CASE: int
+  - cells: ArrayList<Cell>
+  + initializeBoard(): void
   + getCurrentCase(): int
   + setCurrentCase(currentCase: int): void
   + getMaxCase(): int
+  + getCurrentCell(): Cell
   + toString(): String
 }
 
@@ -80,12 +104,20 @@ class Dice {
 }
 
 class Game {
+  - playerPosition: int
+  - board: Board
+  - player: Character
+  - gameStatus: String
+  + mainMenu(): void
+  + createCharacter(): void
+  + playTurn(board: Board, dice: Dice): void
+  + end(): void
   + start(): void
   + toString(): String
 }
 
 class Menu {
-  + displayMenu(): void
+  + askPlayerString(textMessage: String): String
   + toString(): String
 }
 
@@ -100,11 +132,19 @@ OffensiveEquipment <|-- Weapon
 OffensiveEquipment <|-- Spell
 DefensiveEquipment <|-- Shield
 DefensiveEquipment <|-- Potion
+Cell <|-- EmptyCell
+Cell <|-- EnemyCell
+Cell <|-- WeaponCell
+Cell <|-- PotionCell
 Exception <|-- OutOfBoardException
 
 ' Relations d'association
 Game --> Board
 Game --> Dice
-Menu --> Game
+Game --> Menu
+Game --> Character
+Board o-- Cell
+Character --> OffensiveEquipment
+Character --> DefensiveEquipment
 
 @enduml

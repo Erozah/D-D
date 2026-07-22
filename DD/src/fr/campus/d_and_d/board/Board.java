@@ -3,9 +3,7 @@
  * Le plateau contient 64 cases, et le joueur avance en lançant un dé.
  */
 package fr.campus.d_and_d.board;
-
 import fr.campus.d_and_d.gameLogic.OutOfBoardException;
-
 import java.util.ArrayList;
 
 public class Board {
@@ -16,6 +14,10 @@ public class Board {
 		this.cells = new ArrayList<>();
 		initializeBoard();
 	}
+
+	/**
+	 * Ajoute les cases 1 à 1 en brute force pour pouvoir modifier plus tard
+	 */
 	public void initializeBoard() {
 		cells.add(new EmptyCell());  // Case 1
 		cells.add(new EnemyCell());  // Case 2
@@ -83,8 +85,7 @@ public class Board {
 		cells.add(new PotionCell()); // Case 64
 	}
 	/**
-	 * Retourne la position actuelle du joueur.
-	 * @return La position actuelle (entre 1 et MAX_CASE).
+	 * @return La position actuelle du joueur(entre 1 et MAX_CASE).
 	 */
 	public int getCurrentCase() {
 		return currentCase;
@@ -105,12 +106,14 @@ public class Board {
 	}
 	/**
 	 * Retourne le nombre total de cases sur le plateau.
-	 * @return Le nombre total de cases (64).
 	 */
 	public int getMaxCase() {
 		return MAX_CASE;
 	}
 
+	/**
+	 * Transpose les cases de 1 à 64 en array de 0 à 63
+	 */
 	public Cell getCurrentCell() {
 		return cells.get(currentCase - 1);
 	}

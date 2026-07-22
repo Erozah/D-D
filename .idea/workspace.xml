@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="Moved files">
-      <change afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/Cell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/EmptyCell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/EnemyCell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/PotionCell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/WeaponCell.java" afterDir="false" />
+    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/uml_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/DD/uml_diagram.puml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="11" />
+    <option name="cachedIndexableFilesCount" value="23" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -53,61 +47,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="4.947273996158628E-19" />
-      <entry key="MS500" value="2.1920758423358167E-4" />
-      <entry key="S2" value="0.15317530142705502" />
-      <entry key="S5" value="0.707415033053099" />
-      <entry key="S10" value="1.4605134849513726" />
-      <entry key="S30" value="3.825983543701947" />
-      <entry key="S60" value="6.053997334608474" />
-      <entry key="M2" value="8.622417551159376" />
-      <entry key="M5" value="15.32567845436583" />
-      <entry key="M10" value="24.259330991236606" />
-      <entry key="M15" value="30.172068642359573" />
-      <entry key="M30" value="42.62763849929412" />
-      <entry key="H1" value="69.05388189298044" />
-      <entry key="H2" value="139.04453708103105" />
-      <entry key="H4" value="281.14159147159603" />
-      <entry key="D1" value="666.5924081576251" />
-      <entry key="W1" value="793.1233304018356" />
+      <entry key="MS100" value="1.00090487115419" />
+      <entry key="MS500" value="1.2462166107238877" />
+      <entry key="S2" value="1.7044162032104604" />
+      <entry key="S5" value="1.8692540705584646" />
+      <entry key="S10" value="1.9418359129184464" />
+      <entry key="S30" value="2.691456927749549" />
+      <entry key="S60" value="4.6046764334750545" />
+      <entry key="M2" value="7.662449667741769" />
+      <entry key="M5" value="14.955977108445365" />
+      <entry key="M10" value="24.305934710343447" />
+      <entry key="M15" value="30.53006718493703" />
+      <entry key="M30" value="43.45166442029363" />
+      <entry key="H1" value="70.09484647546972" />
+      <entry key="H2" value="140.07572072481966" />
+      <entry key="H4" value="282.160478631583" />
+      <entry key="D1" value="668.2041479765152" />
+      <entry key="W1" value="795.057320033053" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0000000382490724" />
-      <entry key="MS500" value="1.0328491534108442" />
-      <entry key="S2" value="1.4271426293568903" />
-      <entry key="S5" value="1.8215011048840593" />
-      <entry key="S10" value="2.455965990198428" />
-      <entry key="S30" value="4.559754696140832" />
-      <entry key="S60" value="6.0676971258269505" />
-      <entry key="M2" value="7.3455351151899855" />
-      <entry key="M5" value="9.175275528416705" />
-      <entry key="M10" value="10.76666571165645" />
-      <entry key="M15" value="11.615576347388515" />
-      <entry key="M30" value="13.536529492463158" />
-      <entry key="H1" value="19.914784702431888" />
-      <entry key="H2" value="40.33944290754299" />
-      <entry key="H4" value="84.1668341540987" />
-      <entry key="D1" value="203.12051776817228" />
-      <entry key="W1" value="241.7368459152786" />
+      <entry key="MS100" value="2.4321847748084036E-219" />
+      <entry key="MS500" value="1.9554026871094857E-44" />
+      <entry key="S2" value="1.6740453016483217E-11" />
+      <entry key="S5" value="7.729463843312598E-5" />
+      <entry key="S10" value="0.015998612294260233" />
+      <entry key="S30" value="0.8515852576105066" />
+      <entry key="S60" value="2.6222085073992325" />
+      <entry key="M2" value="4.8288654331332825" />
+      <entry key="M5" value="7.7579643623772245" />
+      <entry key="M10" value="9.90023633042267" />
+      <entry key="M15" value="10.983741893502692" />
+      <entry key="M30" value="13.163219138461882" />
+      <entry key="H1" value="19.63825994919855" />
+      <entry key="H2" value="40.058399244222876" />
+      <entry key="H4" value="83.87312782126887" />
+      <entry key="D1" value="203.00221164798458" />
+      <entry key="W1" value="241.7167269027124" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.3174231343138562E-4" />
-      <entry key="MS500" value="0.18189906488083168" />
-      <entry key="S2" value="1.1238885758375794" />
-      <entry key="S5" value="2.2329623379240444" />
-      <entry key="S10" value="3.6659145483381796" />
-      <entry key="S30" value="8.198715766747483" />
-      <entry key="S60" value="11.985796033941806" />
-      <entry key="M2" value="15.876050734614456" />
-      <entry key="M5" value="24.439915500717404" />
-      <entry key="M10" value="34.981011156105666" />
-      <entry key="M15" value="41.75180209780019" />
-      <entry key="M30" value="56.140983871864215" />
-      <entry key="H1" value="88.95174121448775" />
-      <entry key="H2" value="179.36722585746762" />
-      <entry key="H4" value="365.2907622295859" />
-      <entry key="D1" value="869.7056340301488" />
-      <entry key="W1" value="1034.8589296393557" />
+      <entry key="MS100" value="0.9535181254488307" />
+      <entry key="MS500" value="1.2351979463297562" />
+      <entry key="S2" value="1.701017276841012" />
+      <entry key="S5" value="1.8678670046134913" />
+      <entry key="S10" value="1.9554587553756329" />
+      <entry key="S30" value="3.5078616410054235" />
+      <entry key="S60" value="7.168028708377745" />
+      <entry key="M2" value="12.430836485979176" />
+      <entry key="M5" value="22.662306251699704" />
+      <entry key="M10" value="34.16479292821227" />
+      <entry key="M15" value="41.47990740719702" />
+      <entry key="M30" value="56.59233457512931" />
+      <entry key="H1" value="89.71641394163086" />
+      <entry key="H2" value="180.11748150451734" />
+      <entry key="H4" value="366.01600416497956" />
+      <entry key="D1" value="871.1990718877169" />
+      <entry key="W1" value="1036.772800349157" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -119,34 +113,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.Main.executor": "Run",
-    "Application.fr.campus.d_and_d.Main.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "git.auto.fetch.suggestion.counter": "1",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/user/Documents/D_and_D",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/home/user/Documents/D_and_D/DD/src/Main.java",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.fr.campus.d_and_d.Main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git.auto.fetch.suggestion.counter&quot;: &quot;1&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/user/Documents/D_and_D&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/user/Documents/D_and_D/DD/src/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="fr.campus.d_and_d.board" />
@@ -297,7 +291,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784637322065</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Update">
+      <option name="closed" value="true" />
+      <created>1784645205947</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1784645205947</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,7 +375,8 @@
     <MESSAGE value="Update Warrior, Wizard, Weapon, Spell, Shield and Potion" />
     <MESSAGE value="Added OutOfBoardException" />
     <MESSAGE value="Moved files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved files" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/D_and_D$Main.ic" NAME="Main Coverage Results" MODIFIED="1784296176756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
