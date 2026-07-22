@@ -109,7 +109,7 @@ public class Board {
 		if (currentPosition < 1) {
 			this.currentPosition = 1;
 		} else if (currentPosition > MAX_POSITION) {
-			throw new OutOfBoardException("Position " + currentPosition + " exceeds the board limit of " + MAX_POSITION + ".");
+			throw new OutOfBoardException("La position " + currentPosition + " dépasse la limite du plateau de " + MAX_POSITION + ".");
 		} else {
 			this.currentPosition = currentPosition;
 		}
@@ -133,6 +133,6 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "You are on cell " + currentPosition + " / " + MAX_POSITION;
+		return "Vous êtes sur la case " + currentPosition + " / " + MAX_POSITION;
 	}
 }

@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="Added ASCII art for title and updated README">
+    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="Added database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,60 +49,60 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.3774250799138152E-250" />
-      <entry key="S5" value="4.611889875467259E-100" />
-      <entry key="S10" value="8.389498953718508E-50" />
-      <entry key="S30" value="2.946674755110662E-16" />
-      <entry key="S60" value="7.264151632315879E-8" />
-      <entry key="M2" value="0.0011427796903819723" />
-      <entry key="M5" value="0.378220704752324" />
-      <entry key="M10" value="2.7129235706638917" />
-      <entry key="M15" value="5.634514256678719" />
-      <entry key="M30" value="15.446471017964267" />
-      <entry key="H1" value="39.179283231571176" />
-      <entry key="H2" value="98.81919773425498" />
-      <entry key="H4" value="232.8354712429745" />
-      <entry key="D1" value="680.5643494084846" />
-      <entry key="W1" value="846.7811238871741" />
+      <entry key="MS500" value="3.0586320933570954E-238" />
+      <entry key="S2" value="4.182431497564865E-60" />
+      <entry key="S5" value="1.840821896076439E-24" />
+      <entry key="S10" value="1.7145950962724826E-12" />
+      <entry key="S30" value="2.7709173793344225E-4" />
+      <entry key="S60" value="0.043061540709847926" />
+      <entry key="M2" value="0.7117511722982803" />
+      <entry key="M5" value="4.663384433964038" />
+      <entry key="M10" value="9.07915393105007" />
+      <entry key="M15" value="11.450100964367323" />
+      <entry key="M30" value="15.938574743657673" />
+      <entry key="H1" value="28.473036257773042" />
+      <entry key="H2" value="71.97914570353497" />
+      <entry key="H4" value="190.52088456643182" />
+      <entry key="D1" value="668.0604418409984" />
+      <entry key="W1" value="863.3382312706217" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
       <entry key="S2" value="1.0" />
       <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0000000000000027" />
-      <entry key="M2" value="1.0000000714806927" />
-      <entry key="M5" value="1.002100328317703" />
-      <entry key="M10" value="1.065327842478209" />
-      <entry key="M15" value="1.218599811819411" />
-      <entry key="M30" value="2.138076675778865" />
-      <entry key="H1" value="5.987842915515281" />
-      <entry key="H2" value="20.21351386214348" />
-      <entry key="H4" value="58.4433881747397" />
-      <entry key="D1" value="193.1215937482284" />
-      <entry key="W1" value="243.2871276815314" />
+      <entry key="S10" value="1.0000000001502496" />
+      <entry key="S30" value="1.0009867783722073" />
+      <entry key="S60" value="1.069579945761091" />
+      <entry key="M2" value="1.7477289641070208" />
+      <entry key="M5" value="4.945640078558796" />
+      <entry key="M10" value="8.442424693484062" />
+      <entry key="M15" value="10.327796906824593" />
+      <entry key="M30" value="12.936688806780136" />
+      <entry key="H1" value="15.946283318671009" />
+      <entry key="H2" value="25.797864416719236" />
+      <entry key="H4" value="58.0526215193097" />
+      <entry key="D1" value="199.06473579821514" />
+      <entry key="W1" value="257.438972776783" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.2038973443522453E-4" />
-      <entry key="MS500" value="0.16448181562862602" />
-      <entry key="S2" value="0.6368387376632497" />
-      <entry key="S5" value="0.8348564159882952" />
-      <entry key="S10" value="0.9137047750714096" />
-      <entry key="S30" value="0.9703653900552095" />
-      <entry key="S60" value="0.9850713340386973" />
-      <entry key="M2" value="0.9936503170096308" />
-      <entry key="M5" value="1.3772957014974057" />
-      <entry key="M10" value="3.7765560400354996" />
-      <entry key="M15" value="6.851669781078659" />
-      <entry key="M30" value="17.58241150877846" />
-      <entry key="H1" value="45.16267590866816" />
-      <entry key="H2" value="119.02447672299996" />
-      <entry key="H4" value="291.2666184166701" />
-      <entry key="D1" value="873.6790051749543" />
-      <entry key="W1" value="1090.066995927932" />
+      <entry key="MS100" value="4.923350581189737E-5" />
+      <entry key="MS500" value="0.13754732617076715" />
+      <entry key="S2" value="0.6089940340104166" />
+      <entry key="S5" value="0.8200592189692595" />
+      <entry key="S10" value="0.9055712115433603" />
+      <entry key="S30" value="0.9686721012526862" />
+      <entry key="S60" value="1.0939915327465008" />
+      <entry key="M2" value="2.439047504346503" />
+      <entry key="M5" value="9.579042304384872" />
+      <entry key="M10" value="17.4946229795283" />
+      <entry key="M15" value="21.755679703749735" />
+      <entry key="M30" value="28.861255735626568" />
+      <entry key="H1" value="44.410322115075644" />
+      <entry key="H2" value="97.76854744465452" />
+      <entry key="H4" value="248.56248892046258" />
+      <entry key="D1" value="867.1182371928132" />
+      <entry key="W1" value="1120.7759061011793" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -122,6 +125,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "main",
@@ -340,7 +344,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784712488833</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added database">
+      <option name="closed" value="true" />
+      <created>1784714398625</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1784714398625</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,7 +433,8 @@
     <MESSAGE value="Update board documentation and update UML" />
     <MESSAGE value="Updated documentation, changed some method name to have it in english, added boss cell" />
     <MESSAGE value="Added ASCII art for title and updated README" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ASCII art for title and updated README" />
+    <MESSAGE value="Added database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added database" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/D_and_D$Main.ic" NAME="Main Coverage Results" MODIFIED="1784296176756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />

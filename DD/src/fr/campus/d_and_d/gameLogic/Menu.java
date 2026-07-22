@@ -21,9 +21,21 @@ public class Menu {
 	 * @return The player's input as a String.
 	 */
 	public String askPlayerString(String textMessage) {
-		System.out.println(textMessage + "\n>");
+		beforeLine();
+		System.out.println(textMessage);
+		afterLine();
+		System.out.print("> ");
 		Scanner scanner = new Scanner(System.in);
 		return scanner.nextLine();
+	}
+	public void beforeLine() {
+		System.out.println("======================================================\n" +
+				"||                                                  ||");
+	}
+
+	public void afterLine() {
+		System.out.println("||                                                  ||\n" +
+				"======================================================");
 	}
 
 	@Override
