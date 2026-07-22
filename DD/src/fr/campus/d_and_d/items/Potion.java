@@ -1,8 +1,21 @@
+/**
+ * Represents a potion in the game, which is a type of defensive equipment.
+ */
 package fr.campus.d_and_d.items;
 
+/**
+ * A Potion is a defensive equipment that characters can use to restore health or gain temporary buffs.
+ * Examples include health potions, mana potions, and strength potions.
+ */
 public class Potion extends DefensiveEquipment {
-	public Potion(String defensiveType, String name, int defensivePoints) {
-		super(defensiveType, name, defensivePoints);
+	/**
+	 * Constructs a new Potion with specified attributes.
+	 * @param potionType The type of the potion (e.g., "Health" or "Mana").
+	 * @param name The name of the potion.
+	 * @param defensePoints The defense points or healing points provided by the potion.
+	 */
+	public Potion(String potionType, String name, int defensePoints) {
+		super(potionType, name, defensePoints);
 	}
 
 	@Override

@@ -1,24 +1,27 @@
 /**
- * Représente un magicien dans le jeu Donjons et Dragons.
- * Cette classe hérite de Character et définit les attributs spécifiques à un magicien.
+ * Represents a wizard in the Dungeons and Dragons game.
+ * This class extends Character and defines wizard-specific attributes.
  */
 package fr.campus.d_and_d.characters;
 import fr.campus.d_and_d.items.Potion;
 import fr.campus.d_and_d.items.Spell;
 
+/**
+ * A Wizard is a character type with magical abilities and potent spells.
+ */
 public class Wizard extends Character {
 	/**
-	 * Crée un nouveau magicien avec un type et un nom spécifiés.
-	 * @param type Le type du personnage (doit être "Magicien").
-	 * @param name Le nom du magicien.
+	 * Creates a new wizard with specified type and name.
+	 * @param type The type of the character (should be "Wizard").
+	 * @param name The name of the wizard.
 	 */
 	public Wizard(String type, String name) {
 		super(type,
 				name,
 				7,
 				7,
-				new Spell("Spell", "FireBall", 6),
-				new Potion("Potion", "IronPotion", 4));
+				new Spell("Sort", "Boule de feu", 6),
+				new Potion("Potion", "Potion de fer", 4));
 	}
 
 	@Override

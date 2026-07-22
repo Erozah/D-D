@@ -1,24 +1,27 @@
 /**
- * Représente un guerrier dans le jeu Donjons et Dragons.
- * Cette classe hérite de Character et définit les attributs spécifiques à un guerrier.
+ * Represents a warrior in the Dungeons and Dragons game.
+ * This class extends Character and defines warrior-specific attributes.
  */
 package fr.campus.d_and_d.characters;
 import fr.campus.d_and_d.items.Shield;
 import fr.campus.d_and_d.items.Weapon;
 
+/**
+ * A Warrior is a character type with high health points and strong offensive equipment.
+ */
 public class Warrior extends Character {
 	/**
-	 * Crée un nouveau guerrier avec un type et un nom spécifiés.
-	 * @param type Le type du personnage (doit être "Guerrier").
-	 * @param name Le nom du guerrier.
+	 * Creates a new warrior with specified type and name.
+	 * @param type The type of the character (should be "Warrior").
+	 * @param name The name of the warrior.
 	 */
 	public Warrior(String type, String name) {
 		super(type,
 				name,
 				10,
 				7,
-				new Weapon("Weapon", "Sword", 5),
-				new Shield("Shield", "WoodenShield", 5));
+				new Weapon("Arme", "Epée", 5),
+				new Shield("Bouclier", "Bouclier en bois", 5));
 	}
 
 	@Override

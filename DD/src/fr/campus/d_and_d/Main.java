@@ -1,13 +1,21 @@
-package fr.campus.d_and_d;//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
+/**
+ * The main entry point for the Dungeons and Dragons game.
+ * This class initializes and starts the game.
+ */
+package fr.campus.d_and_d;
 
 import fr.campus.d_and_d.gameLogic.Game;
 
+/**
+ * The Main class contains the main method to launch the game.
+ */
 final class Main {
+	/**
+	 * The main method that starts the game.
+	 * @param args Command-line arguments (not used).
+	 */
 	public static void main(String[] args) {
-		System.out.println("Hello and welcome!");
+		System.out.println("Bonjour et bienvenue dans ce jeu de Donjons et Dragons !");
 		Game game = new Game();
 		game.mainMenu();
 	}

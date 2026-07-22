@@ -1,15 +1,18 @@
 /**
- * Représente un dé utilisé pour déterminer le déplacement du joueur sur le plateau.
- * Cette classe génère un nombre aléatoire entre 1 et 6.
+ * Represents a dice used to determine the player's movement on the board.
+ * This class generates a random number between 1 and 6.
  */
 package fr.campus.d_and_d.gameLogic;
 
 import java.util.Random;
 
+/**
+ * The Dice class simulates a six-sided dice for determining player movement.
+ */
 public class Dice {
 	/**
-	 * Lance le dé et retourne un résultat aléatoire.
-	 * @return Un entier entre 1 et 6, représentant le résultat du lancer de dé.
+	 * Rolls the dice and returns a random result.
+	 * @return An integer between 1 and 6, representing the dice roll result.
 	 */
 	public int roll() {
 		Random random = new Random();

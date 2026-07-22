@@ -1,22 +1,30 @@
 /**
- * Représente le plateau de jeu du jeu Donjons et Dragons.
- * Le plateau contient 64 cases, et le joueur avance en lançant un dé.
+ * Represents the game board for the Dungeons and Dragons game.
+ * The board contains 64 cells, and the player moves by rolling a dice.
  */
 package fr.campus.d_and_d.board;
 import fr.campus.d_and_d.gameLogic.OutOfBoardException;
 import java.util.ArrayList;
 
+/**
+ * The Board class manages the game board, including player position and cell interactions.
+ */
 public class Board {
-	private int currentCase = 1;
-	private final int MAX_CASE = 64;
-	private ArrayList<Cell> cells;
+	private int currentPosition = 1;
+	private final int MAX_POSITION = 64;
+	private final ArrayList<Cell> cells;
+
+	/**
+	 * Constructs a new Board and initializes it with cells.
+	 */
 	public Board() {
 		this.cells = new ArrayList<>();
 		initializeBoard();
 	}
 
 	/**
-	 * Ajoute les cases 1 à 1 en brute force pour pouvoir modifier plus tard
+	 * Initializes the board by adding cells one by one.
+	 * This method sets up the board with a mix of empty cells, enemy cells, weapon cells, potion cells, and a boss cell.
 	 */
 	public void initializeBoard() {
 		cells.add(new EmptyCell());  // Case 1
@@ -82,44 +90,49 @@ public class Board {
 		cells.add(new EmptyCell());  // Case 61
 		cells.add(new EnemyCell());  // Case 62
 		cells.add(new WeaponCell()); // Case 63
-		cells.add(new PotionCell()); // Case 64
+		cells.add(new BossCell());   // Case 64
 	}
 	/**
-	 * @return La position actuelle du joueur(entre 1 et MAX_CASE).
+	 * Gets the current position of the player on the board.
+	 * @return The current position (between 1 and MAX_POSITION).
 	 */
-	public int getCurrentCase() {
-		return currentCase;
+	public int getCurrentPosition() {
+		return currentPosition;
 	}
 	/**
-	 * Définit la position actuelle du joueur sur le plateau.
-	 * @param currentCase La nouvelle position du joueur. Si la valeur est inférieure à 1,
-	 *                    elle est définie à 1. Si elle est supérieure à MAX_CASE, elle est définie à MAX_CASE.
+	 * Sets the current position of the player on the board.
+	 * @param currentPosition The new position of the player. If the value is less than 1,
+	 *                       it is set to 1. If it exceeds MAX_POSITION, an exception is thrown.
+	 * @throws OutOfBoardException If the position exceeds the board's maximum position.
 	 */
-	public void setCurrentCase(int currentCase) throws OutOfBoardException {
-		if (currentCase < 1)
-			this.currentCase = 1;
-		else if (currentCase > MAX_CASE) {
-			throw new OutOfBoardException("La position " + currentCase + " dépasse la limite du plateau de " + MAX_CASE + ".");
+	public void setCurrentPosition(int currentPosition) throws OutOfBoardException {
+		if (currentPosition < 1) {
+			this.currentPosition = 1;
+		} else if (currentPosition > MAX_POSITION) {
+			throw new OutOfBoardException("Position " + currentPosition + " exceeds the board limit of " + MAX_POSITION + ".");
+		} else {
+			this.currentPosition = currentPosition;
 		}
-		else
-			this.currentCase = currentCase;
 	}
 	/**
-	 * Retourne le nombre total de cases sur le plateau.
+	 * Gets the maximum number of positions on the board.
+	 * @return The maximum position (64).
 	 */
-	public int getMaxCase() {
-		return MAX_CASE;
+	public int getMaxPosition() {
+		return MAX_POSITION;
 	}
 
 	/**
-	 * Transpose les cases de 1 à 64 en array de 0 à 63
+	 * Gets the current cell based on the player's position.
+	 * Translates the 1-based position to a 0-based array index.
+	 * @return The current Cell object.
 	 */
 	public Cell getCurrentCell() {
-		return cells.get(currentCase - 1);
+		return cells.get(currentPosition - 1);
 	}
 
 	@Override
 	public String toString() {
-		return "Vous êtes sur la case " + getCurrentCase() + " / " + MAX_CASE;
+		return "You are on cell " + currentPosition + " / " + MAX_POSITION;
 	}
 }

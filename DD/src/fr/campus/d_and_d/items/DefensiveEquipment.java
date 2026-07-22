@@ -1,45 +1,83 @@
 /**
- * Représente un équipement défensif dans le jeu, tel qu'un bouclier ou une potion.
- * Cet équipement permet au personnage de se protéger ou de se soigner.
+ * Represents defensive equipment in the game, such as a shield or potion.
+ * This equipment allows the character to protect themselves or heal.
  */
 package fr.campus.d_and_d.items;
 
+/**
+ * Abstract class representing defensive equipment that can be used by characters.
+ * Subclasses include Shield and Potion.
+ */
 public abstract class DefensiveEquipment {
-	private String defensiveType = "Armor";
+	private String equipmentType = "Armor";
 	private String name = "LeatherArmor";
-	private int defensivePoints = 1;
+	private int defensePoints = 1;
 
-	public DefensiveEquipment(String defensiveType, String name, int defensivePoints) {
-		this.defensiveType = defensiveType;
+	/**
+	 * Constructs a new DefensiveEquipment with specified attributes.
+	 * @param equipmentType The type of the equipment (e.g., "Shield" or "Potion").
+	 * @param name The name of the equipment.
+	 * @param defensePoints The defense points of the equipment.
+	 */
+	public DefensiveEquipment(String equipmentType, String name, int defensePoints) {
+		this.equipmentType = equipmentType;
 		this.name = name;
-		this.defensivePoints = defensivePoints;
+		this.defensePoints = defensePoints;
 	}
 
-	public String getDefensiveType() {
-		return defensiveType;
+	/**
+	 * Gets the type of the equipment.
+	 * @return The equipment type.
+	 */
+	public String getEquipmentType() {
+		return equipmentType;
 	}
 
-	public void setDefensiveType(String defensiveType) {
-		this.defensiveType = defensiveType;
+	/**
+	 * Sets the type of the equipment.
+	 * @param equipmentType The new equipment type.
+	 */
+	public void setEquipmentType(String equipmentType) {
+		this.equipmentType = equipmentType;
 	}
 
+	/**
+	 * Gets the name of the equipment.
+	 * @return The equipment name.
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Sets the name of the equipment.
+	 * @param name The new equipment name.
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public int getDefensivePoints() {
-		return defensivePoints;
+	/**
+	 * Gets the defense points of the equipment.
+	 * @return The defense points.
+	 */
+	public int getDefensePoints() {
+		return defensePoints;
 	}
 
-	public void setDefensivePoints(int defensivePoints) {
-		this.defensivePoints = defensivePoints;
+	/**
+	 * Sets the defense points of the equipment.
+	 * @param defensePoints The new defense points.
+	 */
+	public void setDefensePoints(int defensePoints) {
+		this.defensePoints = defensePoints;
 	}
 
+	/**
+	 * Returns a string representation of the equipment.
+	 * @return A string describing the equipment.
+	 */
 	public String toString() {
-		return "[Type : " + defensiveType + " ] " + name + ": " + defensivePoints + " dégats.";
+		return "[Type : " + equipmentType + " ] " + name + ": " + defensePoints + " dégats.";
 	}
 }

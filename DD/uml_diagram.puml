@@ -4,18 +4,18 @@
 abstract class Character {
   - type: String
   - name: String
-  - lifePoints: int
-  - damagePoint: int
+  - healthPoints: int
+  - attackPower: int
   - offensiveEquipment: OffensiveEquipment
   - defensiveEquipment: DefensiveEquipment
   + getType(): String
   + setType(type: String): void
   + getName(): String
   + setName(name: String): void
-  + getLifePoints(): int
-  + setLifePoints(lifePoints: int): void
-  + getDamagePoint(): int
-  + setDamagePoint(damagePoint: int): void
+  + getHealthPoints(): int
+  + setHealthPoints(healthPoints: int): void
+  + getAttackPower(): int
+  + setAttackPower(attackPower: int): void
   + getOffensiveEquipment(): OffensiveEquipment
   + setOffensiveEquipment(offensiveEquipment: OffensiveEquipment): void
   + getDefensiveEquipment(): DefensiveEquipment
@@ -24,16 +24,16 @@ abstract class Character {
 }
 
 abstract class OffensiveEquipment {
-  - weaponType: String
-  - weaponDamage: int
+  - equipmentType: String
+  - attackPower: int
   - name: String
   + toString(): String
 }
 
 abstract class DefensiveEquipment {
-  - defensiveType: String
+  - equipmentType: String
   - name: String
-  - defensivePoints: int
+  - defensePoints: int
   + toString(): String
 }
 
@@ -82,6 +82,10 @@ class WeaponCell {
 }
 
 class PotionCell {
+  + interact(): String
+}
+
+class BossCell {
   + interact(): String
 }
 
@@ -136,6 +140,7 @@ Cell <|-- EmptyCell
 Cell <|-- EnemyCell
 Cell <|-- WeaponCell
 Cell <|-- PotionCell
+Cell <|-- BossCell
 Exception <|-- OutOfBoardException
 
 ' Relations d'association

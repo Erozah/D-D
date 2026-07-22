@@ -1,12 +1,12 @@
 package fr.campus.d_and_d.gameLogic;
 
 /**
- * Exception levée quand le joueur dépasse la dernière case
+ * Exception thrown when the player exceeds the board's maximum position.
  */
 public class OutOfBoardException extends Exception {
 	/**
-	 * crée une nouvelle exception avec un message personnalisé.
-	 * @param message Le message décrivant l'erreur.
+	 * Creates a new exception with a custom message.
+	 * @param message The message describing the error.
 	 */
 	public OutOfBoardException(String message) {
 		super(message);
