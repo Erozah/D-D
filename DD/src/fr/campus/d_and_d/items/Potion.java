@@ -3,11 +3,13 @@
  */
 package fr.campus.d_and_d.items;
 
+import fr.campus.d_and_d.board.CellContent;
+
 /**
  * A Potion is a defensive equipment that characters can use to restore health or gain temporary buffs.
  * Examples include health potions, mana potions, and strength potions.
  */
-public class Potion extends DefensiveEquipment {
+public class Potion extends DefensiveEquipment implements CellContent {
 	/**
 	 * Constructs a new Potion with specified attributes.
 	 * @param potionType The type of the potion (e.g., "Health" or "Mana").
@@ -21,5 +23,27 @@ public class Potion extends DefensiveEquipment {
 	@Override
 	public String toString() {
 		return getName();
+	}
+
+	@Override
+	public String interact() {
+		return "Vous avez trouvé une potion: " + getName() + "! Vos points de vie augmentent.";
+	}
+	
+	@Override
+	public String interact(fr.campus.d_and_d.characters.Character character) {
+		if (character == null) {
+			return interact();
+		}
+		
+		// Any character can use potions
+		int healAmount = getDefensePoints();
+		character.setHealthPoints(character.getHealthPoints() + healAmount);
+		return "Vous avez utilisé " + getName() + "! Vous récupérez " + healAmount + " points de vie. Total: " + character.getHealthPoints() + " PV.";
+	}
+
+	@Override
+	public String getName() {
+		return super.getName();
 	}
 }

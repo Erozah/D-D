@@ -1,5 +1,16 @@
 @startuml
 
+' Interfaces
+interface CellContent {
+  + interact(): String
+  + interact(character: Character): String
+  + getName(): String
+}
+
+interface Dice {
+  + roll(): int
+}
+
 ' Classes abstraites
 abstract class Character {
   - type: String
@@ -27,6 +38,12 @@ abstract class OffensiveEquipment {
   - equipmentType: String
   - attackPower: int
   - name: String
+  + getEquipmentType(): String
+  + setEquipmentType(equipmentType: String): void
+  + getAttackPower(): int
+  + setAttackPower(attackPower: int): void
+  + getName(): String
+  + setName(name: String): void
   + toString(): String
 }
 
@@ -34,15 +51,16 @@ abstract class DefensiveEquipment {
   - equipmentType: String
   - name: String
   - defensePoints: int
+  + getEquipmentType(): String
+  + setEquipmentType(equipmentType: String): void
+  + getName(): String
+  + setName(name: String): void
+  + getDefensePoints(): int
+  + setDefensePoints(defensePoints: int): void
   + toString(): String
 }
 
-abstract class Cell {
-  + interact(): String
-  + toString(): String
-}
-
-' Classes concrètes
+' Classes concrètes - Personnages
 class Warrior {
   + Warrior(type: String, name: String)
   + toString(): String
@@ -53,75 +71,155 @@ class Wizard {
   + toString(): String
 }
 
+' Classes concrètes - Ennemis
+class Enemy {
+  - isBoss: boolean
+  + Enemy(type: String, name: String, healthPoints: int, attackPower: int,
+          offensiveEquipment: OffensiveEquipment, defensiveEquipment: DefensiveEquipment, isBoss: boolean)
+  + isBoss(): boolean
+  + interact(): String
+  + interact(character: Character): String
+  + getName(): String
+  + defeat(): OffensiveEquipment
+}
+
+class Dragon {
+  + Dragon(name: String)
+  + Dragon(name: String, healthPoints: int, attackPower: int)
+  + interact(): String
+  + interact(character: Character): String
+  + getName(): String
+}
+
+class Goblin {
+  + Goblin(name: String)
+  + Goblin(name: String, healthPoints: int, attackPower: int)
+  + interact(): String
+  + interact(character: Character): String
+}
+
+class Orc {
+  + Orc(name: String)
+  + Orc(name: String, healthPoints: int, attackPower: int)
+  + interact(): String
+  + interact(character: Character): String
+}
+
+class Sorcerer {
+  + Sorcerer(name: String)
+  + Sorcerer(name: String, healthPoints: int, attackPower: int)
+  + interact(): String
+  + interact(character: Character): String
+}
+
+' Classes concrètes - Équipements
 class Weapon {
+  + Weapon(weaponType: String, name: String, weaponDamage: int)
   + toString(): String
+  + interact(): String
+  + interact(character: Character): String
+  + getName(): String
 }
 
 class Spell {
+  + Spell(spellType: String, name: String, spellDamage: int)
   + toString(): String
+  + interact(): String
+  + interact(character: Character): String
+  + getName(): String
 }
 
 class Shield {
+  + Shield(shieldType: String, name: String, defensePoints: int)
   + toString(): String
+  + interact(): String
+  + interact(character: Character): String
+  + getName(): String
 }
 
 class Potion {
+  + Potion(potionType: String, name: String, defensePoints: int)
+  + toString(): String
+  + interact(): String
+  + interact(character: Character): String
+  + getName(): String
+}
+
+' Classes concrètes - Plateau
+class Cell {
+  - content: CellContent
+  + Cell()
+  + Cell(content: CellContent)
+  + getContent(): CellContent
+  + setContent(content: CellContent): void
+  + isEmpty(): boolean
+  + interact(character: Character): String
+  + interact(): String
   + toString(): String
 }
 
-class EmptyCell {
+class MysteryBox {
+  - content: CellContent
+  + MysteryBox(content: CellContent)
+  + getContent(): CellContent
   + interact(): String
+  + interact(character: Character): String
+  + getName(): String
+  + toString(): String
 }
 
-class EnemyCell {
-  + interact(): String
-}
-
-class WeaponCell {
-  + interact(): String
-}
-
-class PotionCell {
-  + interact(): String
-}
-
-class BossCell {
-  + interact(): String
-}
-
-' Autres classes
 class Board {
-  - currentCase: int
-  - MAX_CASE: int
-  - cells: ArrayList<Cell>
+  - currentPosition: int
+  - MAX_POSITION: int
+  - cells: List<Cell>
+  + Board()
+  + Board(size: int)
   + initializeBoard(): void
-  + getCurrentCase(): int
-  + setCurrentCase(currentCase: int): void
-  + getMaxCase(): int
+  + getCurrentPosition(): int
+  + setCurrentPosition(currentPosition: int): void
+  + getMaxPosition(): int
   + getCurrentCell(): Cell
+  + getCell(position: int): Cell
+  + setCellContent(position: int, content: CellContent): void
   + toString(): String
 }
 
-class Dice {
+' Classes concrètes - Logique de jeu
+class SixSidedDice {
+  + roll(): int
+  + toString(): String
+}
+
+class TwentySidedDice {
   + roll(): int
   + toString(): String
 }
 
 class Game {
-  - playerPosition: int
-  - board: Board
   - player: Character
-  - gameStatus: String
+  - board: Board
+  - gameOver: boolean
+  - menu: Menu
+  + setPlayer(player: Character): void
+  + getPlayer(): Character
+  + displayTitle(): void
   + mainMenu(): void
+  + showCharacterStats(): void
   + createCharacter(): void
   + playTurn(board: Board, dice: Dice): void
-  + end(): void
+  + endGame(): void
   + start(): void
   + toString(): String
 }
 
 class Menu {
-  + askPlayerString(textMessage: String): String
+  - scanner: Scanner
+  - INNER_WIDTH: int
+  - BORDER: String
+  + askPlayerString(textMessage: String...): String
+  + printCenteredLine(textMessage: String): void
+  + beforeLine(): void
+  + afterLine(): void
   + toString(): String
 }
 
@@ -132,15 +230,25 @@ class OutOfBoardException {
 ' Relations d'héritage
 Character <|-- Warrior
 Character <|-- Wizard
+Character <|-- Enemy
+Enemy <|-- Dragon
+Enemy <|-- Goblin
+Enemy <|-- Orc
+Enemy <|-- Sorcerer
 OffensiveEquipment <|-- Weapon
 OffensiveEquipment <|-- Spell
 DefensiveEquipment <|-- Shield
 DefensiveEquipment <|-- Potion
-Cell <|-- EmptyCell
-Cell <|-- EnemyCell
-Cell <|-- WeaponCell
-Cell <|-- PotionCell
-Cell <|-- BossCell
+
+' Relations d'implémentation
+CellContent <|.. Enemy
+CellContent <|.. Weapon
+CellContent <|.. Spell
+CellContent <|.. Shield
+CellContent <|.. Potion
+CellContent <|.. MysteryBox
+Dice <|.. SixSidedDice
+Dice <|.. TwentySidedDice
 Exception <|-- OutOfBoardException
 
 ' Relations d'association
@@ -151,5 +259,7 @@ Game --> Character
 Board o-- Cell
 Character --> OffensiveEquipment
 Character --> DefensiveEquipment
+Cell --> CellContent
+MysteryBox --> CellContent
 
 @enduml
