@@ -5,7 +5,6 @@
 package fr.campus.d_and_d.gameLogic;
 import fr.campus.d_and_d.board.*;
 import fr.campus.d_and_d.characters.*;
-
 import java.util.Scanner;
 
 /**
@@ -67,8 +66,6 @@ public class Game {
 			System.out.println(wizard);
 			return;
 		}
-
-
 	}
 
 	/**
