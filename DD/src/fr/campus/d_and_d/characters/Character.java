@@ -116,6 +116,8 @@ public abstract class Character {
 	 */
 	public void setOffensiveEquipment(OffensiveEquipment offensiveEquipment) {
 		this.offensiveEquipment = offensiveEquipment;
+		// Update attack power based on the new equipment
+		this.attackPower = offensiveEquipment.getAttackPower();
 	}
 	/**
 	 * Gets the defensive equipment of the character.

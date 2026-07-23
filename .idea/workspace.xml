@@ -4,11 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="Update to semi-dynamic menu">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="added schema.sql">
+      <change afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/DatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_53_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_53_2_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/Character.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/UML.png" beforeDir="false" afterPath="$PROJECT_DIR$/DD/UML.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/BossCell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/EmptyCell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/EnemyCell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/PotionCell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/WeaponCell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/LinkDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/LinkDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Dice.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Dice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Potion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Shield.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Shield.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Spell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Weapon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/uml_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/DD/uml_diagram.puml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,61 +72,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000003009129" />
-      <entry key="MS500" value="1.0146040707834083" />
-      <entry key="S2" value="1.707420838951947" />
-      <entry key="S5" value="2.992718705982873" />
-      <entry key="S10" value="4.311513715753492" />
-      <entry key="S30" value="6.5307339366880655" />
-      <entry key="S60" value="8.039416339478457" />
-      <entry key="M2" value="10.447955042845596" />
-      <entry key="M5" value="19.645538933009348" />
-      <entry key="M10" value="34.079622851322284" />
-      <entry key="M15" value="44.82707757169671" />
-      <entry key="M30" value="63.88744355270933" />
-      <entry key="H1" value="82.1571250836566" />
-      <entry key="H2" value="112.16635568501187" />
-      <entry key="H4" value="201.09552303867318" />
-      <entry key="D1" value="709.4354272603875" />
-      <entry key="W1" value="960.1811755808259" />
+      <entry key="MS100" value="4.0443693384512686E-29" />
+      <entry key="MS500" value="2.125453553194047E-6" />
+      <entry key="S2" value="0.05138085073802148" />
+      <entry key="S5" value="0.4912758502850102" />
+      <entry key="S10" value="1.2261388867854848" />
+      <entry key="S30" value="2.5890733481302863" />
+      <entry key="S60" value="3.1998547954543777" />
+      <entry key="M2" value="3.5724288917540297" />
+      <entry key="M5" value="3.821804323854152" />
+      <entry key="M10" value="3.9104107270631934" />
+      <entry key="M15" value="3.9548483338692053" />
+      <entry key="M30" value="4.398053020684475" />
+      <entry key="H1" value="8.964589430454257" />
+      <entry key="H2" value="31.813677204977644" />
+      <entry key="H4" value="103.30100016510056" />
+      <entry key="D1" value="650.62582832697" />
+      <entry key="W1" value="992.7056896720258" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="9.653657296536181E-291" />
-      <entry key="MS500" value="9.929751395038521E-59" />
-      <entry key="S2" value="3.1567093299929986E-15" />
-      <entry key="S5" value="1.5837762918079714E-6" />
-      <entry key="S10" value="0.001258481804427505" />
-      <entry key="S30" value="0.1086716297951779" />
-      <entry key="S60" value="0.39538845975477177" />
-      <entry key="M2" value="1.5138574194404715" />
-      <entry key="M5" value="8.072122252287363" />
-      <entry key="M10" value="17.485131185147665" />
-      <entry key="M15" value="23.28400164112417" />
-      <entry key="M30" value="31.782856224020122" />
-      <entry key="H1" value="38.7672736148937" />
-      <entry key="H2" value="48.28208327075449" />
-      <entry key="H4" value="73.79989373740626" />
-      <entry key="D1" value="223.83072223629497" />
-      <entry key="W1" value="298.5478962137546" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000543070867896" />
+      <entry key="S5" value="1.0196762622620423" />
+      <entry key="S10" value="1.1402721007971375" />
+      <entry key="S30" value="1.5195855929048938" />
+      <entry key="S60" value="1.7208228582008853" />
+      <entry key="M2" value="1.8490128728122355" />
+      <entry key="M5" value="1.9366249233024666" />
+      <entry key="M10" value="1.9677946596270433" />
+      <entry key="M15" value="1.9785437770569625" />
+      <entry key="M30" value="2.0230162915086463" />
+      <entry key="H1" value="3.038473152996306" />
+      <entry key="H2" value="9.821036946919763" />
+      <entry key="H4" value="31.693669610844484" />
+      <entry key="D1" value="195.9523719459863" />
+      <entry key="W1" value="298.44773175866425" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9460576470102771" />
-      <entry key="MS500" value="1.0034195963375294" />
-      <entry key="S2" value="1.7028198994279715" />
-      <entry key="S5" value="2.9895878640673668" />
-      <entry key="S10" value="4.310336326699487" />
-      <entry key="S30" value="6.631080606249472" />
-      <entry key="S60" value="8.419862512264359" />
-      <entry key="M2" value="11.932994812128793" />
-      <entry key="M5" value="27.657171975498084" />
-      <entry key="M10" value="51.49707937807658" />
-      <entry key="M15" value="68.04938379463066" />
-      <entry key="M30" value="95.62633349073339" />
-      <entry key="H1" value="120.89690133406404" />
-      <entry key="H2" value="160.4311304911121" />
-      <entry key="H4" value="274.8816661677337" />
-      <entry key="D1" value="933.2585218157361" />
-      <entry key="W1" value="1258.7275943624873" />
+      <entry key="MS100" value="6.580523559551882E-25" />
+      <entry key="MS500" value="1.468835876074798E-5" />
+      <entry key="S2" value="0.08806920885213237" />
+      <entry key="S5" value="0.7245262629311148" />
+      <entry key="S10" value="1.783782028878852" />
+      <entry key="S30" value="3.8242285237993814" />
+      <entry key="S60" value="4.760405029868908" />
+      <entry key="M2" value="5.335988192789357" />
+      <entry key="M5" value="5.722850460918299" />
+      <entry key="M10" value="5.860171190234349" />
+      <entry key="M15" value="5.921302230653876" />
+      <entry key="M30" value="6.414825149404589" />
+      <entry key="H1" value="11.998918579532726" />
+      <entry key="H2" value="41.629893119674364" />
+      <entry key="H4" value="134.98796196873673" />
+      <entry key="D1" value="846.5713649800388" />
+      <entry key="W1" value="1291.1519212814894" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -120,44 +138,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
-    &quot;Application.fr.campus.d_and_d.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.linkDB.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;git.auto.fetch.suggestion.counter&quot;: &quot;1&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/user/Documents/D_and_D/DD/lib/mysql-connector-j-9.7.0.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/user/Documents/D_and_D/DD/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Application.Test.executor": "Run",
+    "Application.TestDatabase.executor": "Run",
+    "Application.fr.campus.d_and_d.Main.executor": "Run",
+    "Application.linkDB.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "git.auto.fetch.suggestion.counter": "1",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/user/Documents/D_and_D/DD/lib/mysql-connector-j-9.7.0.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/home/user/Documents/D_and_D/DD/src/Main.java",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -168,7 +187,7 @@
       <recent name="fr.campus.d_and_d.gameLogic" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.fr.campus.d_and_d.Main">
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="temurin-25" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -408,7 +427,23 @@
       <option name="project" value="LOCAL" />
       <updated>1784793552832</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="fix bugs">
+      <option name="closed" value="true" />
+      <created>1784794450608</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1784794450608</updated>
+    </task>
+    <task id="LOCAL-00026" summary="added schema.sql">
+      <option name="closed" value="true" />
+      <created>1784795994456</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1784795994456</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -496,7 +531,20 @@
     <MESSAGE value="added javadoc" />
     <MESSAGE value="added libraries" />
     <MESSAGE value="Update to semi-dynamic menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update to semi-dynamic menu" />
+    <MESSAGE value="fix bugs" />
+    <MESSAGE value="added schema.sql" />
+    <option name="LAST_COMMIT_MESSAGE" value="added schema.sql" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Potion.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/D_and_D$Main.ic" NAME="Main Coverage Results" MODIFIED="1784296176756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
