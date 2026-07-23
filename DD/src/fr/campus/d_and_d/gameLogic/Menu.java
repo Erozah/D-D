@@ -15,27 +15,46 @@ public class Menu {
 	public Menu() {
 
 	}
+	private final Scanner scanner = new Scanner(System.in);
+	private final int INNER_WIDTH = 60;
+	private final String BORDER = "=".repeat(INNER_WIDTH + 4);
+
 	/**
 	 * Prompts the player with a message and captures their input.
 	 * @param textMessage The message to display to the player.
 	 * @return The player's input as a String.
 	 */
-	public String askPlayerString(String textMessage) {
+	public String askPlayerString(String... textMessage) {
 		beforeLine();
-		System.out.printf(textMessage);
+		for (String line : textMessage)
+			printCenteredLine(line);
 		afterLine();
 		System.out.print("> ");
-		Scanner scanner = new Scanner(System.in);
 		return scanner.nextLine();
 	}
+	private void printBorder() {
+		System.out.println(BORDER);
+	}
+	private void printEmptyLine() {
+		System.out.printf("||" + " ".repeat(INNER_WIDTH) + "||\n");
+	}
+	public void printCenteredLine(String textMessage) {
+		if (textMessage.length() > INNER_WIDTH)
+			textMessage = textMessage.substring(0, INNER_WIDTH);
+		int leftPadding = (INNER_WIDTH - textMessage.length()) / 2;
+		int rightPadding = INNER_WIDTH - textMessage.length() - leftPadding;
+		System.out.println("||" + " ".repeat(leftPadding) + textMessage + " ".repeat(rightPadding) + "||");
+	}
 	public void beforeLine() {
-		System.out.println("=".repeat(54) + "\n" + "||" + " ".repeat(50) + "||");
+		printBorder();
+		printEmptyLine();
+	}
+	public void afterLine() {
+		printEmptyLine();
+		printBorder();
 	}
 
-	public void afterLine() {
-		System.out.println("||                                                  ||\n" +
-				"======================================================");
-	}
+
 
 	@Override
 	public String toString() {
