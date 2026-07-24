@@ -12,9 +12,9 @@ public class Sorcerer extends Enemy {
      * @param name The name of the sorcerer
      */
     public Sorcerer(String name) {
-        super("Sorcerer", name, 15, 12,
-              new Spell("Sorcerer", "Dark Magic", 10),
-              new Shield("Sorcerer", "Magic Barrier", 5),
+        super("Sorcerer", name, 8, 5,
+              new Spell("Sorcerer", "Dark Magic", 3),
+              new Shield("Sorcerer", "Magic Barrier", 2),
               false);
     }
     

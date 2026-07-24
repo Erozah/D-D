@@ -4,29 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="added schema.sql">
-      <change afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_53_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_53_2_0.xml" afterDir="false" />
+    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="V2.0 Changed game logic to add combat and save in SQL, need to be easier">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/UML.png" beforeDir="false" afterPath="$PROJECT_DIR$/DD/UML.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/BossCell.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/EmptyCell.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/EnemyCell.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/PotionCell.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/WeaponCell.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/LinkDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/LinkDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Dice.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Dice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Dragon.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Dragon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Goblin.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Goblin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Sorcerer.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Sorcerer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Warrior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/DatabaseManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/TestDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/schema.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Potion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Shield.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Shield.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Spell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/uml_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/DD/uml_diagram.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +30,7 @@
     </option>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="138" />
+    <option name="cachedIndexableFilesCount" value="102" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -72,61 +62,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="4.0443693384512686E-29" />
-      <entry key="MS500" value="2.125453553194047E-6" />
-      <entry key="S2" value="0.05138085073802148" />
-      <entry key="S5" value="0.4912758502850102" />
-      <entry key="S10" value="1.2261388867854848" />
-      <entry key="S30" value="2.5890733481302863" />
-      <entry key="S60" value="3.1998547954543777" />
-      <entry key="M2" value="3.5724288917540297" />
-      <entry key="M5" value="3.821804323854152" />
-      <entry key="M10" value="3.9104107270631934" />
-      <entry key="M15" value="3.9548483338692053" />
-      <entry key="M30" value="4.398053020684475" />
-      <entry key="H1" value="8.964589430454257" />
-      <entry key="H2" value="31.813677204977644" />
-      <entry key="H4" value="103.30100016510056" />
-      <entry key="D1" value="650.62582832697" />
-      <entry key="W1" value="992.7056896720258" />
+      <entry key="MS100" value="1.0000163539651876" />
+      <entry key="MS500" value="1.1103454195948872" />
+      <entry key="S2" value="1.691583079115863" />
+      <entry key="S5" value="3.0454199323633655" />
+      <entry key="S10" value="4.950587488810564" />
+      <entry key="S30" value="7.758769188865335" />
+      <entry key="S60" value="8.945610907943152" />
+      <entry key="M2" value="9.780525542535171" />
+      <entry key="M5" value="10.445529903129671" />
+      <entry key="M10" value="10.70924041730944" />
+      <entry key="M15" value="10.80388265496227" />
+      <entry key="M30" value="10.975473686632048" />
+      <entry key="H1" value="12.244266383596685" />
+      <entry key="H2" value="20.432127395966162" />
+      <entry key="H4" value="59.267528673434946" />
+      <entry key="D1" value="581.5016264451783" />
+      <entry key="W1" value="1011.2158534938987" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000543070867896" />
-      <entry key="S5" value="1.0196762622620423" />
-      <entry key="S10" value="1.1402721007971375" />
-      <entry key="S30" value="1.5195855929048938" />
-      <entry key="S60" value="1.7208228582008853" />
-      <entry key="M2" value="1.8490128728122355" />
-      <entry key="M5" value="1.9366249233024666" />
-      <entry key="M10" value="1.9677946596270433" />
-      <entry key="M15" value="1.9785437770569625" />
-      <entry key="M30" value="2.0230162915086463" />
-      <entry key="H1" value="3.038473152996306" />
-      <entry key="H2" value="9.821036946919763" />
-      <entry key="H4" value="31.693669610844484" />
-      <entry key="D1" value="195.9523719459863" />
-      <entry key="W1" value="298.44773175866425" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="4.327756781467214E-289" />
+      <entry key="S30" value="7.564048099744633E-97" />
+      <entry key="S60" value="8.697153614686847E-49" />
+      <entry key="M2" value="9.32585713394209E-25" />
+      <entry key="M5" value="2.4532653419661106E-10" />
+      <entry key="M10" value="1.7082982801640424E-5" />
+      <entry key="M15" value="7.896595040587235E-4" />
+      <entry key="M30" value="0.047690472567815965" />
+      <entry key="H1" value="0.5589158874146753" />
+      <entry key="H2" value="3.19471631619655" />
+      <entry key="H4" value="15.017374816682468" />
+      <entry key="D1" value="171.7360106331489" />
+      <entry key="W1" value="300.5079290660773" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="6.580523559551882E-25" />
-      <entry key="MS500" value="1.468835876074798E-5" />
-      <entry key="S2" value="0.08806920885213237" />
-      <entry key="S5" value="0.7245262629311148" />
-      <entry key="S10" value="1.783782028878852" />
-      <entry key="S30" value="3.8242285237993814" />
-      <entry key="S60" value="4.760405029868908" />
-      <entry key="M2" value="5.335988192789357" />
-      <entry key="M5" value="5.722850460918299" />
-      <entry key="M10" value="5.860171190234349" />
-      <entry key="M15" value="5.921302230653876" />
-      <entry key="M30" value="6.414825149404589" />
-      <entry key="H1" value="11.998918579532726" />
-      <entry key="H2" value="41.629893119674364" />
-      <entry key="H4" value="134.98796196873673" />
-      <entry key="D1" value="846.5713649800388" />
-      <entry key="W1" value="1291.1519212814894" />
+      <entry key="MS100" value="0.004857973125220294" />
+      <entry key="MS500" value="0.4533397353948807" />
+      <entry key="S2" value="1.4545500704401517" />
+      <entry key="S5" value="2.9357126139639442" />
+      <entry key="S10" value="4.888569994524159" />
+      <entry key="S30" value="7.735022200422261" />
+      <entry key="S60" value="8.933182779934878" />
+      <entry key="M2" value="9.774150154215578" />
+      <entry key="M5" value="10.442936565966898" />
+      <entry key="M10" value="10.707953052890831" />
+      <entry key="M15" value="10.803798413234263" />
+      <entry key="M30" value="11.02264866157881" />
+      <entry key="H1" value="12.802493901914467" />
+      <entry key="H2" value="23.625379487551456" />
+      <entry key="H4" value="74.28176036697405" />
+      <entry key="D1" value="753.2316667837256" />
+      <entry key="W1" value="1311.7222759893575" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -138,45 +128,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.Main.executor": "Run",
-    "Application.Test.executor": "Run",
-    "Application.TestDatabase.executor": "Run",
-    "Application.fr.campus.d_and_d.Main.executor": "Run",
-    "Application.linkDB.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "git.auto.fetch.suggestion.counter": "1",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/user/Documents/D_and_D/DD/lib/mysql-connector-j-9.7.0.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/home/user/Documents/D_and_D/DD/src/Main.java",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestDatabase.executor&quot;: &quot;Run&quot;,
+    &quot;Application.fr.campus.d_and_d.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.linkDB.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git.auto.fetch.suggestion.counter&quot;: &quot;1&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/user/Documents/D_and_D/DD/lib/mysql-connector-j-9.7.0.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/user/Documents/D_and_D/DD/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -201,7 +191,7 @@
     </configuration>
     <configuration name="fr.campus.d_and_d.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="fr.campus.d_and_d.Main" />
-      <module name="DD" />
+      <module name="D_and_D" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="fr.campus.d_and_d.*" />
@@ -443,7 +433,23 @@
       <option name="project" value="LOCAL" />
       <updated>1784795994456</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="V2.0 Changed game logic to add combat and save in SQL, need to be easier">
+      <option name="closed" value="true" />
+      <created>1784817307381</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1784817307381</updated>
+    </task>
+    <task id="LOCAL-00028" summary="V2.0 Changed game logic to add combat and save in SQL, need to be easier">
+      <option name="closed" value="true" />
+      <created>1784817340788</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1784817340788</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -533,7 +539,8 @@
     <MESSAGE value="Update to semi-dynamic menu" />
     <MESSAGE value="fix bugs" />
     <MESSAGE value="added schema.sql" />
-    <option name="LAST_COMMIT_MESSAGE" value="added schema.sql" />
+    <MESSAGE value="V2.0 Changed game logic to add combat and save in SQL, need to be easier" />
+    <option name="LAST_COMMIT_MESSAGE" value="V2.0 Changed game logic to add combat and save in SQL, need to be easier" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -542,6 +549,11 @@
           <url>file://$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Potion.java</url>
           <line>24</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Menu.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -12,7 +12,7 @@ public class Goblin extends Enemy {
      * @param name The name of the goblin
      */
     public Goblin(String name) {
-        super("Goblin", name, 8, 5,
+        super("Goblin", name, 5, 3,
               new Weapon("Goblin", "Rusty Dagger", 3),
               new Shield("Goblin", "Leather Armor", 2),
               false);

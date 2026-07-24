@@ -46,7 +46,7 @@ Ce projet est une implémentation simplifiée d'un jeu de plateau de type Donjon
 
 3. Compile le projet :
    ```bash
-   javac -d bin src/fr/campus/d_and_d/Main.java src/fr/campus/d_and_d/characters/*.java src/fr/campus/d_and_d/board/*.java src/fr/campus/d_and_d/items/*.java src/fr/campus/d_and_d/gameLogic/*.java
+   javac -d bin src/fr/campus/d_and_d/Main.java src/fr/campus/d_and_d/characters/*.java src/fr/campus/d_and_d/board/*.java src/fr/campus/d_and_d/items/*.java src/fr/campus/d_and_d/gameLogic/*.java src/fr/campus/d_and_d/db/*.java
    ```
 
 4. Exécute le jeu :
@@ -66,7 +66,9 @@ DD/
 │   │   ├── gameLogic/
 │   │   │   ├── Game.java          # Logique principale du jeu
 │   │   │   ├── Menu.java          # Gestion du menu utilisateur
-│   │   │   ├── Dice.java          # Dé virtuel
+│   │   │   ├── Dice.java          # Interface pour les dés
+│   │   │   ├── SixSidedDice.java  # Dé à 6 faces pour le déplacement
+│   │   │   ├── TwentySidedDice.java # Dé à 20 faces pour les critiques
 │   │   │   └── OutOfBoardException.java # Exception pour les limites du plateau
 │   │   ├── board/
 │   │   │   ├── Board.java         # Plateau de jeu
@@ -75,20 +77,33 @@ DD/
 │   │   │   ├── EnemyCell.java     # Case avec un ennemi
 │   │   │   ├── WeaponCell.java    # Case avec une arme
 │   │   │   ├── PotionCell.java    # Case avec une potion
-│   │   │   └── BossCell.java      # Case avec un boss final
+│   │   │   ├── SpellCell.java     # Case avec un sort
+│   │   │   └── MysteryBox.java    # Case mystère
 │   │   ├── characters/
 │   │   │   ├── Character.java     # Classe de base pour les personnages
 │   │   │   ├── Warrior.java       # Classe pour les guerriers
-│   │   │   └── Wizard.java        # Classe pour les magiciens
-│   │   └── items/
-│   │       ├── OffensiveEquipment.java  # Équipement offensif (abstrait)
-│   │       ├── Weapon.java        # Arme (héritée de OffensiveEquipment)
-│   │       ├── Spell.java         # Sort (héritée de OffensiveEquipment)
-│   │       ├── DefensiveEquipment.java # Équipement défensif (abstrait)
-│   │       ├── Shield.java        # Bouclier (héritée de DefensiveEquipment)
-│   │       └── Potion.java        # Potion (héritée de DefensiveEquipment)
+│   │   │   ├── Wizard.java        # Classe pour les magiciens
+│   │   │   ├── Enemy.java         # Classe de base pour les ennemis
+│   │   │   ├── Dragon.java        # Ennemi Dragon
+│   │   │   ├── Goblin.java        # Ennemi Gobelin
+│   │   │   ├── Orc.java           # Ennemi Orc
+│   │   │   └── Sorcerer.java      # Ennemi Sorcier
+│   │   ├── items/
+│   │   │   ├── OffensiveEquipment.java  # Équipement offensif (abstrait)
+│   │   │   ├── Weapon.java        # Arme (héritée de OffensiveEquipment)
+│   │   │   ├── Spell.java         # Sort (héritée de OffensiveEquipment)
+│   │   │   ├── DefensiveEquipment.java # Équipement défensif (abstrait)
+│   │   │   ├── Shield.java        # Bouclier (héritée de DefensiveEquipment)
+│   │   │   └── Potion.java        # Potion (héritée de DefensiveEquipment)
+│   │   └── db/
+│   │       ├── SimpleDatabaseManager.java # Gestion simplifiée de la base de données
+│   │       ├── LinkDB.java         # Connexion à la base de données
+│   │       └── TestDatabase.java   # Tests pour la base de données
+├── schema.sql                     # Schéma de base de données simplifié
 ├── doc/
 │   └── ...                       # Documentation JavaDoc générée
+├── lib/
+│   └── ...                       # Bibliothèques externes
 └── README.md                     # Ce fichier
 ```
 
@@ -109,6 +124,24 @@ Pour l'instant, les tests sont manuels. Tu peux exécuter le jeu et vérifier qu
 - **Java** : Langage de programmation principal.
 - **POO** : Programmation Orientée Objet pour une structure claire et modulaire.
 - **UML** : Diagrammes de classe pour la conception et la documentation.
+- **SQL** : Base de données pour sauvegarder les personnages.
+
+## 🗃 Base de Données Simplifiée
+
+La version simplifiée se concentre uniquement sur la sauvegarde des personnages et de leur équipement :
+
+- **Table `characters`** : Stocke les informations des personnages (type, nom, points de vie, puissance d'attaque)
+- **Table `equipment`** : Stocke les équipements (armes, sorts, boucliers, potions) associés aux personnages
+
+Le schéma SQL est disponible dans `schema.sql` et contient uniquement les tables essentielles pour sauvegarder et charger les personnages.
+
+Cette approche simplifiée ignore :
+- Les cases du plateau
+- Les ennemis
+- Les positions
+- Les relations complexes
+
+Cela rend le code plus facile à maintenir et à comprendre.
 
 ---
 
