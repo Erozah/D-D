@@ -55,10 +55,12 @@ cmake-build-*/
 
 # File-based project format
 *.iws
+*.xml
 
 # IntelliJ
 out/
 bin/
+lib/
 
 
 # mpeltonen/sbt-idea plugin
@@ -91,6 +93,7 @@ fabric.properties
 *.iml
 modules.xml
 .idea/misc.xml
+.idea/workspace.xml
 *.ipr
 
 # Sonarlint plugin
