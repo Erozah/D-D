@@ -1,6 +1,6 @@
 package fr.campus.d_and_d.board;
 
-import fr.campus.d_and_d.items.*;
+import fr.campus.d_and_d.characters.Character;
 
 /**
  * Represents a mystery box that contains random equipment.
@@ -30,7 +30,7 @@ public class MysteryBox implements CellContent {
     }
     
     @Override
-    public String interact(fr.campus.d_and_d.characters.Character character) {
+    public String interact(Character character) {
         if (character == null) {
             return interact();
         }

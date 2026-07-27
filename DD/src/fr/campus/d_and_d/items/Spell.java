@@ -33,7 +33,7 @@ public class Spell extends OffensiveEquipment implements CellContent {
 	}
 	
 	@Override
-	public String interact(fr.campus.d_and_d.characters.Character character) {
+	public String interact(Character character) {
 		if (character == null) {
 			return interact();
 		}

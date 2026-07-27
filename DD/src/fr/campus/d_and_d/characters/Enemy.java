@@ -1,7 +1,6 @@
 package fr.campus.d_and_d.characters;
 
 import fr.campus.d_and_d.board.CellContent;
-import fr.campus.d_and_d.gameLogic.Dice;
 import fr.campus.d_and_d.gameLogic.Menu;
 import fr.campus.d_and_d.gameLogic.SixSidedDice;
 import fr.campus.d_and_d.gameLogic.TwentySidedDice;
@@ -47,7 +46,7 @@ public class Enemy extends Character implements CellContent {
     }
 
     @Override
-    public String interact(fr.campus.d_and_d.characters.Character character) {
+    public String interact(Character character) {
         if (character == null) {
             return interact();
         }
@@ -121,7 +120,9 @@ public class Enemy extends Character implements CellContent {
             } else if (choice.equals("2")) {
                 // Flee logic
                 if (isBoss()) {
-                    return "Vous ne pouvez pas fuir un boss ! Vous devez le combattre pour avancer.";
+                    System.out.println("Vous ne pouvez pas fuir un boss ! Vous devez le combattre pour avancer.");
+                    // Continue combat - don't return, let the loop continue
+                    continue;
                 }
                 SixSidedDice fleeDice = new SixSidedDice();
                 int fleeSteps = fleeDice.roll();

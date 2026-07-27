@@ -1,5 +1,7 @@
 package fr.campus.d_and_d.board;
 
+import fr.campus.d_and_d.characters.Character;
+
 /**
  * Interface for all types of cell content in the game.
  * This allows different types of content (enemies, weapons, potions, etc.)
@@ -17,7 +19,7 @@ public interface CellContent {
      * @param character The character interacting with this content
      * @return A message describing the interaction
      */
-    String interact(fr.campus.d_and_d.characters.Character character);
+    String interact(Character character);
     
     /**
      * Gets the name of this content.

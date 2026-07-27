@@ -323,11 +323,16 @@ public class Game {
 		SixSidedDice dice = new SixSidedDice();
 		Scanner scanner = new Scanner(System.in);
 		
-		while (!gameOver && board.getCurrentPosition() < board.getMaxPosition()) {
+		while (!gameOver) {
 			playTurn(board, dice);
+			
+			// End game only if at max position AND boss is defeated
+			if (board.getCurrentPosition() >= board.getMaxPosition() && GameState.getInstance().isBossDefeated()) {
+				gameOver = true;
+			}
 		}
 
-		if (player.getHealthPoints() > 0 && board.getCurrentPosition() >= board.getMaxPosition()) {
+		if (player.getHealthPoints() > 0 && board.getCurrentPosition() >= board.getMaxPosition() && GameState.getInstance().isBossDefeated()) {
 			endGame();
 		}
 		scanner.close();

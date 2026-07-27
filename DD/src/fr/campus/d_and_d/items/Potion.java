@@ -4,6 +4,7 @@
 package fr.campus.d_and_d.items;
 
 import fr.campus.d_and_d.board.CellContent;
+import fr.campus.d_and_d.characters.Character;
 
 /**
  * A Potion is a defensive equipment that characters can use to restore health or gain temporary buffs.
@@ -31,7 +32,7 @@ public class Potion extends DefensiveEquipment implements CellContent {
 	}
 	
 	@Override
-	public String interact(fr.campus.d_and_d.characters.Character character) {
+	public String interact(Character character) {
 		if (character == null) {
 			return interact();
 		}
