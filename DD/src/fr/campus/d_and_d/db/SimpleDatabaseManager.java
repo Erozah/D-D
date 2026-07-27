@@ -59,12 +59,14 @@ public class SimpleDatabaseManager {
             stmt.setString(1, character.getType());
             stmt.setString(2, character.getName());
             stmt.setInt(3, character.getHealthPoints());
-            stmt.setInt(4, character.getAttackPower());
+            stmt.setInt(4, character.getBaseAttackPower()); // Save base attack power, not total
             stmt.executeUpdate();
 
             try (ResultSet rs = stmt.getGeneratedKeys()) {
                 if (rs.next()) {
-                    return rs.getInt(1);
+                    int generatedId = rs.getInt(1);
+                    character.setDatabaseId(generatedId); // Set the ID on the character
+                    return generatedId;
                 }
             }
         }
@@ -221,7 +223,7 @@ public class SimpleDatabaseManager {
 
                     // Create appropriate character type - handle both French and English types
                     String normalizedType = type.toUpperCase();
-                    return switch (normalizedType) {
+                    Character character = switch (normalizedType) {
                         case "WARRIOR", "GUERRIER" -> {
                             Character warrior = new Warrior("Warrior", name);
                             yield warrior;
@@ -232,6 +234,12 @@ public class SimpleDatabaseManager {
                         }
                         default -> null;
                     };
+                    if (character != null) {
+                        character.setDatabaseId(characterId); // Set the database ID
+                        // Set base attack power (will be used when equipment is loaded)
+                        character.setBaseAttackPower(attack);
+                    }
+                    return character;
                 }
             }
         }
@@ -293,4 +301,6 @@ public class SimpleDatabaseManager {
         // Default equipment if none found
         return new Shield("Armor", "Leather Armor", 1);
     }
+
+
 }

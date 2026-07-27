@@ -8,6 +8,8 @@ import fr.campus.d_and_d.characters.Character;
 import fr.campus.d_and_d.characters.Warrior;
 import fr.campus.d_and_d.characters.Wizard;
 import fr.campus.d_and_d.items.*;
+import fr.campus.d_and_d.items.Weapon;
+import fr.campus.d_and_d.items.Shield;
 import fr.campus.d_and_d.db.SimpleDatabaseManager;
 import fr.campus.d_and_d.db.LinkDB;
 import java.util.Scanner;
@@ -118,6 +120,103 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Deletes the character from the database when they die
+	 */
+	private void deleteCharacterFromDatabase() {
+		if (this.player != null && this.player.getDatabaseId() != -1) {
+			try {
+				LinkDB linkDB = new LinkDB();
+				linkDB.connect();
+				
+				try (Connection conn = linkDB.getConnection()) {
+					int characterId = this.player.getDatabaseId();
+					
+					// Delete equipment first (due to foreign key constraint)
+					try (PreparedStatement stmt = conn.prepareStatement(
+						"DELETE FROM equipment WHERE owner_id = ?")) {
+						stmt.setInt(1, characterId);
+						stmt.executeUpdate();
+					}
+					
+					// Then delete character
+					try (PreparedStatement stmt = conn.prepareStatement(
+						"DELETE FROM characters WHERE id = ?")) {
+						stmt.setInt(1, characterId);
+						stmt.executeUpdate();
+					}
+					
+					System.out.println("✅ Personnage supprimé de la base de données.");
+				}
+				linkDB.close();
+			} catch (SQLException e) {
+				System.err.println("Erreur lors de la suppression du personnage : " + e.getMessage());
+			}
+		}
+	}
+	
+	/**
+	 * Updates the character in the database when they finish the game alive
+	 */
+	private void updateCharacterInDatabase() {
+		if (this.player != null && this.player.getDatabaseId() != -1) {
+			try {
+				LinkDB linkDB = new LinkDB();
+				linkDB.connect();
+				
+				try (Connection conn = linkDB.getConnection()) {
+					conn.setAutoCommit(false);
+					
+					int characterId = this.player.getDatabaseId();
+					
+					// Update character info (save base attack power, not total)
+					try (PreparedStatement stmt = conn.prepareStatement(
+						"UPDATE characters SET health_points = ?, attack_power = ? WHERE id = ?")) {
+						stmt.setInt(1, player.getHealthPoints());
+						stmt.setInt(2, player.getBaseAttackPower()); // Save base attack power
+						stmt.setInt(3, characterId);
+						stmt.executeUpdate();
+					}
+					
+					// Delete old equipment
+					try (PreparedStatement stmt = conn.prepareStatement(
+						"DELETE FROM equipment WHERE owner_id = ?")) {
+						stmt.setInt(1, characterId);
+						stmt.executeUpdate();
+					}
+					
+					// Save new offensive equipment
+					String equipType = player.getOffensiveEquipment() instanceof Weapon ? "WEAPON" : "SPELL";
+					try (PreparedStatement stmt = conn.prepareStatement(
+						"INSERT INTO equipment (equipment_type, name, power, owner_id) VALUES (?, ?, ?, ?)")) {
+						stmt.setString(1, equipType);
+						stmt.setString(2, player.getOffensiveEquipment().getName());
+						stmt.setInt(3, player.getOffensiveEquipment().getAttackPower());
+						stmt.setInt(4, characterId);
+						stmt.executeUpdate();
+					}
+					
+					// Save new defensive equipment
+					equipType = player.getDefensiveEquipment() instanceof Shield ? "SHIELD" : "POTION";
+					try (PreparedStatement stmt = conn.prepareStatement(
+						"INSERT INTO equipment (equipment_type, name, power, owner_id) VALUES (?, ?, ?, ?)")) {
+						stmt.setString(1, equipType);
+						stmt.setString(2, player.getDefensiveEquipment().getName());
+						stmt.setInt(3, player.getDefensiveEquipment().getDefensePoints());
+						stmt.setInt(4, characterId);
+						stmt.executeUpdate();
+					}
+					
+					conn.commit();
+					System.out.println("✅ Personnage mis à jour dans la base de données.");
+				}
+				linkDB.close();
+			} catch (SQLException e) {
+				System.err.println("Erreur lors de la mise à jour du personnage : " + e.getMessage());
+			}
+		}
+	}
+	
 	/**
 	 * Auto-saves the character after creation
 	 */
@@ -279,6 +378,8 @@ public class Game {
 			if (player.getHealthPoints() <= 0) {
 				gameOver = true;
 				System.out.println("Game Over. Vous avez été vaincu.");
+				// Delete character from database when they die
+				deleteCharacterFromDatabase();
 			}
 
 			// Check if player reached the end AND boss is defeated
@@ -333,6 +434,8 @@ public class Game {
 		}
 
 		if (player.getHealthPoints() > 0 && board.getCurrentPosition() >= board.getMaxPosition() && GameState.getInstance().isBossDefeated()) {
+			// Update character in database before ending game
+			updateCharacterInDatabase();
 			endGame();
 		}
 		scanner.close();
