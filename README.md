@@ -150,10 +150,17 @@ Cela rend le code plus facile à maintenir et à comprendre.
 La documentation JavaDoc est incluse dans le code et est entièrement en anglais. Pour la générer :
 
 ```bash
-javadoc -d doc -cp bin -subpackages fr.campus.d_and_d
+javadoc -d doc -sourcepath src -subpackages fr.campus.d_and_d
 ```
 
 La documentation générée sera disponible dans le dossier `doc/`.
+
+### Dernières mises à jour de la documentation :
+- Ajout de JavaDoc complète pour la classe `LinkDB` (méthodes `connect()`, `getConnection()`, et `close()`)
+- Ajout de JavaDoc complète pour la classe `Test` (méthode `main()`)
+- Amélioration de la documentation existante pour plus de clarté
+
+La documentation est maintenant à jour avec toutes les dernières modifications du code.
 
 ---
 

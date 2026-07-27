@@ -1,9 +1,17 @@
+/**
+ * Manages database connections for the Dungeons and Dragons game.
+ * This class provides methods to connect to and close the MySQL database connection.
+ */
 package fr.campus.d_and_d.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * The LinkDB class handles database connections for the game.
+ * It provides methods to establish and close connections to the MySQL database.
+ */
 public class LinkDB {
 
 	private static final String URL =
@@ -14,6 +22,11 @@ public class LinkDB {
 
 	private Connection connection;
 
+	/**
+	 * Establishes a connection to the MySQL database.
+	 * 
+	 * @throws SQLException If a database access error occurs or the JDBC driver is not found.
+	 */
 	public void connect() throws SQLException {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -34,10 +47,20 @@ public class LinkDB {
 		}
 	}
 
+	/**
+	 * Gets the current database connection.
+	 * 
+	 * @return The active database connection, or null if not connected.
+	 */
 	public Connection getConnection() {
 		return connection;
 	}
 
+	/**
+	 * Closes the current database connection.
+	 * 
+	 * @throws SQLException If an error occurs while closing the connection.
+	 */
 	public void close() throws SQLException {
 		if (connection != null) {
 			connection.close();

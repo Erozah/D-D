@@ -1,9 +1,22 @@
+/**
+ * Test class for database connectivity in the Dungeons and Dragons game.
+ * This class tests the database connection and basic operations.
+ */
 package fr.campus.d_and_d.db;
 
 import java.sql.*;
 
+/**
+ * The Test class provides a simple way to test database connectivity
+ * and verify that the database schema is correctly set up.
+ */
 public class Test {
 
+	/**
+	 * Main method to test database connectivity.
+	 * 
+	 * @param args Command line arguments (not used).
+	 */
 	public static void main(String[] args) {
 		System.out.println("=== Test de Connexion à la Base de Données DnD ===\n");
 

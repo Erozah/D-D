@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"fr.campus.d_and_d.board"},{"l":"fr.campus.d_and_d.characters"},{"l":"fr.campus.d_and_d.gameLogic"},{"l":"fr.campus.d_and_d.items"}];updateSearchResults();
