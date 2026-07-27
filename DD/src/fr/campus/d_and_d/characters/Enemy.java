@@ -70,7 +70,9 @@ public class Enemy extends Character implements CellContent {
             if (choice.equals("1")) {
                 // Roll for critical hit
                 int criticalRoll = criticalDice.roll();
-                int damageToEnemy = character.getAttackPower();
+                // Calculate total damage: character base attack power + weapon damage
+                int baseDamage = character.getBaseAttackPower() + character.getOffensiveEquipment().getAttackPower();
+                int damageToEnemy = baseDamage;
 
                 if (criticalRoll == 20) {
                     // Critical hit: +2 damage
@@ -98,7 +100,8 @@ public class Enemy extends Character implements CellContent {
 
                 // Enemy attacks character with possible critical
                 criticalRoll = criticalDice.roll();
-                int damageToCharacter = getAttackPower();
+                baseDamage = getBaseAttackPower() + getOffensiveEquipment().getAttackPower();
+                int damageToCharacter = baseDamage;
 
                 if (criticalRoll == 20) {
                     // Enemy critical hit: +2 damage
@@ -112,7 +115,15 @@ public class Enemy extends Character implements CellContent {
                     System.out.println("L'ennemi vous inflige " + damageToCharacter + " dégâts.");
                 }
 
-                character.setHealthPoints(character.getHealthPoints() - damageToCharacter);
+                // Reduce damage by character's defense points
+                int defense = character.getDefensiveEquipment().getDefensePoints();
+                int finalDamage = Math.max(0, damageToCharacter - defense);
+                
+                if (finalDamage < damageToCharacter) {
+                    System.out.println("Votre équipement défensif réduit les dégâts de " + defense + " points. Dégâts finaux: " + finalDamage);
+                }
+
+                character.setHealthPoints(character.getHealthPoints() - finalDamage);
 
                 if (character.getHealthPoints() <= 0) {
                     return "Vous avez été vaincu par l'ennemi.";

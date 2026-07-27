@@ -18,7 +18,9 @@ public abstract class Character {
 	private String type = "Settler";
 	private String name = "Juan Carlos";
 	private int healthPoints = 1;
-	private int attackPower = 1;
+	private int baseAttackPower = 1; // Base attack power without equipment
+	private int attackPower = 1; // Total attack power (base + equipment)
+	private int databaseId = -1; // ID in database, -1 means not saved yet
 	private OffensiveEquipment offensiveEquipment =
 			new Weapon("Hand", "Fist", 1);
 	private DefensiveEquipment defensiveEquipment =
@@ -42,7 +44,8 @@ public abstract class Character {
 		this.type = type;
 		this.name = name;
 		this.healthPoints = healthPoints;
-		this.attackPower = attackPower;
+		this.baseAttackPower = attackPower;
+		this.attackPower = attackPower + offensiveEquipment.getAttackPower();
 		this.offensiveEquipment = offensiveEquipment;
 		this.defensiveEquipment = defensiveEquipment;
 	}
@@ -104,6 +107,34 @@ public abstract class Character {
 		this.attackPower = attackPower;
 	}
 	/**
+	 * Gets the database ID of the character.
+	 * @return The character's database ID, or -1 if not saved yet.
+	 */
+	public int getDatabaseId() {
+		return databaseId;
+	}
+	/**
+	 * Sets the database ID of the character.
+	 * @param databaseId The database ID of the character.
+	 */
+	public void setDatabaseId(int databaseId) {
+		this.databaseId = databaseId;
+	}
+	/**
+	 * Gets the base attack power of the character (without equipment).
+	 * @return The character's base attack power.
+	 */
+	public int getBaseAttackPower() {
+		return baseAttackPower;
+	}
+	/**
+	 * Sets the base attack power of the character (without equipment).
+	 * @param baseAttackPower The character's base attack power.
+	 */
+	public void setBaseAttackPower(int baseAttackPower) {
+		this.baseAttackPower = baseAttackPower;
+	}
+	/**
 	 * Gets the offensive equipment of the character.
 	 * @return The character's offensive equipment.
 	 */
@@ -116,8 +147,8 @@ public abstract class Character {
 	 */
 	public void setOffensiveEquipment(OffensiveEquipment offensiveEquipment) {
 		this.offensiveEquipment = offensiveEquipment;
-		// Update attack power based on the new equipment
-		this.attackPower = offensiveEquipment.getAttackPower();
+		// Update attack power based on the new equipment: base + weapon
+		this.attackPower = this.baseAttackPower + offensiveEquipment.getAttackPower();
 	}
 	/**
 	 * Gets the defensive equipment of the character.
