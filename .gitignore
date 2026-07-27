@@ -58,7 +58,7 @@ cmake-build-*/
 *.xml
 
 # IntelliJ
-out/
+OUT/
 bin/
 lib/
 DD/.idea/

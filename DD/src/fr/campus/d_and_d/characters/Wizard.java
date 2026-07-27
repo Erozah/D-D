@@ -20,7 +20,7 @@ public class Wizard extends Character {
 				name,
 				7,
 				7,
-				new Spell("Sort", "Boule de feu", 6),
+				new Spell("Sort", "Boule de feu", 1),
 				new Potion("Potion", "Potion de fer", 4));
 	}
 
