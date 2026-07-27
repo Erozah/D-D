@@ -65,7 +65,9 @@ public class Enemy extends Character implements CellContent {
         while (getHealthPoints() > 0 && character.getHealthPoints() > 0) {
             String choice = menu.askPlayerString("Que voulez-vous faire ?",
                     "1. Attaquer",
-                    "2. Fuir");
+                    "2. Fuir",
+                    "3. Voir mes stats",
+                    "4. Voir les stats de l'ennemi");
 
             if (choice.equals("1")) {
                 // Roll for critical hit
@@ -86,7 +88,15 @@ public class Enemy extends Character implements CellContent {
                     System.out.println("Vous infligez " + damageToEnemy + " dégâts à l'ennemi.");
                 }
 
-                setHealthPoints(getHealthPoints() - damageToEnemy);
+                // Reduce damage by enemy's defense points
+                int enemyDefense = getDefensiveEquipment().getDefensePoints();
+                int finalDamageToEnemy = Math.max(0, damageToEnemy - enemyDefense);
+                
+                if (finalDamageToEnemy < damageToEnemy) {
+                    System.out.println("L'équipement défensif de l'ennemi réduit les dégâts de " + enemyDefense + " points. Dégâts finaux: " + finalDamageToEnemy);
+                }
+
+                setHealthPoints(getHealthPoints() - finalDamageToEnemy);
 
                 if (getHealthPoints() <= 0) {
                     // If this was a boss, mark it as defeated
@@ -112,7 +122,7 @@ public class Enemy extends Character implements CellContent {
                     damageToCharacter = 0;
                     System.out.println("L'ennemi rate son attaque et vous inflige 0 dégâts !");
                 } else {
-                    System.out.println("L'ennemi vous inflige " + damageToCharacter + " dégâts.");
+                    System.out.println("L'ennemi vous inflige " + damageToCharacter + " dégâts (augmentés par son équipement offensif).");
                 }
 
                 // Reduce damage by character's defense points
@@ -128,6 +138,28 @@ public class Enemy extends Character implements CellContent {
                 if (character.getHealthPoints() <= 0) {
                     return "Vous avez été vaincu par l'ennemi.";
                 }
+            } else if (choice.equals("3")) {
+                // Show player stats
+                System.out.println("\n=== Vos Stats ===");
+                System.out.println("Nom: " + character.getName());
+                System.out.println("Type: " + character.getType());
+                System.out.println("Points de vie: " + character.getHealthPoints());
+                System.out.println("Puissance d'attaque: " + character.getAttackPower());
+                System.out.println("Équipement offensif: " + character.getOffensiveEquipment().getName() + " (+" + character.getOffensiveEquipment().getAttackPower() + ")");
+                System.out.println("Équipement défensif: " + character.getDefensiveEquipment().getName() + " (+" + character.getDefensiveEquipment().getDefensePoints() + ")");
+                System.out.println("==================\n");
+                continue; // Return to combat menu
+            } else if (choice.equals("4")) {
+                // Show enemy stats
+                System.out.println("\n=== Stats de l'ennemi ===");
+                System.out.println("Nom: " + getName());
+                System.out.println("Type: " + getType());
+                System.out.println("Points de vie: " + getHealthPoints());
+                System.out.println("Puissance d'attaque: " + getAttackPower());
+                System.out.println("Équipement offensif: " + getOffensiveEquipment().getName() + " (+" + getOffensiveEquipment().getAttackPower() + ")");
+                System.out.println("Équipement défensif: " + getDefensiveEquipment().getName() + " (+" + getDefensiveEquipment().getDefensePoints() + ")");
+                System.out.println("=========================\n");
+                continue; // Return to combat menu
             } else if (choice.equals("2")) {
                 // Flee logic
                 if (isBoss()) {

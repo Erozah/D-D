@@ -26,7 +26,8 @@ public class Dragon extends Enemy {
      */
     public Dragon(String name, int healthPoints, int attackPower) {
         super("Dragon", name, healthPoints, attackPower,
-              new Weapon("Dragon", "Fire Breath", attackPower),
+              new Weapon("Dragon", "" +
+                      "", attackPower),
               new Shield("Dragon", "Dragon Scales", healthPoints/2),
               true);
     }

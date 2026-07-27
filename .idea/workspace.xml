@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="V2.2 fix ending flee boss win condition">
+    <list default="true" id="a65fd657-7bed-4a8b-94a4-c66f1bee60cc" name="Changes" comment="V2.3 feat: character can now die or saved in current state when win. &#10;Fix: Damage and damage reduction from items">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Dragon.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Dragon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/characters/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/SimpleDatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/db/SimpleDatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,61 +54,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000014555781773" />
-      <entry key="MS500" value="1.0755302108439937" />
-      <entry key="S2" value="1.805113718834219" />
-      <entry key="S5" value="2.377481624825818" />
-      <entry key="S10" value="2.6573020602479716" />
-      <entry key="S30" value="2.8779080450602157" />
-      <entry key="S60" value="2.9384892077606946" />
-      <entry key="M2" value="3.0448338623962394" />
-      <entry key="M5" value="4.57018796056975" />
-      <entry key="M10" value="8.424362689400226" />
-      <entry key="M15" value="11.82072453929722" />
-      <entry key="M30" value="18.08632432126632" />
-      <entry key="H1" value="23.9150418793566" />
-      <entry key="H2" value="34.019425799625466" />
-      <entry key="H4" value="71.86653730048364" />
-      <entry key="D1" value="591.054125534883" />
-      <entry key="W1" value="1027.8699230521647" />
+      <entry key="MS100" value="1.0084597823102122" />
+      <entry key="MS500" value="1.5494846248988465" />
+      <entry key="S2" value="3.776205734169993" />
+      <entry key="S5" value="7.086085766068107" />
+      <entry key="S10" value="11.409328810700046" />
+      <entry key="S30" value="21.86925209194696" />
+      <entry key="S60" value="29.092368245619223" />
+      <entry key="M2" value="34.81928464162157" />
+      <entry key="M5" value="39.35989808970748" />
+      <entry key="M10" value="41.23892707160842" />
+      <entry key="M15" value="42.45174411138413" />
+      <entry key="M30" value="46.840941464973305" />
+      <entry key="H1" value="54.58660350775053" />
+      <entry key="H2" value="66.84616320856361" />
+      <entry key="H4" value="103.29267145008097" />
+      <entry key="D1" value="617.1224811293437" />
+      <entry key="W1" value="1066.612455577717" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.1942230140069947E-298" />
-      <entry key="S5" value="6.773828149671795E-120" />
-      <entry key="S10" value="2.602657901006546E-60" />
-      <entry key="S30" value="1.3755372712070577E-20" />
-      <entry key="S60" value="1.1728330107935474E-10" />
-      <entry key="M2" value="1.082974150565722E-5" />
-      <entry key="M5" value="0.010323981944553744" />
-      <entry key="M10" value="0.10160867982304927" />
-      <entry key="M15" value="0.21791384260049726" />
-      <entry key="M30" value="0.48865518529983343" />
-      <entry key="H1" value="1.062918267110111" />
-      <entry key="H2" value="3.460068121421179" />
-      <entry key="H4" value="14.54396066579693" />
-      <entry key="D1" value="169.97801986198985" />
-      <entry key="W1" value="300.8154346636961" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="2.782049396841772E-169" />
+      <entry key="S30" value="6.528122253656347E-57" />
+      <entry key="S60" value="8.079679606058864E-29" />
+      <entry key="M2" value="8.988703803140273E-15" />
+      <entry key="M5" value="2.4070151733776936E-6" />
+      <entry key="M10" value="0.0015514815112849182" />
+      <entry key="M15" value="0.013412055734088865" />
+      <entry key="M30" value="0.12122935007521252" />
+      <entry key="H1" value="0.5294226328241675" />
+      <entry key="H2" value="2.4419454916786596" />
+      <entry key="H4" value="12.218231499850042" />
+      <entry key="D1" value="165.11266050662203" />
+      <entry key="W1" value="299.5700182270973" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.6736167941979775" />
-      <entry key="MS500" value="0.9478029556019278" />
-      <entry key="S2" value="1.556934966348083" />
-      <entry key="S5" value="2.190153363835614" />
-      <entry key="S10" value="2.5400310799169388" />
-      <entry key="S30" value="2.8323461894019117" />
-      <entry key="S60" value="2.914809240096342" />
-      <entry key="M2" value="3.0327687506077377" />
-      <entry key="M5" value="4.575517865943681" />
-      <entry key="M10" value="8.523079262913324" />
-      <entry key="M15" value="12.036388706169086" />
-      <entry key="M30" value="18.573477883730426" />
-      <entry key="H1" value="24.97676067676399" />
-      <entry key="H2" value="37.47788807771137" />
-      <entry key="H4" value="86.40743532089442" />
-      <entry key="D1" value="761.0262341846188" />
-      <entry key="W1" value="1328.6838493903006" />
+      <entry key="MS100" value="0.9409813351699367" />
+      <entry key="MS500" value="1.5292418868566244" />
+      <entry key="S2" value="3.764653418900411" />
+      <entry key="S5" value="7.0769008279349865" />
+      <entry key="S10" value="11.397788220405465" />
+      <entry key="S30" value="21.855881183025335" />
+      <entry key="S60" value="29.0825265411382" />
+      <entry key="M2" value="34.813245560709156" />
+      <entry key="M5" value="39.35715694858226" />
+      <entry key="M10" value="41.2390029536602" />
+      <entry key="M15" value="42.46404955631112" />
+      <entry key="M30" value="46.961307157496854" />
+      <entry key="H1" value="55.11518135685529" />
+      <entry key="H2" value="69.28685125244303" />
+      <entry key="H4" value="115.50826787904737" />
+      <entry key="D1" value="782.2293892450471" />
+      <entry key="W1" value="1366.1809702409657" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -473,7 +472,23 @@
       <option name="project" value="LOCAL" />
       <updated>1785138909087</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="V2.3 feat: added update and delete method">
+      <option name="closed" value="true" />
+      <created>1785143263929</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1785143263929</updated>
+    </task>
+    <task id="LOCAL-00032" summary="V2.3 feat: character can now die or saved in current state when win. &#10;Fix: Damage and damage reduction from items">
+      <option name="closed" value="true" />
+      <created>1785143341284</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1785143341284</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,8 +554,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="The game can now start but it's just a dice roll" />
-    <MESSAGE value="Deleted out and moved README" />
     <MESSAGE value="moved README" />
     <MESSAGE value="Applie singleton method and add UML" />
     <MESSAGE value="Change abstract character and equipment and created Weapon, Spell, Shield and Potion" />
@@ -564,7 +577,9 @@
     <MESSAGE value="V2.0 Changed game logic to add combat and save in SQL, need to be easier" />
     <MESSAGE value="V2.1 fix menu, fix database, rework database, updated sql" />
     <MESSAGE value="V2.2 fix ending flee boss win condition" />
-    <option name="LAST_COMMIT_MESSAGE" value="V2.2 fix ending flee boss win condition" />
+    <MESSAGE value="V2.3 feat: added update and delete method" />
+    <MESSAGE value="V2.3 feat: character can now die or saved in current state when win. &#10;Fix: Damage and damage reduction from items" />
+    <option name="LAST_COMMIT_MESSAGE" value="V2.3 feat: character can now die or saved in current state when win. &#10;Fix: Damage and damage reduction from items" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -578,6 +593,16 @@
           <url>file://$PROJECT_DIR$/DD/src/fr/campus/d_and_d/gameLogic/Menu.java</url>
           <line>35</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/DD/src/fr/campus/d_and_d/items/Spell.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/DD/src/fr/campus/d_and_d/board/MysteryBox.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
