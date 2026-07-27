@@ -12,9 +12,9 @@ public class Sorcerer extends Enemy {
      * @param name The name of the sorcerer
      */
     public Sorcerer(String name) {
-        super("Sorcerer", name, 8, 5,
-              new Spell("Sorcerer", "Dark Magic", 3),
-              new Shield("Sorcerer", "Magic Barrier", 2),
+        super("Sorceier", name, 8, 5,
+              new Spell("Sorcier", "Magie noire", 3),
+              new Shield("Sorcier", "Barrière magique", 2),
               false);
     }
     
@@ -25,9 +25,9 @@ public class Sorcerer extends Enemy {
      * @param attackPower The attack power of the sorcerer
      */
     public Sorcerer(String name, int healthPoints, int attackPower) {
-        super("Sorcerer", name, healthPoints, attackPower,
-              new Spell("Sorcerer", "Dark Magic", attackPower),
-              new Shield("Sorcerer", "Magic Barrier", healthPoints/3),
+        super("Sorcier", name, healthPoints, attackPower,
+              new Spell("Sorcier", "Magie noire", attackPower),
+              new Shield("Sorcier", "Barrière magique", healthPoints/3),
               false);
     }
     

@@ -5,6 +5,7 @@
 -- Drop existing tables if they exist
 DROP TABLE IF EXISTS equipment;
 DROP TABLE IF EXISTS characters;
+USE DnD
 
 -- Create characters table (MySQL syntax)
 CREATE TABLE characters (
@@ -36,5 +37,5 @@ INSERT INTO characters (character_type, name, health_points, attack_power) VALUE
 INSERT INTO equipment (equipment_type, name, power, owner_id) VALUES
     ('WEAPON', 'Épée de Test', 5, 1),      -- Warrior's weapon
     ('SHIELD', 'Bouclier de Test', 3, 1), -- Warrior's shield  
-    ('SPELL', 'Boule de Feu Test', 7, 2), -- Wizard's spell
+    ('SPELL', 'Boule de Test', 7, 2), -- Wizard's spell
     ('POTION', 'Potion de Test', 5, 2);   -- Wizard's potion

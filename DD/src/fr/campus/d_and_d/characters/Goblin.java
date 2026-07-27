@@ -13,8 +13,8 @@ public class Goblin extends Enemy {
      */
     public Goblin(String name) {
         super("Goblin", name, 5, 3,
-              new Weapon("Goblin", "Rusty Dagger", 3),
-              new Shield("Goblin", "Leather Armor", 2),
+              new Weapon("Goblin", "Dague rouillée", 3),
+              new Shield("Goblin", "Armure en cuir", 2),
               false);
     }
     
@@ -26,8 +26,8 @@ public class Goblin extends Enemy {
      */
     public Goblin(String name, int healthPoints, int attackPower) {
         super("Goblin", name, healthPoints, attackPower,
-              new Weapon("Goblin", "Rusty Dagger", attackPower),
-              new Shield("Goblin", "Leather Armor", healthPoints/4),
+              new Weapon("Goblin", "Dague rouillée", attackPower),
+              new Shield("Goblin", "Armure en cuir", healthPoints/4),
               false);
     }
     

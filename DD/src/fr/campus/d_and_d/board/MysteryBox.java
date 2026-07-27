@@ -39,7 +39,7 @@ public class MysteryBox implements CellContent {
     
     @Override
     public String getName() {
-        return "MysteryBox(" + content.getName() + ")";
+        return "Boîte mystère(" + content.getName() + ")";
     }
     
     @Override

@@ -52,14 +52,14 @@ public class Board {
     private CellContent getContentForPosition(int position) {
         return switch (position) {
             case 64 -> new Dragon("Smaug");
-            case 10, 20, 25, 32, 35, 36, 37, 40, 44, 47 -> new Sorcerer("Dark Sorcerer");
+            case 10, 20, 25, 32, 35, 36, 37, 40, 44, 47 -> new Sorcerer("Sorcier noir");
             case 3, 6, 9, 12, 15, 18, 21, 24, 27, 30 -> new Goblin("Goblin");
-            case 2, 11, 5, 22, 38 -> new MysteryBox(new Weapon("Weapon", "Mace", 3));
-            case 19, 26, 42, 53 -> new MysteryBox(new Weapon("Weapon", "Sword", 5));
-            case 1, 4, 8, 17, 23 -> new MysteryBox(new Spell("Spell", "Lightning Bolt", 5));
-            case 48, 49 -> new MysteryBox(new Spell("Spell", "Fireball", 8));
-            case 7, 13, 31, 33, 39, 43 -> new MysteryBox(new Potion("Potion", "Standard Potion", 5));
-            case 28, 41 -> new MysteryBox(new Potion("Potion", "Large Potion", 10));
+            case 2, 11, 5, 22, 38 -> new MysteryBox(new Weapon("Arme", "Massue", 3));
+            case 19, 26, 42, 53 -> new MysteryBox(new Weapon("Arme", "Epée", 5));
+            case 1, 4, 8, 17, 23 -> new MysteryBox(new Spell("Sort", "Eclair", 5));
+            case 48, 49 -> new MysteryBox(new Spell("Sort", "Boule de feu", 8));
+            case 7, 13, 31, 33, 39, 43 -> new MysteryBox(new Potion("Potion", "Petite potion", 5));
+            case 28, 41 -> new MysteryBox(new Potion("Potion", "Grande potion", 10));
             default -> null;
         };
     }

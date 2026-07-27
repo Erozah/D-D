@@ -13,11 +13,11 @@ public class Dragon extends Enemy {
      */
     public Dragon(String name) {
         super("Dragon", name, 15, 8,
-              new Weapon("Dragon", "Fire Breath", 5),
-              new Shield("Dragon", "Dragon Scales", 5),
+              new Weapon("Dragon", "Souffle de feu", 5),
+              new Shield("Dragon", "Ecailles de dragon", 5),
               true);
     }
-    
+
     /**
      * Creates a new dragon with custom stats.
      * @param name The name of the dragon
@@ -26,12 +26,11 @@ public class Dragon extends Enemy {
      */
     public Dragon(String name, int healthPoints, int attackPower) {
         super("Dragon", name, healthPoints, attackPower,
-              new Weapon("Dragon", "" +
-                      "", attackPower),
-              new Shield("Dragon", "Dragon Scales", healthPoints/2),
+              new Weapon("Dragon", "Souffle de feu", attackPower),
+              new Shield("Dragon", "Ecailles de dragon", healthPoints/2),
               true);
     }
-    
+
     @Override
     public String interact() {
         return "🐉 Un dragon apparaît ! Préparez-vous à un combat épique !";

@@ -13,8 +13,8 @@ public class Orc extends Enemy {
      */
     public Orc(String name) {
         super("Orc", name, 12, 8,
-              new Weapon("Orc", "Battle Axe", 6),
-              new Shield("Orc", "Wooden Shield", 4),
+              new Weapon("Orc", "Hache de guerre", 6),
+              new Shield("Orc", "Bouclier en bois", 4),
               false);
     }
     
@@ -26,8 +26,8 @@ public class Orc extends Enemy {
      */
     public Orc(String name, int healthPoints, int attackPower) {
         super("Orc", name, healthPoints, attackPower,
-              new Weapon("Orc", "Battle Axe", attackPower),
-              new Shield("Orc", "Wooden Shield", healthPoints/3),
+              new Weapon("Orc", "Hache de guerre", attackPower),
+              new Shield("Orc", "Bouclier en bois", healthPoints/3),
               false);
     }
     
