@@ -388,7 +388,6 @@ public class Game {
 	 * 
 	 * @param board The game board where the player is moving
 	 * @param dice The dice used to determine movement distance
-	 * @throws OutOfBoardException If the player's new position exceeds the board's maximum position
 	 */
 	public void playTurn(Board board, Dice dice) {
 		String userInput = menu.askPlayerString("Appuyez sur 'Entrée' pour lancer le dé ou q pour quitter");
