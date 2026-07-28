@@ -53,7 +53,11 @@ public class Menu {
 		printEmptyLine();
 		printBorder();
 	}
-
+	public void printBlock(String toPrint) {
+		beforeLine();
+		printCenteredLine(toPrint);
+		afterLine();
+	}
 
 
 	@Override

@@ -16,7 +16,6 @@ import java.util.Scanner;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -25,9 +24,9 @@ import java.sql.SQLException;
  */
 public class Game {
 	private Character player;
-	private Board board;
+	public Board board;
 	private boolean gameOver = false;
-	private Menu menu = new Menu();
+	private final Menu menu = new Menu();
 	
 	/**
 	 * Constructor - initializes the game state
@@ -76,47 +75,45 @@ public class Game {
 		menu.beforeLine();
 		menu.printCenteredLine("BIENVENUE - Menu Principal");
 		menu.afterLine();
-		
+
 		while (true) {
 
 			String choice = menu.askPlayerString(
-				"1. Démarrer la partie",
-				"2. Nouveau personnage",
-				"3. Charger un personnage", 
-				"4. Voir les statistiques",
-				"5. Quitter");
-			
-			if (choice.equals("1")) {
-				// Démarrer la partie
-				if (this.player != null) {
-					this.start();
-					return; // Quitter après la partie
-				} else {
-					menu.beforeLine();
-					menu.printCenteredLine("Pas encore de personnage ! Veuillez en créer ou charger un.");
-					menu.afterLine();
-				}
-			} else if (choice.equals("2")) {
-				// Nouveau personnage
-				this.createCharacter();
-				// Auto-save after creation
-				this.autoSaveCharacter();
-			} else if (choice.equals("3")) {
-				// Charger un personnage
-				this.loadCharacter();
-			} else if (choice.equals("4")) {
-				// Voir les statistiques
-				if (this.player != null) {
-					this.showCharacterStats();
-				} else {
-					menu.beforeLine();
-					menu.printCenteredLine("Pas encore de personnage ! Veuillez en créer ou charger un.");
-					menu.afterLine();
-				}
-			} else if (choice.equals("5")) {
-				// Quitter
-				return;
-			}
+					"1. Démarrer la partie",
+					"2. Nouveau personnage",
+					"3. Charger un personnage",
+					"4. Voir les statistiques",
+					"5. Quitter");
+
+			switch (choice) {
+				case "1" -> handleStartGame();
+				case "2" -> handleCreateCharacter();
+				case "3" -> loadCharacter();
+				case "4" -> handleShowStats();
+                case "5" -> {return;}
+            }
+		}
+	}
+	private void handleStartGame() {
+		if (this.player != null) {
+			start();
+		} else {
+			menu.printBlock("Pas encore de personnage ! Veuillez en créer ou charger un.");
+		}
+	}
+	private void handleCreateCharacter() {
+		// Nouveau personnage
+		createCharacter();
+		// Auto-save after creation
+		autoSaveCharacter();
+	}
+
+	private void handleShowStats() {
+		// Voir les statistiques
+		if (this.player != null) {
+			showCharacterStats();
+		} else {
+			menu.printBlock("Pas encore de personnage ! Veuillez en créer ou charger un.");
 		}
 	}
 
@@ -226,6 +223,7 @@ public class Game {
 				SimpleDatabaseManager dbManager = new SimpleDatabaseManager();
 				dbManager.saveCharacter(this.player);
 				Menu menu = new Menu();
+				menu.beforeLine();
 				menu.printCenteredLine("Personnage sauvegardé avec succès !");
 				
 				// Display character info with equipment names
@@ -235,6 +233,7 @@ public class Game {
 				menu.printCenteredLine("Attaque : " + this.player.getAttackPower());
 				menu.printCenteredLine("Arme : " + this.player.getOffensiveEquipment().getName());
 				menu.printCenteredLine("Défense : " + this.player.getDefensiveEquipment().getName());
+				menu.afterLine();
 			} catch (SQLException e) {
 				System.err.println("Erreur lors de la sauvegarde : " + e.getMessage());
 			}
@@ -249,21 +248,14 @@ public class Game {
 			mainMenu(); // Return to main menu
 			return;
 		}
-		
-		menu.beforeLine();
-		menu.printCenteredLine("Statistiques de votre personnage");
-		menu.afterLine();
+		menu.printBlock("Statistiques de votre personnage");
 		System.out.println(player);
-		
-		// Show additional stats
-		System.out.println("Équipement offensif: " + player.getOffensiveEquipment().getName());
-		System.out.println("Équipement défensif: " + player.getDefensiveEquipment().getName());
-		
+
 		String choice = menu.askPlayerString("1. Retour au menu principal", "2. Quitter");
 		if (choice.equals("1")) {
-			// Return to main menu - now handled by the main menu loop
 			return;
-		} // choice.equals("2") or other: exit
+		}
+		System.exit(0);
 	}
 	
 	/**
@@ -352,7 +344,7 @@ public class Game {
 		if (userInput != null && userInput.equalsIgnoreCase("q")) {
 			gameOver = true;
 			System.out.println("Partie terminée par l'utilisateur.");
-			return;
+			System.exit(0);
 		}
 		
 		int diceResult = dice.roll();
@@ -363,7 +355,7 @@ public class Game {
 			Cell currentCell = board.getCurrentCell();
 			String interactionResult = currentCell.interact(player);
 			System.out.println(interactionResult);
-			
+
 			// Handle flee logic
 			if (interactionResult != null && interactionResult.startsWith("FUITE:")) {
 				int fleeSteps = Integer.parseInt(interactionResult.split(":")[1]);
@@ -373,7 +365,7 @@ public class Game {
 				System.out.println("Vous avez reculé de " + fleeSteps + " cases. Vous êtes maintenant à la position " + fleeNewPosition + ".");
 				return; // End this turn, go to next turn
 			}
-			
+
 			// Check if player is still alive
 			if (player.getHealthPoints() <= 0) {
 				gameOver = true;
