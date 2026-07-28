@@ -363,11 +363,10 @@ public class Game {
 		// Check if player wants to quit
 		if (userInput != null && userInput.equalsIgnoreCase("q")) {
 			gameOver = true;
+			menu.printBlock("Partie terminée par l'utilisateur.");
 			handleExit();
-			System.out.println("Partie terminée par l'utilisateur.");
 			return;
 		}
-		
 		int diceResult = dice.roll();
 		try {
 			int newPosition = board.getCurrentPosition() + diceResult;
@@ -388,9 +387,20 @@ public class Game {
 			}
 
 			// Check if player is still alive
-			if (player.getHealthPoints() <= 0) {
-				gameOver = true;
-				System.out.println("""
+			isDead();
+
+			// Check if player reached the end AND boss is defeated
+			isWin();
+
+		} catch (OutOfBoardException e) {
+			System.out.println("Erreur : " + e.getMessage());
+		}
+	}
+
+	private void isDead() {
+		if (player.getHealthPoints() <= 0) {
+			gameOver = true;
+			System.out.println("""
 						
 						[0;37;40m█[0;97;1;47m▄▄[0;37;40m  [0;97;1;47m▄▄[0;37;40m█  ▄▀▀▄  █[0;97;1;47m▄▄[0;37;40m  [0;97;1;47m▄▄[0;37;40m█  [0;97;1;40m▄[0;97;1;47m▄▄▄[0;37;40m▄        ▄[0;97;1;47m▄▄▄[0;37;40m █[0;97;1;47m▄▄[0;37;40m▀▀[0;97;1;47m▄▄[0;37;40m  ▄[0;97;1;47m▄▄▄[0;37;40m  [0;97;1;40m▄[0;97;1;47m▄▄▄[0;37;40m▄       █[0;97;1;47m▄[0;37;40m▀█▄ ▄█▄   ▄▀▀▄  █[0;97;1;47m▄▄[0;37;40m▀▀▄  █[0;97;1;47m▄▄[0;37;40m▀▀[0;97;1;47m▄▄[0;37;40m      ▄[0;97;1;47m▄▄[0;37;40m▌[0m
 						[0;37;40m [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;47m▄[0;97;1;41m█[0;37;40m  [0;97;1;41m█[0;97;1;47m▄[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;47m█[0;97;1;41m█[0;37;40m   [0;97;1;41m▒[0;37;40m█      [0;97;1;47m▄[0;97;1;41m█[0;37;40m [0;97;1;47m▀▀[0;37;40m   [0;97;1;41m█[0;97;1;47m▄[0;37;40m    [0;97;1;47m▄[0;97;1;41m█[0;37;40m [0;97;1;47m▀▀[0;37;40m [0;97;1;47m█[0;97;1;41m█[0;37;40m   [0;97;1;41m▒[0;37;40m█      ▓[0;97;1;41m█[0;37;40m  [0;97;1;41m█[0;97;1;47m▄[0;37;40m▌ [0;97;1;41m█[0;97;1;47m▄[0;37;40m [0;97;1;47m▄[0;97;1;41m█[0;37;40m  [0;97;1;41m█[0;97;1;47m▄[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;41m█[0;97;1;47m▄[0;37;40m   [0;97;1;41m█[0;97;1;47m▄[0;37;40m          [0;97;1;40m█[0;97;1;41m█[0;37;40m [0m
@@ -401,23 +411,21 @@ public class Game {
 						[0;37;40m  [0;31;40m▀█▄▀[0;37;40m    [0;31;40m▀▄▄▀[0;37;40m    [0;31;40m▀▄▄▀[0;37;40m    [0;31;40m▀[0;91;1;41m▀██[0;91;1;40m▀[0;37;40m        [0;31;40m▀[0;91;1;41m▀▀ [0;37;40m   [0;31;40m▀[0;91;1;41m▀[0;31;40m█[0;37;40m    [0;31;40m▀[0;91;1;41m▀▀ [0;37;40m  [0;31;40m▀[0;91;1;41m▀██[0;91;1;40m▀[0;37;40m       [0;91;1;41m▀[0;31;40m▀[0;37;40m      [0;31;40m█▀[0;37;40m  [0;31;40m▀▄▄▀[0;37;40m  [0;31;40m▄[0;91;1;41m▀▀[0;37;40m  [0;91;1;41m▀▀[0;37;40m   [0;31;40m▀[0;91;1;41m▀[0;31;40m█[0;37;40m         [0;31;40m▀[0;91;1;41m▀[0;37;40m [0m
 						
 						""");
-				// Delete character from database when they die
-				deleteCharacterFromDatabase();
-				handleExit();
-			}
+			// Delete character from database when they die
+			deleteCharacterFromDatabase();
+			handleExit();
+		}
+	}
 
-			// Check if player reached the end AND boss is defeated
-			if (board.getCurrentPosition() >= board.getMaxPosition() && player.getHealthPoints() > 0) {
-				if (GameState.getInstance().isBossDefeated()) {
-					gameOver = true;
-					handleExit();
-				} else {
-					System.out.println("Vous avez atteint la fin, mais le boss n'est pas vaincu !");
-					System.out.println("Vous devez vaincre le boss pour gagner la partie.");
-				}
+	private void isWin() {
+		if (board.getCurrentPosition() >= board.getMaxPosition() && player.getHealthPoints() > 0) {
+			if (GameState.getInstance().isBossDefeated()) {
+				gameOver = true;
+				handleExit();
+			} else {
+				System.out.println("Vous avez atteint la fin, mais le boss n'est pas vaincu !");
+				System.out.println("Vous devez vaincre le boss pour gagner la partie.");
 			}
-		} catch (OutOfBoardException e) {
-			System.out.println("Erreur : " + e.getMessage());
 		}
 	}
 
