@@ -226,6 +226,9 @@ public class Game {
 	 * Closes the scanner and sets the running flag to false to exit the game loop.
 	 */
 	private void handleExit() {
+		gameOver = true;
+		if (!GameState.getInstance().isBossDefeated() && player.getHealthPoints() > 0)
+			menu.printBlock("Partie terminée par l'utilisateur.");
 		menu.closeScanner();
 		running = false;
 	}
@@ -392,8 +395,6 @@ public class Game {
 		
 		// Check if player wants to quit
 		if (userInput != null && userInput.equalsIgnoreCase("q")) {
-			gameOver = true;
-			menu.printBlock("Partie terminée par l'utilisateur.");
 			handleExit();
 			return;
 		}
@@ -429,7 +430,6 @@ public class Game {
 
 	private void isDead() {
 		if (player.getHealthPoints() <= 0) {
-			gameOver = true;
 			System.out.println("""
 						
 						[0;37;40m█[0;97;1;47m▄▄[0;37;40m  [0;97;1;47m▄▄[0;37;40m█  ▄▀▀▄  █[0;97;1;47m▄▄[0;37;40m  [0;97;1;47m▄▄[0;37;40m█  [0;97;1;40m▄[0;97;1;47m▄▄▄[0;37;40m▄        ▄[0;97;1;47m▄▄▄[0;37;40m █[0;97;1;47m▄▄[0;37;40m▀▀[0;97;1;47m▄▄[0;37;40m  ▄[0;97;1;47m▄▄▄[0;37;40m  [0;97;1;40m▄[0;97;1;47m▄▄▄[0;37;40m▄       █[0;97;1;47m▄[0;37;40m▀█▄ ▄█▄   ▄▀▀▄  █[0;97;1;47m▄▄[0;37;40m▀▀▄  █[0;97;1;47m▄▄[0;37;40m▀▀[0;97;1;47m▄▄[0;37;40m      ▄[0;97;1;47m▄▄[0;37;40m▌[0m
@@ -454,14 +454,10 @@ public class Game {
 	 * If the player has reached the end but the boss is not defeated, displays a message.
 	 */
 	private void isWin() {
-		if (board.getCurrentPosition() >= board.getMaxPosition() && player.getHealthPoints() > 0) {
-			if (GameState.getInstance().isBossDefeated()) {
-				gameOver = true;
-				handleExit();
-			} else {
-				System.out.println("Vous avez atteint la fin, mais le boss n'est pas vaincu !");
-				System.out.println("Vous devez vaincre le boss pour gagner la partie.");
-			}
+		if (board.getCurrentPosition() >= board.getMaxPosition()
+				&& player.getHealthPoints() > 0
+				&& GameState.getInstance().isBossDefeated()) {
+			handleExit();
 		}
 	}
 

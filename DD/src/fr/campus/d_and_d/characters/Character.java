@@ -25,6 +25,7 @@ public abstract class Character {
 			new Weapon("Hand", "Fist", 1);
 	private DefensiveEquipment defensiveEquipment =
 			new Shield("Armor", "LeatherArmor", 1);
+	private int maxHealth;
 
 	/**
 	 * Creates a new character with specified attributes.
@@ -48,6 +49,7 @@ public abstract class Character {
 		this.attackPower = attackPower + offensiveEquipment.getAttackPower();
 		this.offensiveEquipment = offensiveEquipment;
 		this.defensiveEquipment = defensiveEquipment;
+		this.maxHealth = healthPoints;
 	}
 
 	/**
@@ -92,7 +94,7 @@ public abstract class Character {
 	 */
 	public void setHealthPoints(int healthPoints) {
 		if (healthPoints < 0) {
-			throw new IllegalArgumentException("Health points cannot be negative");
+			healthPoints = 0;
 		}
 		this.healthPoints = healthPoints;
 	}
@@ -168,6 +170,11 @@ public abstract class Character {
 	public void setDefensiveEquipment(DefensiveEquipment defensiveEquipment) {
 		this.defensiveEquipment = defensiveEquipment;
 	}
+
+	public int getMaxHealth() {
+		return maxHealth;
+	}
+
 	/**
 	 * Returns a string representation of the character.
 	 * @return A string describing the character's attributes.

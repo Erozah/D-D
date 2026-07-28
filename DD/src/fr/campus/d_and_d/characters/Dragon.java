@@ -12,9 +12,9 @@ public class Dragon extends Enemy {
      * @param name The name of the dragon
      */
     public Dragon(String name) {
-        super("Dragon", name, 15, 8,
-              new Weapon("Dragon", "Souffle de feu", 5),
-              new Shield("Dragon", "Ecailles de dragon", 5),
+        super("Dragon", name, 15, 5,
+              new Weapon("Dragon", "Souffle de feu", 4),
+              new Shield("Dragon", "Ecailles de dragon", 3),
               true);
     }
 

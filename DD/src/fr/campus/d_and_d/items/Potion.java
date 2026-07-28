@@ -39,8 +39,13 @@ public class Potion extends DefensiveEquipment implements CellContent {
 		
 		// Any character can use potions
 		int healAmount = getDefensePoints();
-		character.setHealthPoints(character.getHealthPoints() + healAmount);
-		return "Vous avez utilisé " + getName() + "! Vous récupérez " + healAmount + " points de vie. Total: " + character.getHealthPoints() + " PV.";
+		if ((character.getHealthPoints() + healAmount) > character.getMaxHealth()) {
+			character.setHealthPoints(character.getMaxHealth());
+			return "Vous avez utilisé " + getName() + "! Vous essayez de récupérez " + healAmount + " points de vie. Total: " + character.getHealthPoints() + " PV.";
+		} else {
+			character.setHealthPoints(character.getHealthPoints() + healAmount);
+			return "Vous avez utilisé " + getName() + "! Vous récupérez " + healAmount + " points de vie. Total: " + character.getHealthPoints() + " PV.";
+		}
 	}
 
 	@Override
