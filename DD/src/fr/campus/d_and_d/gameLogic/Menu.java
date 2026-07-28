@@ -58,7 +58,9 @@ public class Menu {
 		printCenteredLine(toPrint);
 		afterLine();
 	}
-
+	public void closeScanner() {
+		scanner.close();
+	}
 
 	@Override
 	public String toString() {

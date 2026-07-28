@@ -5,6 +5,7 @@
 package fr.campus.d_and_d;
 
 import fr.campus.d_and_d.gameLogic.Game;
+import fr.campus.d_and_d.gameLogic.Menu;
 
 /**
  * The Main class contains the main method to launch the game.

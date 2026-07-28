@@ -27,7 +27,8 @@ public class Game {
 	public Board board;
 	private boolean gameOver = false;
 	private final Menu menu = new Menu();
-	
+	boolean running = true;
+
 	/**
 	 * Constructor - initializes the game state
 	 */
@@ -71,27 +72,21 @@ public class Game {
 	 * Displays the main menu and handles user choices for creating a character or starting the game.
 	 */
 	public void mainMenu() {
-		Menu menu = new Menu();
-		menu.beforeLine();
-		menu.printCenteredLine("BIENVENUE - Menu Principal");
-		menu.afterLine();
-
-		while (true) {
-
+		while(running) {
+			menu.printBlock("BIENVENUE - Menu Principal");
 			String choice = menu.askPlayerString(
 					"1. Démarrer la partie",
 					"2. Nouveau personnage",
 					"3. Charger un personnage",
 					"4. Voir les statistiques",
 					"5. Quitter");
-
 			switch (choice) {
 				case "1" -> handleStartGame();
 				case "2" -> handleCreateCharacter();
 				case "3" -> loadCharacter();
 				case "4" -> handleShowStats();
-                case "5" -> {return;}
-            }
+				case "5" -> handleExit();
+			}
 		}
 	}
 	private void handleStartGame() {
@@ -101,11 +96,106 @@ public class Game {
 			menu.printBlock("Pas encore de personnage ! Veuillez en créer ou charger un.");
 		}
 	}
+	/**
+	 * Starts the main game loop. The player moves on the board by rolling the dice
+	 * until they reach the last cell (64). Displays the player's position each turn.
+	 */
+	public void start() {
+		this.board = new Board();
+		SixSidedDice dice = new SixSidedDice();
+		Scanner scanner = new Scanner(System.in);
+
+		while (!gameOver) {
+			playTurn(board, dice);
+
+			// End game only if at max position AND boss is defeated
+			if (board.getCurrentPosition() >= board.getMaxPosition() && GameState.getInstance().isBossDefeated()) {
+				gameOver = true;
+			}
+		}
+
+		if (player.getHealthPoints() > 0 && board.getCurrentPosition() >= board.getMaxPosition() && GameState.getInstance().isBossDefeated()) {
+			// Update character in database before ending game
+			updateCharacterInDatabase();
+			endGame();
+		}
+		scanner.close();
+	}
 	private void handleCreateCharacter() {
 		// Nouveau personnage
 		createCharacter();
 		// Auto-save after creation
 		autoSaveCharacter();
+	}
+	/**
+	 * Guides the player through character creation, allowing them to choose between a Warrior or Wizard.
+	 */
+	public void createCharacter() {
+		Menu menu = new Menu();
+		String characterName = menu.askPlayerString("Quel est votre nom ?");
+		String choice = menu.askPlayerString("Choisissez votre classe :",
+				"1. Guerrier",
+				"2. Magicien");
+		if (choice.equals("1")) {
+			this.player = new Warrior("Guerrier", characterName);
+			System.out.println(player);
+		}
+		if (choice.equals("2")) {
+			this.player = new Wizard("Magicien", characterName);
+			System.out.println(player);
+		}
+	}
+	/**
+	 * Loads a character from the database with retry functionality.
+	 */
+	public void loadCharacter() {
+		SimpleDatabaseManager dbManager = new SimpleDatabaseManager();
+		boolean keepTrying = true;
+
+		while (keepTrying) {
+			try {
+				// Show available characters from database
+				List<String> characters = dbManager.listCharacters();
+
+				menu.beforeLine();
+				menu.printCenteredLine("Personnages disponibles :");
+
+				if (characters.isEmpty()) {
+					menu.printCenteredLine("Aucun personnage trouvé dans la base de données.");
+				} else {
+					for (String characterInfo : characters) {
+						menu.printCenteredLine(characterInfo);
+					}
+				}
+				menu.afterLine();
+
+				String characterIdStr = menu.askPlayerString(
+						"Entrez l'ID du personnage à charger", "(ou 'm' pour revenir au menu) :");
+
+				// Check if user wants to go back to menu
+				if (characterIdStr != null && characterIdStr.equalsIgnoreCase("m")) {
+					keepTrying = false;
+					continue;
+				}
+
+				int characterId = Integer.parseInt(characterIdStr);
+
+				Character loadedCharacter = dbManager.loadCharacter(characterId);
+
+				if (loadedCharacter != null) {
+					this.player = loadedCharacter;
+					menu.printBlock("Personnage chargé avec succès !");
+					System.out.println(player);
+					keepTrying = false; // Success, exit loop
+				} else {
+					menu.printCenteredLine("Aucun personnage trouvé avec cet ID.");
+				}
+			} catch (NumberFormatException e) {
+				menu.printCenteredLine("ID invalide. Veuillez entrer un nombre.");
+			} catch (SQLException e) {
+				menu.printCenteredLine("Erreur lors du chargement du personnage : " + e.getMessage());
+			}
+		}
 	}
 
 	private void handleShowStats() {
@@ -115,6 +205,11 @@ public class Game {
 		} else {
 			menu.printBlock("Pas encore de personnage ! Veuillez en créer ou charger un.");
 		}
+	}
+
+	private void handleExit() {
+		menu.closeScanner();
+		running = false;
 	}
 
 	/**
@@ -245,90 +340,16 @@ public class Game {
 	public void showCharacterStats() {
 		if (player == null) {
 			menu.printCenteredLine("Aucun personnage créé. Veuillez d'abord créer un personnage.");
-			mainMenu(); // Return to main menu
-			return;
 		}
 		menu.printBlock("Statistiques de votre personnage");
 		System.out.println(player);
 
 		String choice = menu.askPlayerString("1. Retour au menu principal", "2. Quitter");
-		if (choice.equals("1")) {
-			return;
+		switch (choice) {
+			case "1" -> mainMenu();
+			case "2" -> handleExit();
 		}
-		System.exit(0);
-	}
-	
-	/**
-	 * Guides the player through character creation, allowing them to choose between a Warrior or Wizard.
-	 */
-	public void createCharacter() {
-		Menu menu = new Menu();
-		String characterName = menu.askPlayerString("Quel est votre nom ?");
-		String choice = menu.askPlayerString("Choisissez votre classe :",
-				"1. Guerrier",
-				"2. Magicien");
-		if (choice.equals("1")) {
-			this.player = new Warrior("Guerrier", characterName);
-			System.out.println(player);
-		}
-		if (choice.equals("2")) {
-			this.player = new Wizard("Magicien", characterName);
-			System.out.println(player);
-		}
-	}
 
-	/**
-	 * Loads a character from the database with retry functionality.
-	 */
-	public void loadCharacter() {
-		Menu menu = new Menu();
-		SimpleDatabaseManager dbManager = new SimpleDatabaseManager();
-		boolean keepTrying = true;
-		
-		while (keepTrying) {
-			try {
-				// Show available characters from database
-				List<String> characters = dbManager.listCharacters();
-				
-				menu.beforeLine();
-				menu.printCenteredLine("Personnages disponibles :");
-				
-				if (characters.isEmpty()) {
-					menu.printCenteredLine("Aucun personnage trouvé dans la base de données.");
-				} else {
-					for (String characterInfo : characters) {
-						menu.printCenteredLine(characterInfo);
-					}
-				}
-				menu.afterLine();
-				
-				String characterIdStr = menu.askPlayerString(
-					"Entrez l'ID du personnage à charger", "(ou 'm' pour revenir au menu) :");
-				
-				// Check if user wants to go back to menu
-				if (characterIdStr != null && characterIdStr.equalsIgnoreCase("m")) {
-					keepTrying = false;
-					continue;
-				}
-				
-				int characterId = Integer.parseInt(characterIdStr);
-				
-				Character loadedCharacter = dbManager.loadCharacter(characterId);
-				
-				if (loadedCharacter != null) {
-					this.player = loadedCharacter;
-					menu.printCenteredLine("Personnage chargé avec succès !");
-					System.out.println(player);
-					keepTrying = false; // Success, exit loop
-				} else {
-					menu.printCenteredLine("Aucun personnage trouvé avec cet ID.");
-				}
-			} catch (NumberFormatException e) {
-				menu.printCenteredLine("ID invalide. Veuillez entrer un nombre.");
-			} catch (SQLException e) {
-				menu.printCenteredLine("Erreur lors du chargement du personnage : " + e.getMessage());
-			}
-		}
 	}
 
 	/**
@@ -337,14 +358,14 @@ public class Game {
 	 * @param dice The dice used to determine movement.
 	 */
 	public void playTurn(Board board, Dice dice) {
-		Menu menu = new Menu();
 		String userInput = menu.askPlayerString("Appuyez sur 'Entrée' pour lancer le dé ou q pour quitter");
 		
 		// Check if player wants to quit
 		if (userInput != null && userInput.equalsIgnoreCase("q")) {
 			gameOver = true;
+			handleExit();
 			System.out.println("Partie terminée par l'utilisateur.");
-			System.exit(0);
+			return;
 		}
 		
 		int diceResult = dice.roll();
@@ -369,15 +390,27 @@ public class Game {
 			// Check if player is still alive
 			if (player.getHealthPoints() <= 0) {
 				gameOver = true;
-				System.out.println("Game Over. Vous avez été vaincu.");
+				System.out.println("""
+						
+						[0;37;40m█[0;97;1;47m▄▄[0;37;40m  [0;97;1;47m▄▄[0;37;40m█  ▄▀▀▄  █[0;97;1;47m▄▄[0;37;40m  [0;97;1;47m▄▄[0;37;40m█  [0;97;1;40m▄[0;97;1;47m▄▄▄[0;37;40m▄        ▄[0;97;1;47m▄▄▄[0;37;40m █[0;97;1;47m▄▄[0;37;40m▀▀[0;97;1;47m▄▄[0;37;40m  ▄[0;97;1;47m▄▄▄[0;37;40m  [0;97;1;40m▄[0;97;1;47m▄▄▄[0;37;40m▄       █[0;97;1;47m▄[0;37;40m▀█▄ ▄█▄   ▄▀▀▄  █[0;97;1;47m▄▄[0;37;40m▀▀▄  █[0;97;1;47m▄▄[0;37;40m▀▀[0;97;1;47m▄▄[0;37;40m      ▄[0;97;1;47m▄▄[0;37;40m▌[0m
+						[0;37;40m [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;47m▄[0;97;1;41m█[0;37;40m  [0;97;1;41m█[0;97;1;47m▄[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;47m█[0;97;1;41m█[0;37;40m   [0;97;1;41m▒[0;37;40m█      [0;97;1;47m▄[0;97;1;41m█[0;37;40m [0;97;1;47m▀▀[0;37;40m   [0;97;1;41m█[0;97;1;47m▄[0;37;40m    [0;97;1;47m▄[0;97;1;41m█[0;37;40m [0;97;1;47m▀▀[0;37;40m [0;97;1;47m█[0;97;1;41m█[0;37;40m   [0;97;1;41m▒[0;37;40m█      ▓[0;97;1;41m█[0;37;40m  [0;97;1;41m█[0;97;1;47m▄[0;37;40m▌ [0;97;1;41m█[0;97;1;47m▄[0;37;40m [0;97;1;47m▄[0;97;1;41m█[0;37;40m  [0;97;1;41m█[0;97;1;47m▄[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;41m█[0;97;1;47m▄[0;37;40m   [0;97;1;41m█[0;97;1;47m▄[0;37;40m          [0;97;1;40m█[0;97;1;41m█[0;37;40m [0m
+						[0;37;40m [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m  ▀[0;97;1;47m▀[0;97;1;40m▄▄▄[0;37;40m        [0;97;1;41m██[0;37;40m      [0;97;1;41m██[0;37;40m    [0;97;1;41m██[0;37;40m    ▀[0;97;1;47m▀[0;97;1;40m▄▄▄[0;37;40m        [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;41m█[0;97;1;47m▀[0;37;40m   [0;97;1;41m██[0;37;40m          [0;97;1;41m█[0;97;1;40m█[0;37;40m [0m
+						[0;37;40m [0;97;1;41m██[0;37;40m  [0;97;1;41m▒▒[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;41m▒▒[0;37;40m    ▀[0;97;1;40m▀▀[0;97;1;41m▒[0;37;40m▄      [0;97;1;41m▓▓[0;37;40m▄▄    [0;97;1;41m▒▒[0;37;40m    [0;97;1;41m▓▓[0;37;40m▄▄    ▀[0;97;1;40m▀▀[0;97;1;41m▒[0;37;40m▄      [0;97;1;41m██[0;37;40m  [0;97;1;41m█[0;97;1;47m█[0;37;40m  [0;97;1;41m█[0;97;1;47m█[0;37;40m [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m  [0;97;1;41m██[0;37;40m▄▄▀    [0;97;1;41m▒▒[0;37;40m         ▄[0;97;1;41m██[0;37;40m▌[0m
+						[0;37;40m [0;91;1;41m▓▓[0;37;40m  [0;91;1;41m▓▓[0;37;40m  [0;91;1;41m▓▓[0;37;40m  [0;91;1;41m▓▓[0;37;40m  [0;91;1;41m▓▓[0;37;40m  [0;91;1;41m▓▓[0;37;40m  [0;91;1;47m▄▄[0;37;40m   [0;91;1;41m▓▓[0;37;40m      [0;91;1;41m▓▓[0;37;40m      [0;91;1;41m▓▓[0;37;40m    [0;91;1;41m▓▓[0;37;40m    [0;91;1;47m▄▄[0;37;40m   [0;91;1;41m▓▓[0;37;40m      [0;91;1;41m▓▓[0;37;40m  [0;91;1;41m▓▓[0;37;40m  [0;91;1;41m▓▓[0;37;40m [0;91;1;41m▓▓[0;37;40m  [0;91;1;41m▓▓[0;37;40m  [0;91;1;41m▓▓[0;37;40m  [0;91;1;47m▄[0;37;40m▄   [0;91;1;41m▓▓[0;37;40m          [0;31;40m▄▄[0;37;40m [0m
+						[0;37;40m [0;31;40m▀[0;91;1;41m▀[0;31;40m▌[0;37;40m [0;91;1;41m▀[0;31;40m▀[0;37;40m  [0;91;1;41m▀█[0;37;40m  [0;91;1;41m█▀[0;37;40m  [0;91;1;41m▀█[0;37;40m  [0;91;1;41m█▀[0;37;40m  [0;91;1;41m▀█[0;37;40m   [0;91;1;41m██[0;37;40m      [0;91;1;41m▀█[0;37;40m      [0;91;1;41m██[0;31;40m▄[0;37;40m   [0;91;1;41m▀█[0;37;40m    [0;91;1;41m▀█[0;37;40m   [0;91;1;41m██[0;37;40m      [0;91;1;41m██[0;37;40m  [0;31;40m▀█[0;37;40m  [0;91;1;41m██[0;37;40m [0;91;1;41m▀█[0;37;40m  [0;91;1;41m█▀[0;37;40m  [0;91;1;41m██[0;37;40m  [0;91;1;41m██[0;37;40m   [0;91;1;41m██[0;31;40m▄[0;37;40m        [0;31;40m▄[0;91;1;41m██[0;31;40m▌[0m
+						[0;37;40m  [0;31;40m▀█▄▀[0;37;40m    [0;31;40m▀▄▄▀[0;37;40m    [0;31;40m▀▄▄▀[0;37;40m    [0;31;40m▀[0;91;1;41m▀██[0;91;1;40m▀[0;37;40m        [0;31;40m▀[0;91;1;41m▀▀ [0;37;40m   [0;31;40m▀[0;91;1;41m▀[0;31;40m█[0;37;40m    [0;31;40m▀[0;91;1;41m▀▀ [0;37;40m  [0;31;40m▀[0;91;1;41m▀██[0;91;1;40m▀[0;37;40m       [0;91;1;41m▀[0;31;40m▀[0;37;40m      [0;31;40m█▀[0;37;40m  [0;31;40m▀▄▄▀[0;37;40m  [0;31;40m▄[0;91;1;41m▀▀[0;37;40m  [0;91;1;41m▀▀[0;37;40m   [0;31;40m▀[0;91;1;41m▀[0;31;40m█[0;37;40m         [0;31;40m▀[0;91;1;41m▀[0;37;40m [0m
+						
+						""");
 				// Delete character from database when they die
 				deleteCharacterFromDatabase();
+				handleExit();
 			}
 
 			// Check if player reached the end AND boss is defeated
-			if (board.getCurrentPosition() >= board.getMaxPosition()) {
+			if (board.getCurrentPosition() >= board.getMaxPosition() && player.getHealthPoints() > 0) {
 				if (GameState.getInstance().isBossDefeated()) {
 					gameOver = true;
+					handleExit();
 				} else {
 					System.out.println("Vous avez atteint la fin, mais le boss n'est pas vaincu !");
 					System.out.println("Vous devez vaincre le boss pour gagner la partie.");
@@ -406,31 +439,6 @@ public class Game {
 				[0;37;40m    [0;97;1;40m▀[0;97;1;47m▄[0;37;40m▄[0;31;40m▒░[0;37;40m [0;31;40m▒░▀[0;97;1;40m▄[0;97;1;47m▀ [0;90;1;47m▄[0;90;1;40m▀[0;37;40m  [0;97;1;40m█[0;97;1;47m [0;37;40m [0;31;40m░░░[0;37;40m [0;97;1;40m█[0;37;40m██[0;90;1;40m█[0;37;40m [0;97;1;40m▀[0;97;1;47m▄[0;37;40m▄ [0;31;40m▀[0;91;1;41m░[0;31;40m██▓▒░[0;37;40m [0;97;1;40m█[0;97;1;47m  [0;90;1;40m█[0;37;40m     [0;97;1;40m█[0;37;40m█[0;91;1;41m░░░▒░[0;97;1;40m█[0;97;1;47m  [0;90;1;40m█[0;37;40m        [0;97;1;40m▀[0;97;1;47m▄[0;37;40m▄[0;31;40m█▓▒░[0;37;40m [0;31;40m▒░▓▀[0;97;1;40m▄[0;97;1;47m▀ [0;90;1;47m▄[0;90;1;40m▀[0;37;40m [0;97;1;40m▄[0;97;1;47m▀[0;37;40m▀[0;31;40m▄[0;91;1;41m░[0;31;40m█▓[0;97;1;40m█[0;37;40m█[0;90;1;40m█[0;97;1;40m█[0;31;40m░▓▀[0;97;1;40m▄[0;97;1;47m▀ [0;90;1;47m▄[0;90;1;40m▀[0;37;40m [0;97;1;40m█[0;97;1;47m [0;91;1;41m▓▒▒░░[0;97;1;41m▀▀[0;37;40m▀[0;90;1;40m▀[0;31;40m██▒▓[0;97;1;41m▄[0;97;1;47m▀[0;37;40m█[0;90;1;47m▄[0;90;1;40m▀[0;37;40m     [0m
 				[0;37;40m      [0;97;1;40m▀▀[0;97;1;47m▄[0;97;1;40m▄▄[0;97;1;47m▀▀[0;90;1;47m▄[0;37;40m▀[0;90;1;40m▀[0;37;40m    [0;97;1;40m█[0;97;1;47m▄[0;97;1;40m▄▄▄▄▄█[0;37;40m██[0;90;1;40m█[0;37;40m   [0;97;1;40m▀▀[0;97;1;47m▄[0;97;1;40m▄▄▄▄▄[0;97;1;47m▀▀[0;90;1;47m▄[0;37;40m▀[0;90;1;40m▀[0;37;40m      [0;97;1;40m█[0;97;1;47m▄[0;97;1;40m▄▄▄▄▄█[0;37;40m██[0;90;1;40m█[0;37;40m          [0;97;1;40m▀▀[0;97;1;47m▄[0;97;1;40m▄▄▄▄▄[0;97;1;47m▀▀[0;90;1;47m▄[0;37;40m▀[0;90;1;40m▀[0;37;40m   [0;97;1;40m█[0;97;1;47m▄[0;97;1;40m▄▄▄▄▄▄█[0;37;40m█[0;97;1;40m█▄[0;97;1;47m▀▀[0;90;1;47m▄[0;37;40m▀[0;90;1;40m▀[0;37;40m   [0;97;1;40m█[0;97;1;47m▄[0;97;1;41m▄▄▄▄▄▄▄▄▄▄▄[0;97;1;47m▀▀[0;37;40m█[0;90;1;47m▄[0;90;1;40m▀[0;37;40m       [0m
 				""");
-	}
-	/**
-	 * Starts the main game loop. The player moves on the board by rolling the dice
-	 * until they reach the last cell (64). Displays the player's position each turn.
-	 */
-	public void start() {
-		this.board = new Board();
-		SixSidedDice dice = new SixSidedDice();
-		Scanner scanner = new Scanner(System.in);
-		
-		while (!gameOver) {
-			playTurn(board, dice);
-			
-			// End game only if at max position AND boss is defeated
-			if (board.getCurrentPosition() >= board.getMaxPosition() && GameState.getInstance().isBossDefeated()) {
-				gameOver = true;
-			}
-		}
-
-		if (player.getHealthPoints() > 0 && board.getCurrentPosition() >= board.getMaxPosition() && GameState.getInstance().isBossDefeated()) {
-			// Update character in database before ending game
-			updateCharacterInDatabase();
-			endGame();
-		}
-		scanner.close();
 	}
 
 	@Override
