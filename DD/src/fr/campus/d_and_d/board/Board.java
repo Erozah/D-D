@@ -53,6 +53,8 @@ public class Board {
         return switch (position) {
             case 64 -> new Dragon("Smaug");
             case 10, 20, 25, 32, 35, 36, 37, 40, 44, 47 -> new Sorcerer("Sorcier noir");
+            case 50, 55 -> new Orc("Orc");
+            case 54, 59 -> new EvilSpirit("Esprit");
             case 3, 6, 9, 12, 15, 18, 21, 24, 27, 30 -> new Goblin("Goblin");
             case 2, 11, 5, 22, 38 -> new MysteryBox(new Weapon("Arme", "Massue", 5));
             case 19, 26, 42, 53 -> new MysteryBox(new Weapon("Arme", "Epée", 7));

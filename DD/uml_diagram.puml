@@ -111,6 +111,14 @@ class Orc {
   + interact(character: Character): String
 }
 
+class EvilSpirit {
+  + EvilSpirit(name: String)
+  + EvilSpirit(name: String, healthPoints: int, attackPower: int)
+  + interact(): String
+  + interact(character: Character): String
+  + toString(): String
+}
+
 class Sorcerer {
   + Sorcerer(name: String)
   + Sorcerer(name: String, healthPoints: int, attackPower: int)
@@ -270,6 +278,7 @@ Enemy <|-- Dragon
 Enemy <|-- Goblin
 Enemy <|-- Orc
 Enemy <|-- Sorcerer
+Enemy <|-- EvilSpirit
 OffensiveEquipment <|-- Weapon
 OffensiveEquipment <|-- Spell
 DefensiveEquipment <|-- Shield
