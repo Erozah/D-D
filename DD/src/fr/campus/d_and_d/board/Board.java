@@ -126,6 +126,13 @@ public class Board {
         }
     }
     
+    /**
+     * Returns a string representation of the board's current state.
+     * The string includes the current position and the maximum position.
+     * 
+     * @return A string in the format "Vous êtes sur la case X / Y" where X is the current position
+     *         and Y is the maximum position (64)
+     */
     @Override
     public String toString() {
         return "Vous êtes sur la case " + currentPosition + " / " + MAX_POSITION;

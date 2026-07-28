@@ -88,8 +88,12 @@ public abstract class Character {
 	/**
 	 * Sets the health points of the character.
 	 * @param healthPoints The new health points of the character.
+	 * @throws IllegalArgumentException If healthPoints is negative
 	 */
 	public void setHealthPoints(int healthPoints) {
+		if (healthPoints < 0) {
+			throw new IllegalArgumentException("Health points cannot be negative");
+		}
 		this.healthPoints = healthPoints;
 	}
 	/**

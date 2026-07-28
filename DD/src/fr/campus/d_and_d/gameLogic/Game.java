@@ -89,6 +89,11 @@ public class Game {
 			}
 		}
 	}
+	/**
+	 * Handles the start game action from the main menu.
+	 * Checks if a player character exists before starting the game.
+	 * If no character exists, displays an error message.
+	 */
 	private void handleStartGame() {
 		if (this.player != null) {
 			start();
@@ -121,6 +126,10 @@ public class Game {
 		}
 		scanner.close();
 	}
+	/**
+	 * Handles the character creation action from the main menu.
+	 * Creates a new character and automatically saves it to the database.
+	 */
 	private void handleCreateCharacter() {
 		// Nouveau personnage
 		createCharacter();
@@ -198,6 +207,11 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Handles the show statistics action from the main menu.
+	 * Displays the current character's statistics if a character exists.
+	 * Otherwise, displays an error message.
+	 */
 	private void handleShowStats() {
 		// Voir les statistiques
 		if (this.player != null) {
@@ -207,6 +221,10 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Handles the exit action from the main menu.
+	 * Closes the scanner and sets the running flag to false to exit the game loop.
+	 */
 	private void handleExit() {
 		menu.closeScanner();
 		running = false;
@@ -310,7 +328,11 @@ public class Game {
 	}
 	
 	/**
-	 * Auto-saves the character after creation
+	 * Automatically saves the character to the database after creation.
+	 * This method is called after a new character is created to ensure it is persisted.
+	 * Displays a confirmation message with character details upon successful save.
+	 * 
+	 * @throws SQLException If there is an error saving the character to the database
 	 */
 	private void autoSaveCharacter() {
 		if (this.player != null) {
@@ -335,7 +357,11 @@ public class Game {
 		}
 	}
 	/**
-	 * Displays the current character's statistics.
+	 * Displays the current character's statistics in a formatted block.
+	 * Shows the character's type, name, health points, attack power, and equipment.
+	 * After displaying the statistics, provides options to return to the main menu or quit the game.
+	 * 
+	 * @throws NullPointerException If the player character is null
 	 */
 	public void showCharacterStats() {
 		if (player == null) {
@@ -354,8 +380,12 @@ public class Game {
 
 	/**
 	 * Handles a single turn of the game, including rolling the dice and moving the player.
-	 * @param board The game board.
-	 * @param dice The dice used to determine movement.
+	 * The player can choose to quit by entering 'q'. After rolling the dice, the player's position
+	 * is updated and the content of the current cell is processed.
+	 * 
+	 * @param board The game board where the player is moving
+	 * @param dice The dice used to determine movement distance
+	 * @throws OutOfBoardException If the player's new position exceeds the board's maximum position
 	 */
 	public void playTurn(Board board, Dice dice) {
 		String userInput = menu.askPlayerString("Appuyez sur 'Entrée' pour lancer le dé ou q pour quitter");
@@ -417,6 +447,12 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Checks if the player has won the game.
+	 * The player wins if they have reached the end of the board (position >= MAX_POSITION)
+	 * and the boss has been defeated, while still having health points > 0.
+	 * If the player has reached the end but the boss is not defeated, displays a message.
+	 */
 	private void isWin() {
 		if (board.getCurrentPosition() >= board.getMaxPosition() && player.getHealthPoints() > 0) {
 			if (GameState.getInstance().isBossDefeated()) {
@@ -430,7 +466,9 @@ public class Game {
 	}
 
 	/**
-	 * Ends the game and displays a congratulatory message.
+	 * Ends the game and displays a congratulatory message with ASCII art.
+	 * This method is called when the player successfully completes the game by reaching
+	 * the end of the board and defeating the boss.
 	 */
 	public void endGame() {
 		System.out.println("""
