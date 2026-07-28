@@ -16,7 +16,9 @@ abstract class Character {
   - type: String
   - name: String
   - healthPoints: int
+  - baseAttackPower: int
   - attackPower: int
+  - databaseId: int
   - offensiveEquipment: OffensiveEquipment
   - defensiveEquipment: DefensiveEquipment
   + getType(): String
@@ -27,6 +29,10 @@ abstract class Character {
   + setHealthPoints(healthPoints: int): void
   + getAttackPower(): int
   + setAttackPower(attackPower: int): void
+  + getDatabaseId(): int
+  + setDatabaseId(databaseId: int): void
+  + getBaseAttackPower(): int
+  + setBaseAttackPower(baseAttackPower: int): void
   + getOffensiveEquipment(): OffensiveEquipment
   + setOffensiveEquipment(offensiveEquipment: OffensiveEquipment): void
   + getDefensiveEquipment(): DefensiveEquipment
@@ -200,15 +206,26 @@ class Game {
   - board: Board
   - gameOver: boolean
   - menu: Menu
+  - running: boolean
   + setPlayer(player: Character): void
   + getPlayer(): Character
   + displayTitle(): void
   + mainMenu(): void
-  + showCharacterStats(): void
-  + createCharacter(): void
-  + playTurn(board: Board, dice: Dice): void
-  + endGame(): void
+  + handleStartGame(): void
+  + handleCreateCharacter(): void
+  + handleShowStats(): void
+  + handleExit(): void
   + start(): void
+  + createCharacter(): void
+  + loadCharacter(): void
+  + autoSaveCharacter(): void
+  + showCharacterStats(): void
+  + playTurn(board: Board, dice: Dice): void
+  + isDead(): void
+  + isWin(): void
+  + endGame(): void
+  + deleteCharacterFromDatabase(): void
+  + updateCharacterInDatabase(): void
   + toString(): String
 }
 
@@ -225,6 +242,24 @@ class Menu {
 
 class OutOfBoardException {
   + OutOfBoardException(message: String)
+}
+
+' Classes de base de données
+class LinkDB {
+  - connection: Connection
+  + connect(): void
+  + getConnection(): Connection
+  + close(): void
+}
+
+class SimpleDatabaseManager {
+  + listCharacters(): List<String>
+  + loadCharacter(characterId: int): Character
+  + saveCharacter(character: Character): void
+}
+
+class Test {
+  + main(args: String[]): void
 }
 
 ' Relations d'héritage
@@ -256,10 +291,13 @@ Game --> Board
 Game --> Dice
 Game --> Menu
 Game --> Character
+Game --> LinkDB
+Game --> SimpleDatabaseManager
 Board o-- Cell
 Character --> OffensiveEquipment
 Character --> DefensiveEquipment
 Cell --> CellContent
 MysteryBox --> CellContent
+SimpleDatabaseManager --> LinkDB
 
 @enduml
