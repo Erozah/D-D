@@ -17,11 +17,18 @@ Ce projet est une implémentation simplifiée d'un jeu de plateau de type Donjon
 - **Système de dé** : Un dé virtuel génère un nombre aléatoire entre 1 et 6 pour déterminer le déplacement.
 - **Interface utilisateur** : Menu interactif pour naviguer dans le jeu.
 - **Cases spéciales** :
-  - **EmptyCell** : Case vide sans effet.
-  - **EnemyCell** : Case avec un ennemi à combattre.
-  - **WeaponCell** : Case avec une arme à ramasser.
-  - **PotionCell** : Case avec une potion pour restaurer des points de vie.
+  - **MysteryBox** : Cases mystérieuses contenant des équipements ou des ennemis
+  - **EnemyCell** : Case avec un ennemi à combattre (Gobelin, Orc, Sorcier, Dragon)
+  - **WeaponCell** : Case avec une arme à ramasser
+  - **PotionCell** : Case avec une potion pour restaurer des points de vie
   - **BossCell** : Case avec un boss final à vaincre pour gagner la partie.
+
+### Fonctionnalités avancées :
+- **Système de sauvegarde** : Sauvegarde automatique des personnages dans une base de données MySQL
+- **Chargement de personnage** : Possibilité de charger un personnage précédemment sauvegardé
+- **Gestion des combats** : Système de combat au tour par tour avec possibilité de fuir
+- **Validation des entrées** : Gestion robuste des erreurs et validation des données
+- **Documentation complète** : JavaDoc exhaustive pour toutes les classes et méthodes principales
 
 ---
 
@@ -98,7 +105,7 @@ DD/
 │   │   └── db/
 │   │       ├── SimpleDatabaseManager.java # Gestion simplifiée de la base de données
 │   │       ├── LinkDB.java         # Connexion à la base de données
-│   │       └── TestDatabase.java   # Tests pour la base de données
+│   │       └── Test.java           # Tests pour la base de données
 ├── schema.sql                     # Schéma de base de données simplifié
 ├── doc/
 │   └── ...                       # Documentation JavaDoc générée
@@ -121,10 +128,29 @@ Pour l'instant, les tests sont manuels. Tu peux exécuter le jeu et vérifier qu
 
 ## 🛠 Technologies
 
-- **Java** : Langage de programmation principal.
+- **Java** : Langage de programmation principal (Java 8+).
 - **POO** : Programmation Orientée Objet pour une structure claire et modulaire.
 - **UML** : Diagrammes de classe pour la conception et la documentation.
-- **SQL** : Base de données pour sauvegarder les personnages.
+- **SQL** : Base de données MySQL pour sauvegarder les personnages.
+- **PlantUML** : Pour la génération de diagrammes UML.
+
+## ✨ Améliorations récentes
+
+### Architecture et Code :
+- **Injection de dépendances** : Préparation pour une meilleure testabilité
+- **Séparation des responsabilités** : Méthodes privées bien organisées dans la classe Game
+- **Gestion d'erreurs améliorée** : Validation des entrées et gestion des exceptions
+- **Documentation complète** : JavaDoc pour toutes les méthodes publiques et privées
+
+### Base de données :
+- **Sauvegarde automatique** : Les personnages sont automatiquement sauvegardés après création
+- **Chargement flexible** : Possibilité de charger des personnages existants
+- **Mise à jour des équipements** : Sauvegarde des équipements avec les personnages
+
+### Expérience utilisateur :
+- **Menu interactif** : Navigation claire entre les différentes options
+- **Messages d'erreur clairs** : Guidage de l'utilisateur en cas d'erreur
+- **Affichage des statistiques** : Visualisation complète des attributs du personnage
 
 ## 🗃 Base de Données Simplifiée
 
@@ -147,7 +173,7 @@ Cela rend le code plus facile à maintenir et à comprendre.
 
 ## 📝 Documentation
 
-La documentation JavaDoc est incluse dans le code et est entièrement en anglais. Pour la générer :
+La documentation JavaDoc est incluse dans le code et couvre maintenant toutes les classes et méthodes principales. Pour la générer :
 
 ```bash
 javadoc -d doc -sourcepath src -subpackages fr.campus.d_and_d
@@ -156,11 +182,26 @@ javadoc -d doc -sourcepath src -subpackages fr.campus.d_and_d
 La documentation générée sera disponible dans le dossier `doc/`.
 
 ### Dernières mises à jour de la documentation :
-- Ajout de JavaDoc complète pour la classe `LinkDB` (méthodes `connect()`, `getConnection()`, et `close()`)
-- Ajout de JavaDoc complète pour la classe `Test` (méthode `main()`)
-- Amélioration de la documentation existante pour plus de clarté
+- **JavaDoc complète** pour toutes les classes principales (Game, Character, Board, etc.)
+- Ajout de documentation détaillée pour les méthodes privées dans `Game`
+- Ajout de `@throws` pour documenter les exceptions possibles
+- Amélioration de la documentation des classes de base de données (`LinkDB`, `SimpleDatabaseManager`)
+- Mise à jour du diagramme UML (`uml_diagram.puml`) pour refléter la structure actuelle
 
-La documentation est maintenant à jour avec toutes les dernières modifications du code.
+### Diagramme UML
+
+Un diagramme UML complet est disponible dans `DD/uml_diagram.puml` et inclut :
+- Toutes les classes et interfaces
+- Les relations d'héritage et d'implémentation
+- Les associations entre classes
+- Les méthodes et attributs principaux
+
+Pour générer le diagramme :
+```bash
+java -jar plantuml.jar uml_diagram.puml
+```
+
+La documentation est maintenant complète et à jour avec toutes les dernières modifications du code.
 
 ---
 
