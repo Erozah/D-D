@@ -5,7 +5,7 @@
 -- Drop existing tables if they exist
 DROP TABLE IF EXISTS equipment;
 DROP TABLE IF EXISTS characters;
-USE DnD
+USE DnD;
 
 -- Create characters table (MySQL syntax)
 CREATE TABLE characters (

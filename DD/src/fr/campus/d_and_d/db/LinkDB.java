@@ -4,23 +4,55 @@
  */
 package fr.campus.d_and_d.db;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * The LinkDB class handles database connections for the game.
  * It provides methods to establish and close connections to the MySQL database.
+ * Connection credentials are loaded from a "db.properties" file rather than
+ * being hardcoded, to avoid committing secrets to version control.
  */
 public class LinkDB {
 
-	private static final String URL =
-			"jdbc:mysql://localhost:3306/DnD";
+	/** Path to the properties file, relative to the working directory where the app is launched. */
+	private static final String CONFIG_PATH = "db.properties";
 
-	private static final String USER = "root";
-	private static final String PASSWORD = "Admin123!!!";
+	private final String url;
+	private final String user;
+	private final String password;
 
 	private Connection connection;
+
+	/**
+	 * Constructs a LinkDB and loads connection settings from db.properties.
+	 *
+	 * @throws SQLException If the properties file is missing or malformed.
+	 */
+	public LinkDB() throws SQLException {
+		Properties props = new Properties();
+		try (FileInputStream input = new FileInputStream(CONFIG_PATH)) {
+			props.load(input);
+		} catch (IOException e) {
+			throw new SQLException(
+					"Impossible de lire le fichier de configuration '" + CONFIG_PATH +
+					"'. Assurez-vous qu'il existe à la racine du projet et qu'il n'est pas dans .gitignore " +
+					"seulement pour Git (le fichier doit rester présent localement).", e);
+		}
+
+		this.url = props.getProperty("db.url");
+		this.user = props.getProperty("db.user");
+		this.password = props.getProperty("db.password");
+
+		if (url == null || user == null || password == null) {
+			throw new SQLException(
+					"Le fichier '" + CONFIG_PATH + "' doit contenir les clés db.url, db.user et db.password.");
+		}
+	}
 
 	/**
 	 * Establishes a connection to the MySQL database.
@@ -31,9 +63,9 @@ public class LinkDB {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection = DriverManager.getConnection(
-					URL,
-					USER,
-					PASSWORD
+					url,
+					user,
+					password
 			);
 			System.out.println("✅ Connexion MySQL réussie !");
 		} catch (ClassNotFoundException e) {
@@ -41,8 +73,8 @@ public class LinkDB {
 			throw new SQLException("Pilote JDBC manquant", e);
 		} catch (SQLException e) {
 			System.err.println("❌ Erreur de connexion MySQL: " + e.getMessage());
-			System.err.println("   URL: " + URL);
-			System.err.println("   Utilisateur: " + USER);
+			System.err.println("   URL: " + url);
+			System.err.println("   Utilisateur: " + user);
 			throw e;
 		}
 	}
