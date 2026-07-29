@@ -8,14 +8,8 @@ import fr.campus.d_and_d.characters.Character;
 import fr.campus.d_and_d.characters.Warrior;
 import fr.campus.d_and_d.characters.Wizard;
 import fr.campus.d_and_d.items.*;
-import fr.campus.d_and_d.items.Weapon;
-import fr.campus.d_and_d.items.Shield;
 import fr.campus.d_and_d.db.SimpleDatabaseManager;
-import fr.campus.d_and_d.db.LinkDB;
-import java.util.Scanner;
 import java.util.List;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
@@ -35,7 +29,7 @@ public class Game {
 	public Game() {
 		GameState.getInstance().reset(); // Reset game state when starting a new game
 	}
-	
+
 	/**
 	 * Sets the player character (used for testing).
 	 * @param player The character to set as player
@@ -43,7 +37,7 @@ public class Game {
 	public void setPlayer(Character player) {
 		this.player = player;
 	}
-	
+
 	/**
 	 * Gets the current player character (used for testing).
 	 * @return The current player character
@@ -51,7 +45,7 @@ public class Game {
 	public Character getPlayer() {
 		return this.player;
 	}
-	
+
 	public void displayTitle() {
 		System.out.println("""
 				
@@ -108,7 +102,6 @@ public class Game {
 	public void start() {
 		this.board = new Board();
 		SixSidedDice dice = new SixSidedDice();
-		Scanner scanner = new Scanner(System.in);
 
 		while (!gameOver) {
 			playTurn(board, dice);
@@ -121,10 +114,13 @@ public class Game {
 
 		if (player.getHealthPoints() > 0 && board.getCurrentPosition() >= board.getMaxPosition() && GameState.getInstance().isBossDefeated()) {
 			// Update character in database before ending game
-			updateCharacterInDatabase();
+			try {
+				new SimpleDatabaseManager().updateCharacter(player);
+			} catch (SQLException e) {
+				System.err.println("Erreur lors de la mise à jour du personnage : " + e.getMessage());
+			}
 			endGame();
 		}
-		scanner.close();
 	}
 	/**
 	 * Handles the character creation action from the main menu.
@@ -187,7 +183,8 @@ public class Game {
 					continue;
 				}
 
-				int characterId = Integer.parseInt(characterIdStr);
+                assert characterIdStr != null;
+                int characterId = Integer.parseInt(characterIdStr);
 
 				Character loadedCharacter = dbManager.loadCharacter(characterId);
 
@@ -227,114 +224,16 @@ public class Game {
 	 */
 	private void handleExit() {
 		gameOver = true;
-		if (!GameState.getInstance().isBossDefeated() && player.getHealthPoints() > 0)
+		if (!GameState.getInstance().isBossDefeated() && (player != null && player.getHealthPoints() > 0) || player == null)
 			menu.printBlock("Partie terminée par l'utilisateur.");
 		menu.closeScanner();
 		running = false;
 	}
 
 	/**
-	 * Deletes the character from the database when they die
-	 */
-	private void deleteCharacterFromDatabase() {
-		if (this.player != null && this.player.getDatabaseId() != -1) {
-			try {
-				LinkDB linkDB = new LinkDB();
-				linkDB.connect();
-				
-				try (Connection conn = linkDB.getConnection()) {
-					int characterId = this.player.getDatabaseId();
-					
-					// Delete equipment first (due to foreign key constraint)
-					try (PreparedStatement stmt = conn.prepareStatement(
-						"DELETE FROM equipment WHERE owner_id = ?")) {
-						stmt.setInt(1, characterId);
-						stmt.executeUpdate();
-					}
-					
-					// Then delete character
-					try (PreparedStatement stmt = conn.prepareStatement(
-						"DELETE FROM characters WHERE id = ?")) {
-						stmt.setInt(1, characterId);
-						stmt.executeUpdate();
-					}
-					
-					System.out.println("✅ Personnage supprimé de la base de données.");
-				}
-				linkDB.close();
-			} catch (SQLException e) {
-				System.err.println("Erreur lors de la suppression du personnage : " + e.getMessage());
-			}
-		}
-	}
-	
-	/**
-	 * Updates the character in the database when they finish the game alive
-	 */
-	private void updateCharacterInDatabase() {
-		if (this.player != null && this.player.getDatabaseId() != -1) {
-			try {
-				LinkDB linkDB = new LinkDB();
-				linkDB.connect();
-				
-				try (Connection conn = linkDB.getConnection()) {
-					conn.setAutoCommit(false);
-					
-					int characterId = this.player.getDatabaseId();
-					
-					// Update character info (save base attack power, not total)
-					try (PreparedStatement stmt = conn.prepareStatement(
-						"UPDATE characters SET health_points = ?, attack_power = ? WHERE id = ?")) {
-						stmt.setInt(1, player.getHealthPoints());
-						stmt.setInt(2, player.getBaseAttackPower()); // Save base attack power
-						stmt.setInt(3, characterId);
-						stmt.executeUpdate();
-					}
-					
-					// Delete old equipment
-					try (PreparedStatement stmt = conn.prepareStatement(
-						"DELETE FROM equipment WHERE owner_id = ?")) {
-						stmt.setInt(1, characterId);
-						stmt.executeUpdate();
-					}
-					
-					// Save new offensive equipment
-					String equipType = player.getOffensiveEquipment() instanceof Weapon ? "WEAPON" : "SPELL";
-					try (PreparedStatement stmt = conn.prepareStatement(
-						"INSERT INTO equipment (equipment_type, name, power, owner_id) VALUES (?, ?, ?, ?)")) {
-						stmt.setString(1, equipType);
-						stmt.setString(2, player.getOffensiveEquipment().getName());
-						stmt.setInt(3, player.getOffensiveEquipment().getAttackPower());
-						stmt.setInt(4, characterId);
-						stmt.executeUpdate();
-					}
-					
-					// Save new defensive equipment
-					equipType = player.getDefensiveEquipment() instanceof Shield ? "SHIELD" : "POTION";
-					try (PreparedStatement stmt = conn.prepareStatement(
-						"INSERT INTO equipment (equipment_type, name, power, owner_id) VALUES (?, ?, ?, ?)")) {
-						stmt.setString(1, equipType);
-						stmt.setString(2, player.getDefensiveEquipment().getName());
-						stmt.setInt(3, player.getDefensiveEquipment().getDefensePoints());
-						stmt.setInt(4, characterId);
-						stmt.executeUpdate();
-					}
-					
-					conn.commit();
-					System.out.println("✅ Personnage mis à jour dans la base de données.");
-				}
-				linkDB.close();
-			} catch (SQLException e) {
-				System.err.println("Erreur lors de la mise à jour du personnage : " + e.getMessage());
-			}
-		}
-	}
-	
-	/**
 	 * Automatically saves the character to the database after creation.
 	 * This method is called after a new character is created to ensure it is persisted.
 	 * Displays a confirmation message with character details upon successful save.
-	 * 
 	 * @throws SQLException If there is an error saving the character to the database
 	 */
 	private void autoSaveCharacter() {
@@ -345,7 +244,7 @@ public class Game {
 				Menu menu = new Menu();
 				menu.beforeLine();
 				menu.printCenteredLine("Personnage sauvegardé avec succès !");
-				
+
 				// Display character info with equipment names
 				menu.printCenteredLine("Personnage créé : " + this.player.getName());
 				menu.printCenteredLine("Type : " + this.player.getType());
@@ -363,12 +262,13 @@ public class Game {
 	 * Displays the current character's statistics in a formatted block.
 	 * Shows the character's type, name, health points, attack power, and equipment.
 	 * After displaying the statistics, provides options to return to the main menu or quit the game.
-	 * 
+	 *
 	 * @throws NullPointerException If the player character is null
 	 */
 	public void showCharacterStats() {
 		if (player == null) {
 			menu.printCenteredLine("Aucun personnage créé. Veuillez d'abord créer un personnage.");
+			return;
 		}
 		menu.printBlock("Statistiques de votre personnage");
 		System.out.println(player);
@@ -385,13 +285,13 @@ public class Game {
 	 * Handles a single turn of the game, including rolling the dice and moving the player.
 	 * The player can choose to quit by entering 'q'. After rolling the dice, the player's position
 	 * is updated and the content of the current cell is processed.
-	 * 
+	 *
 	 * @param board The game board where the player is moving
 	 * @param dice The dice used to determine movement distance
 	 */
 	public void playTurn(Board board, Dice dice) {
 		String userInput = menu.askPlayerString("Appuyez sur 'Entrée' pour lancer le dé ou q pour quitter");
-		
+
 		// Check if player wants to quit
 		if (userInput != null && userInput.equalsIgnoreCase("q")) {
 			handleExit();
@@ -441,7 +341,13 @@ public class Game {
 						
 						""");
 			// Delete character from database when they die
-			deleteCharacterFromDatabase();
+			if (player.getDatabaseId() != -1) {
+				try {
+					new SimpleDatabaseManager().deleteCharacter(player.getDatabaseId());
+				} catch (SQLException e) {
+					System.err.println("Erreur lors de la suppression du personnage : " + e.getMessage());
+				}
+			}
 			handleExit();
 		}
 	}

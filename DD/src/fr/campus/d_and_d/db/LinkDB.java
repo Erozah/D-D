@@ -96,6 +96,7 @@ public class LinkDB {
 	public void close() throws SQLException {
 		if (connection != null) {
 			connection.close();
+			connection = null;
 			System.out.println("🔌 Connexion fermée");
 		}
 	}

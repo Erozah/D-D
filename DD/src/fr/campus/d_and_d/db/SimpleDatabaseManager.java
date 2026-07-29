@@ -23,7 +23,7 @@ public class SimpleDatabaseManager {
     public void saveCharacter(Character character) throws SQLException {
         LinkDB linkDB = new LinkDB();
         linkDB.connect();
-        
+
         try (Connection conn = linkDB.getConnection()) {
             conn.setAutoCommit(false);
 
@@ -103,7 +103,7 @@ public class SimpleDatabaseManager {
      * @throws SQLException If a database error occurs
      */
     private void saveDefensiveEquipment(Connection conn, DefensiveEquipment equipment, int ownerId) throws SQLException {
-        String equipType = equipment instanceof Shield ? "SHIELD" : "POTION";
+        String equipType = equipment instanceof Shield ? "SHIELD" : "ROBE";
 
         try (PreparedStatement stmt = conn.prepareStatement(
                 "INSERT INTO equipment (equipment_type, name, power, owner_id) VALUES (?, ?, ?, ?)")) {
@@ -125,12 +125,12 @@ public class SimpleDatabaseManager {
         List<String> characters = new ArrayList<>();
         LinkDB linkDB = new LinkDB();
         linkDB.connect();
-        
+
         try (Connection conn = linkDB.getConnection()) {
             // Get all player characters (not enemies)
             try (PreparedStatement stmt = conn.prepareStatement(
                 "SELECT id, character_type, name, health_points, attack_power FROM characters ORDER BY id")) {
-                
+
                 try (ResultSet rs = stmt.executeQuery()) {
                     while (rs.next()) {
                         int id = rs.getInt("id");
@@ -138,11 +138,11 @@ public class SimpleDatabaseManager {
                         String name = rs.getString("name");
                         int health = rs.getInt("health_points");
                         int attack = rs.getInt("attack_power");
-                        
+
                         // Get equipment for this character
                         String weaponName = "Aucune";
                         String shieldName = "Aucun";
-                        
+
                         try (PreparedStatement equipStmt = conn.prepareStatement(
                             "SELECT name, equipment_type FROM equipment WHERE owner_id = ?")) {
                             equipStmt.setInt(1, id);
@@ -158,7 +158,7 @@ public class SimpleDatabaseManager {
                                 }
                             }
                         }
-                        
+
                         String line1 = String.format("ID %d - %s (%s),  %d PV, Attaque: %d ", id, name, type, health, attack);
                         String line2 = String.format("Arme: %s, Défense: %s",
                             weaponName, shieldName);
@@ -168,7 +168,7 @@ public class SimpleDatabaseManager {
                 }
             }
         }
-        
+
         return characters;
     }
 
@@ -182,7 +182,7 @@ public class SimpleDatabaseManager {
     public Character loadCharacter(int characterId) throws SQLException {
         LinkDB linkDB = new LinkDB();
         linkDB.connect();
-        
+
         try (Connection conn = linkDB.getConnection()) {
             // Load character info
             Character character = loadCharacterInfo(conn, characterId);
@@ -284,7 +284,7 @@ public class SimpleDatabaseManager {
      */
     private DefensiveEquipment loadDefensiveEquipment(Connection conn, int ownerId) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement(
-                "SELECT equipment_type, name, power FROM equipment WHERE owner_id = ? AND equipment_type IN ('SHIELD', 'POTION') LIMIT 1")) {
+                "SELECT equipment_type, name, power FROM equipment WHERE owner_id = ? AND equipment_type IN ('SHIELD', 'ROBE') LIMIT 1")) {
             stmt.setInt(1, ownerId);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
@@ -294,13 +294,99 @@ public class SimpleDatabaseManager {
 
                     return type.equals("SHIELD") ?
                             new Shield(type, name, power) :
-                            new Potion(type, name, power);
+                            new Robe(type, name, power);
                 }
             }
         }
-        // Default equipment if none found
-        return new Shield("Armor", "Leather Armor", 1);
+        return new Shield("None", "Skin", 0);
+    }
+    /**
+     * Updates an existing character and their equipment in the database.
+     * Unlike saveCharacter (which INSERTs a new row), this UPDATEs the character's
+     * stats in place and replaces their equipment.
+     *
+     * @param character The character to update (must already have a valid databaseId)
+     * @throws SQLException If a database error occurs
+     */
+    public void updateCharacter(Character character) throws SQLException {
+        LinkDB linkDB = new LinkDB();
+        linkDB.connect();
+
+        try (Connection conn = linkDB.getConnection()) {
+            conn.setAutoCommit(false);
+
+            int characterId = character.getDatabaseId();
+
+            updateCharacterInfo(conn, character, characterId);
+            deleteEquipment(conn, characterId);
+            saveOffensiveEquipment(conn, character.getOffensiveEquipment(), characterId);
+            saveDefensiveEquipment(conn, character.getDefensiveEquipment(), characterId);
+
+            conn.commit();
+            System.out.println("✅ Personnage mis à jour dans la base de données.");
+        } finally {
+            linkDB.close();
+        }
     }
 
+    /**
+     * Updates a character's stats (health and base attack power) in the database.
+     *
+     * @param conn The database connection
+     * @param character The character whose stats to save
+     * @param characterId The ID of the character to update
+     * @throws SQLException If a database error occurs
+     */
+    private void updateCharacterInfo(Connection conn, Character character, int characterId) throws SQLException {
+        try (PreparedStatement stmt = conn.prepareStatement(
+                "UPDATE characters SET health_points = ?, attack_power = ? WHERE id = ?")) {
+            stmt.setInt(1, character.getHealthPoints());
+            stmt.setInt(2, character.getBaseAttackPower()); // Save base attack power, not total
+            stmt.setInt(3, characterId);
+            stmt.executeUpdate();
+        }
+    }
+
+    /**
+     * Deletes all equipment belonging to a character.
+     *
+     * @param conn The database connection
+     * @param characterId The ID of the character whose equipment to delete
+     * @throws SQLException If a database error occurs
+     */
+    private void deleteEquipment(Connection conn, int characterId) throws SQLException {
+        try (PreparedStatement stmt = conn.prepareStatement(
+                "DELETE FROM equipment WHERE owner_id = ?")) {
+            stmt.setInt(1, characterId);
+            stmt.executeUpdate();
+        }
+    }
+
+    /**
+     * Deletes a character and all their equipment from the database.
+     *
+     * @param characterId The ID of the character to delete
+     * @throws SQLException If a database error occurs
+     */
+    public void deleteCharacter(int characterId) throws SQLException {
+        LinkDB linkDB = new LinkDB();
+        linkDB.connect();
+
+        try (Connection conn = linkDB.getConnection()) {
+            // Delete equipment first (foreign key constraint)
+            deleteEquipment(conn, characterId);
+
+            // Then delete the character
+            try (PreparedStatement stmt = conn.prepareStatement(
+                    "DELETE FROM characters WHERE id = ?")) {
+                stmt.setInt(1, characterId);
+                stmt.executeUpdate();
+            }
+
+            System.out.println("✅ Personnage supprimé de la base de données.");
+        } finally {
+            linkDB.close();
+        }
+    }
 
 }

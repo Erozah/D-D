@@ -59,7 +59,6 @@ public class Enemy extends Character implements CellContent {
 
         // Combat logic with critical hits
         Menu menu = new Menu();
-        Scanner scanner = new Scanner(System.in);
         TwentySidedDice criticalDice = new TwentySidedDice();
 
         while (getHealthPoints() > 0 && character.getHealthPoints() > 0) {
@@ -178,6 +177,6 @@ public class Enemy extends Character implements CellContent {
 
     @Override
     public String getName() {
-        return getType() + " (" + getHealthPoints() + " PV)";
+        return super.getName() + " (" + getHealthPoints() + " PV)";
     }
 }

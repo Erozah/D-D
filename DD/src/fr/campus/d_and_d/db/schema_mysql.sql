@@ -2,10 +2,13 @@
 -- This schema only stores characters and their equipment
 -- Compatible with SimpleDatabaseManager
 
+-- Create the database if needed, then select it
+CREATE DATABASE IF NOT EXISTS DnD;
+USE DnD;
+
 -- Drop existing tables if they exist
 DROP TABLE IF EXISTS equipment;
 DROP TABLE IF EXISTS characters;
-USE DnD;
 
 -- Create characters table (MySQL syntax)
 CREATE TABLE characters (
@@ -38,4 +41,4 @@ INSERT INTO equipment (equipment_type, name, power, owner_id) VALUES
     ('WEAPON', 'Épée de Test', 5, 1),      -- Warrior's weapon
     ('SHIELD', 'Bouclier de Test', 3, 1), -- Warrior's shield  
     ('SPELL', 'Boule de Test', 7, 2), -- Wizard's spell
-    ('POTION', 'Potion de Test', 5, 2);   -- Wizard's potion
+    ('ROBE', 'Robe de Test', 5, 2);   -- Wizard's robe

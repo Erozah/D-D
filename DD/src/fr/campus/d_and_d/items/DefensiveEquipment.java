@@ -78,6 +78,6 @@ public abstract class DefensiveEquipment {
 	 * @return A string describing the equipment.
 	 */
 	public String toString() {
-		return "[Type : " + equipmentType + " ] " + name + ": " + defensePoints + " dégats.";
+		return "[Type : " + equipmentType + " ] " + name + ": " + defensePoints + " dégats réduits.";
 	}
 }

@@ -4,6 +4,7 @@
  */
 package fr.campus.d_and_d.characters;
 import fr.campus.d_and_d.items.Potion;
+import fr.campus.d_and_d.items.Robe;
 import fr.campus.d_and_d.items.Spell;
 
 /**
@@ -21,7 +22,7 @@ public class Wizard extends Character {
 				7,
 				7,
 				new Spell("Sort", "Boule de feu", 1),
-				new Potion("Potion", "Potion de fer", 4));
+				new Robe("Leather", "Robe en cuir", 4));
 	}
 
 	@Override
