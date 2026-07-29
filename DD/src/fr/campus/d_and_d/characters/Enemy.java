@@ -1,6 +1,7 @@
 package fr.campus.d_and_d.characters;
 
 import fr.campus.d_and_d.board.CellContent;
+import fr.campus.d_and_d.gameLogic.HandleBattle;
 import fr.campus.d_and_d.gameLogic.Menu;
 import fr.campus.d_and_d.gameLogic.SixSidedDice;
 import fr.campus.d_and_d.gameLogic.TwentySidedDice;
@@ -51,128 +52,13 @@ public class Enemy extends Character implements CellContent {
             return interact();
         }
 
-        // First, show the enemy appearance message
         System.out.println(interact());
 
-        // Store enemy name in game state
-        fr.campus.d_and_d.gameLogic.GameState.getInstance().setLastEnemyName(getName());
+        fr.campus.d_and_d.gameLogic.GameState.getInstance()
+                .setLastEnemyName(getName());
 
-        // Combat logic with critical hits
-        Menu menu = new Menu();
-        TwentySidedDice criticalDice = new TwentySidedDice();
-
-        while (getHealthPoints() > 0 && character.getHealthPoints() > 0) {
-            String choice = menu.askPlayerString("Que voulez-vous faire ?",
-                    "1. Attaquer",
-                    "2. Fuir",
-                    "3. Voir mes stats",
-                    "4. Voir les stats de l'ennemi");
-
-            if (choice.equals("1")) {
-                // Roll for critical hit
-                int criticalRoll = criticalDice.roll();
-                // Calculate total damage: character base attack power + weapon damage
-                int baseDamage = character.getBaseAttackPower() + character.getOffensiveEquipment().getAttackPower();
-                int damageToEnemy = baseDamage;
-
-                if (criticalRoll == 20) {
-                    // Critical hit: +2 damage
-                    damageToEnemy += 2;
-                    System.out.println("Coup critique ! Vous infligez " + damageToEnemy + " dégâts à l'ennemi.");
-                } else if (criticalRoll == 1) {
-                    // Critical miss: 0 damage
-                    damageToEnemy = 0;
-                    System.out.println("Échec critique ! Vous ratez votre attaque et infligez 0 dégâts.");
-                } else {
-                    System.out.println("Vous infligez " + damageToEnemy + " dégâts à l'ennemi.");
-                }
-
-                // Reduce damage by enemy's defense points
-                int enemyDefense = getDefensiveEquipment().getDefensePoints();
-                int finalDamageToEnemy = Math.max(0, damageToEnemy - enemyDefense);
-                
-                if (finalDamageToEnemy < damageToEnemy) {
-                    System.out.println("L'équipement défensif de l'ennemi réduit les dégâts de " + enemyDefense + " points. Dégâts finaux: " + finalDamageToEnemy);
-                }
-
-                setHealthPoints(getHealthPoints() - finalDamageToEnemy);
-
-                if (getHealthPoints() <= 0) {
-                    // If this was a boss, mark it as defeated
-                    if (isBoss()) {
-                        fr.campus.d_and_d.gameLogic.GameState.getInstance().setBossDefeated(true);
-                        return "Vous avez vaincu le boss ! ";
-                    }
-
-                    return "Vous avez vaincu l'ennemi ! ";
-                }
-
-                // Enemy attacks character with possible critical
-                criticalRoll = criticalDice.roll();
-                baseDamage = getBaseAttackPower() + getOffensiveEquipment().getAttackPower();
-                int damageToCharacter = baseDamage;
-
-                if (criticalRoll == 20) {
-                    // Enemy critical hit: +2 damage
-                    damageToCharacter += 2;
-                    System.out.println("L'ennemi porte un coup critique ! Il vous inflige " + damageToCharacter + " dégâts.");
-                } else if (criticalRoll == 1) {
-                    // Enemy critical miss: 0 damage
-                    damageToCharacter = 0;
-                    System.out.println("L'ennemi rate son attaque et vous inflige 0 dégâts !");
-                } else {
-                    System.out.println("L'ennemi vous inflige " + damageToCharacter + " dégâts (augmentés par son équipement offensif).");
-                }
-
-                // Reduce damage by character's defense points
-                int defense = character.getDefensiveEquipment().getDefensePoints();
-                int finalDamage = Math.max(0, damageToCharacter - defense);
-                
-                if (finalDamage < damageToCharacter) {
-                    System.out.println("Votre équipement défensif réduit les dégâts de " + defense + " points. Dégâts finaux: " + finalDamage);
-                }
-
-                character.setHealthPoints(character.getHealthPoints() - finalDamage);
-
-                if (character.getHealthPoints() <= 0) {
-                    return "Vous avez été vaincu par l'ennemi.";
-                }
-            } else if (choice.equals("3")) {
-                // Show player stats
-                System.out.println("\n=== Vos Stats ===");
-                System.out.println("Nom: " + character.getName());
-                System.out.println("Type: " + character.getType());
-                System.out.println("Points de vie: " + character.getHealthPoints());
-                System.out.println("Puissance d'attaque: " + character.getAttackPower());
-                System.out.println("Équipement offensif: " + character.getOffensiveEquipment().getName() + " (+" + character.getOffensiveEquipment().getAttackPower() + ")");
-                System.out.println("Équipement défensif: " + character.getDefensiveEquipment().getName() + " (+" + character.getDefensiveEquipment().getDefensePoints() + ")");
-                System.out.println("==================\n");
-                continue; // Return to combat menu
-            } else if (choice.equals("4")) {
-                // Show enemy stats
-                System.out.println("\n=== Stats de l'ennemi ===");
-                System.out.println("Nom: " + getName());
-                System.out.println("Type: " + getType());
-                System.out.println("Points de vie: " + getHealthPoints());
-                System.out.println("Puissance d'attaque: " + getAttackPower());
-                System.out.println("Équipement offensif: " + getOffensiveEquipment().getName() + " (+" + getOffensiveEquipment().getAttackPower() + ")");
-                System.out.println("Équipement défensif: " + getDefensiveEquipment().getName() + " (+" + getDefensiveEquipment().getDefensePoints() + ")");
-                System.out.println("=========================\n");
-                continue; // Return to combat menu
-            } else if (choice.equals("2")) {
-                // Flee logic
-                if (isBoss()) {
-                    System.out.println("Vous ne pouvez pas fuir un boss ! Vous devez le combattre pour avancer.");
-                    // Continue combat - don't return, let the loop continue
-                    continue;
-                }
-                SixSidedDice fleeDice = new SixSidedDice();
-                int fleeSteps = fleeDice.roll();
-                return "FUITE:" + fleeSteps;
-            }
-        }
-
-        return "Combat terminé.";
+        HandleBattle battle = new HandleBattle(character, this);
+        return battle.startBattle();
     }
 
     @Override
