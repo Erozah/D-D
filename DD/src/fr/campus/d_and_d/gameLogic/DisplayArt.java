@@ -1,9 +1,6 @@
 package fr.campus.d_and_d.gameLogic;
 
 public class DisplayArt {
-    public void displayArt(){
-        System.out.println("");
-    }
     public void displayTitle() {
         System.out.println("""
 				
