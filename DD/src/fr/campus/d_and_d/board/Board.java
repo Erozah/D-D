@@ -5,6 +5,7 @@ import fr.campus.d_and_d.items.*;
 import fr.campus.d_and_d.gameLogic.OutOfBoardException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 /**
  * Represents the game board with a unified cell system.
@@ -35,35 +36,76 @@ public class Board {
     }
     
     /**
-     * Initializes the board by adding cells with predefined content.
+     * Initializes the board by adding cells with random content.
      */
     public void initializeBoard() {
-        for (int i = 0; i < MAX_POSITION; i++) {
-            cells.add(new Cell(getContentForPosition(i + 1)));
+        cells.clear();
+
+        List<CellContent> contents = createRandomContents();
+        Collections.shuffle(contents);
+
+        // Cases 1 à 63
+        for (CellContent content : contents) {
+            cells.add(new Cell(content));
         }
+
+        // Case 64 : toujours le boss
+        cells.add(new Cell(new Dragon("Smaug")));
     }
     
     /**
      * Gets the content for a specific position on the board.
      * This implements the predefined board layout with enemies, weapons, potions, etc.
-     * @param position The position on the board (1-64)
      * @return The content for that position, or null if empty
      */
-    private CellContent getContentForPosition(int position) {
-        return switch (position) {
-            case 64 -> new Dragon("Smaug");
-            case 10, 20, 25, 32, 35, 36, 37, 40, 44, 47 -> new Sorcerer("Sorcier noir");
-            case 50, 55 -> new Orc("Orc");
-            case 54, 59 -> new EvilSpirit("Esprit");
-            case 3, 6, 9, 12, 15, 18, 21, 24, 27, 30 -> new Goblin("Goblin");
-            case 2, 11, 5, 22, 38 -> new MysteryBox(new Weapon("Arme", "Massue", 5));
-            case 19, 26, 42, 53 -> new MysteryBox(new Weapon("Arme", "Epée", 7));
-            case 1, 4, 8, 17, 23 -> new MysteryBox(new Spell("Sort", "Eclair", 5));
-            case 48, 49 -> new MysteryBox(new Spell("Sort", "Boule de feu", 8));
-            case 7, 13, 31, 33, 39, 43 -> new MysteryBox(new Potion("Potion", "Petite potion", 5));
-            case 28, 41 -> new MysteryBox(new Potion("Potion", "Grande potion", 10));
-            default -> null;
-        };
+    private List<CellContent> createRandomContents() {
+        List<CellContent> contents = new ArrayList<>();
+
+        // Sorciers (10)
+        for (int i = 0; i < 10; i++) {
+            contents.add(new Sorcerer("Sorcier noir"));
+        }
+        // Orcs (2)
+        for (int i = 0; i < 2; i++) {
+            contents.add(new Orc("Orc"));
+        }
+        // Esprits (2)
+        for (int i = 0; i < 2; i++) {
+            contents.add(new EvilSpirit("Esprit"));
+        }
+        // Gobelins (10)
+        for (int i = 0; i < 10; i++) {
+            contents.add(new Goblin("Goblin"));
+        }
+        // Massues (5)
+        for (int i = 0; i < 5; i++) {
+            contents.add(new MysteryBox(new Weapon("Arme", "Massue", 5)));
+        }
+        // Épées (4)
+        for (int i = 0; i < 4; i++) {
+            contents.add(new MysteryBox(new Weapon("Arme", "Epée", 7)));
+        }
+        // Éclairs (5)
+        for (int i = 0; i < 5; i++) {
+            contents.add(new MysteryBox(new Spell("Sort", "Eclair", 5)));
+        }
+        // Boules de feu (2)
+        for (int i = 0; i < 2; i++) {
+            contents.add(new MysteryBox(new Spell("Sort", "Boule de feu", 8)));
+        }
+        // Petites potions (6)
+        for (int i = 0; i < 6; i++) {
+            contents.add(new MysteryBox(new Potion("Potion", "Petite potion", 5)));
+        }
+        // Grandes potions (2)
+        for (int i = 0; i < 2; i++) {
+            contents.add(new MysteryBox(new Potion("Potion", "Grande potion", 10)));
+        }
+        // Cases vides : 63 cases au total avant le Dragon
+        while (contents.size() < MAX_POSITION - 1) {
+            contents.add(null);
+        }
+        return contents;
     }
     
     /**

@@ -35,9 +35,4 @@ public class Sorcerer extends Enemy {
     public String interact() {
         return "🧙 Un sorcier apparaît ! Attention à ses sorts puissants.";
     }
-    
-    @Override
-    public String interact(Character character) {
-        return super.interact(character);
-    }
 }

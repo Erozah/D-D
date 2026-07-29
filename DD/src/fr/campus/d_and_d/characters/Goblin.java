@@ -35,9 +35,5 @@ public class Goblin extends Enemy {
     public String interact() {
         return "👹 Un gobelin apparaît ! Un adversaire faible mais rusé.";
     }
-    
-    @Override
-    public String interact(Character character) {
-        return super.interact(character);
-    }
+
 }

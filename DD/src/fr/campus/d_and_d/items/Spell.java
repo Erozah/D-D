@@ -46,9 +46,4 @@ public class Spell extends OffensiveEquipment implements CellContent {
 			return "En tant que guerrier, vous ne pouvez pas utiliser ce sort. Vous laissez " + getName() + " sur place.";
 		}
 	}
-
-	@Override
-	public String getName() {
-		return super.getName();
-	}
 }

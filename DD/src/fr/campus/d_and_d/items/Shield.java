@@ -13,8 +13,9 @@ import fr.campus.d_and_d.characters.Character;
 public class Shield extends DefensiveEquipment implements CellContent {
 	/**
 	 * Constructs a new Shield with specified attributes.
-	 * @param shieldType The type of the shield (e.g., "Wooden" or "Metal").
-	 * @param name The name of the shield.
+	 *
+	 * @param shieldType    The type of the shield (e.g., "Wooden" or "Metal").
+	 * @param name          The name of the shield.
 	 * @param defensePoints The defense points provided by the shield.
 	 */
 	public Shield(String shieldType, String name, int defensePoints) {
@@ -40,10 +41,5 @@ public class Shield extends DefensiveEquipment implements CellContent {
 		// Any character can pick up shields
 		character.setDefensiveEquipment(this);
 		return "Vous avez équipé le bouclier: " + getName() + "! Votre défense est maintenant de " + getDefensePoints() + ".";
-	}
-
-	@Override
-	public String getName() {
-		return super.getName();
 	}
 }

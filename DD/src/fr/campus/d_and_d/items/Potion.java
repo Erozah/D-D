@@ -47,9 +47,4 @@ public class Potion extends Consumable implements CellContent {
 			return "Vous avez utilisé " + getName() + "! Vous récupérez " + healAmount + " points de vie. Total: " + character.getHealthPoints() + " PV.";
 		}
 	}
-
-	@Override
-	public String getName() {
-		return super.getName();
-	}
 }

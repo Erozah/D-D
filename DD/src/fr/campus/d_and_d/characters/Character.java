@@ -175,6 +175,9 @@ public abstract class Character {
 		return maxHealth;
 	}
 
+	public boolean canUse() {
+		return true;
+	}
 	/**
 	 * Returns a string representation of the character.
 	 * @return A string describing the character's attributes.

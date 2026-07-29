@@ -41,9 +41,4 @@ public class Robe extends DefensiveEquipment implements CellContent {
         character.setDefensiveEquipment(this);
         return "Vous avez équipé la robe: " + getName() + "! Votre défense est maintenant de " + getDefensePoints() + ".";
     }
-
-    @Override
-    public String getName() {
-        return super.getName();
-    }
 }

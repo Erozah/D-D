@@ -37,11 +37,6 @@ public class Dragon extends Enemy {
     }
     
     @Override
-    public String interact(Character character) {
-        return super.interact(character);
-    }
-    
-    @Override
     public String getName() {
         return "Dragon(" + getHealthPoints() + " PV, " + getAttackPower() + " ATK)";
     }
