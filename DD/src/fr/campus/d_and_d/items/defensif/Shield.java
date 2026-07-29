@@ -1,7 +1,7 @@
 /**
  * Represents a shield in the game, which is a type of defensive equipment.
  */
-package fr.campus.d_and_d.items;
+package fr.campus.d_and_d.items.defensif;
 
 import fr.campus.d_and_d.board.CellContent;
 import fr.campus.d_and_d.characters.Character;

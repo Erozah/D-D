@@ -4,8 +4,8 @@
  */
 package fr.campus.d_and_d;
 
+import fr.campus.d_and_d.gameLogic.DisplayArt;
 import fr.campus.d_and_d.gameLogic.Game;
-import fr.campus.d_and_d.gameLogic.Menu;
 
 /**
  * The Main class contains the main method to launch the game.
@@ -16,8 +16,9 @@ final class Main {
 	 * @param args Command-line arguments (not used).
 	 */
 	public static void main(String[] args) {
+		DisplayArt displayArt = new DisplayArt();
 		Game game = new Game();
-		game.displayTitle();
+		displayArt.displayTitle();
 		game.mainMenu();
 	}
 }

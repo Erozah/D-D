@@ -3,12 +3,13 @@
  * Evil Spirits have 15 health points and 4 attack power.
  * They will only interact with Wizard characters, ignoring other character types.
  */
-package fr.campus.d_and_d.characters;
+package fr.campus.d_and_d.characters.enemy;
 
-import fr.campus.d_and_d.items.OffensiveEquipment;
-import fr.campus.d_and_d.items.DefensiveEquipment;
-import fr.campus.d_and_d.items.Spell;
-import fr.campus.d_and_d.items.Shield;
+import fr.campus.d_and_d.characters.Character;
+import fr.campus.d_and_d.characters.Enemy;
+import fr.campus.d_and_d.characters.ally.Wizard;
+import fr.campus.d_and_d.items.offensif.Spell;
+import fr.campus.d_and_d.items.defensif.Shield;
 
 /**
  * EvilSpirit is a special enemy that only attacks Wizard characters.

@@ -1,6 +1,8 @@
-package fr.campus.d_and_d.characters;
+package fr.campus.d_and_d.characters.enemy;
 
-import fr.campus.d_and_d.items.*;
+import fr.campus.d_and_d.characters.Enemy;
+import fr.campus.d_and_d.items.defensif.Shield;
+import fr.campus.d_and_d.items.offensif.Spell;
 
 /**
  * Represents a sorcerer enemy in the game.

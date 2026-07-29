@@ -1,8 +1,11 @@
 package fr.campus.d_and_d.board;
 
-import fr.campus.d_and_d.characters.*;
-import fr.campus.d_and_d.items.*;
+import fr.campus.d_and_d.characters.enemy.*;
 import fr.campus.d_and_d.gameLogic.OutOfBoardException;
+import fr.campus.d_and_d.items.consumable.Potion;
+import fr.campus.d_and_d.items.offensif.Spell;
+import fr.campus.d_and_d.items.offensif.Weapon;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
@@ -22,17 +25,6 @@ public class Board {
     public Board() {
         this.cells = new ArrayList<>();
         initializeBoard();
-    }
-    
-    /**
-     * Constructs a board with a specific size.
-     * @param size The size of the board
-     */
-    public Board(int size) {
-        this.cells = new ArrayList<>(size);
-        for (int i = 0; i < size; i++) {
-            cells.add(new Cell());
-        }
     }
     
     /**
@@ -65,12 +57,12 @@ public class Board {
         for (int i = 0; i < 10; i++) {
             contents.add(new Sorcerer("Sorcier noir"));
         }
-        // Orcs (2)
-        for (int i = 0; i < 2; i++) {
+        // Orcs (4)
+        for (int i = 0; i < 4; i++) {
             contents.add(new Orc("Orc"));
         }
-        // Esprits (2)
-        for (int i = 0; i < 2; i++) {
+        // Esprits (4)
+        for (int i = 0; i < 4; i++) {
             contents.add(new EvilSpirit("Esprit"));
         }
         // Gobelins (10)
@@ -81,7 +73,7 @@ public class Board {
         for (int i = 0; i < 5; i++) {
             contents.add(new MysteryBox(new Weapon("Arme", "Massue", 5)));
         }
-        // Épées (4)
+        // Épées (3)
         for (int i = 0; i < 4; i++) {
             contents.add(new MysteryBox(new Weapon("Arme", "Epée", 7)));
         }
@@ -89,15 +81,15 @@ public class Board {
         for (int i = 0; i < 5; i++) {
             contents.add(new MysteryBox(new Spell("Sort", "Eclair", 5)));
         }
-        // Boules de feu (2)
+        // Boules de feu (3)
         for (int i = 0; i < 2; i++) {
             contents.add(new MysteryBox(new Spell("Sort", "Boule de feu", 8)));
         }
-        // Petites potions (6)
+        // Petites potions (5)
         for (int i = 0; i < 6; i++) {
             contents.add(new MysteryBox(new Potion("Potion", "Petite potion", 5)));
         }
-        // Grandes potions (2)
+        // Grandes potions (3)
         for (int i = 0; i < 2; i++) {
             contents.add(new MysteryBox(new Potion("Potion", "Grande potion", 10)));
         }

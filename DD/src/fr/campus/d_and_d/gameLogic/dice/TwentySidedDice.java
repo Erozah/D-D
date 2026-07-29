@@ -1,7 +1,7 @@
 /**
  * Represents a twenty-sided dice for determining critical hits and misses.
  */
-package fr.campus.d_and_d.gameLogic;
+package fr.campus.d_and_d.gameLogic.dice;
 
 import java.util.Random;
 

@@ -2,7 +2,7 @@
  * Represents defensive equipment in the game, such as a shield or potion.
  * This equipment allows the character to protect themselves or heal.
  */
-package fr.campus.d_and_d.items;
+package fr.campus.d_and_d.items.defensif;
 
 /**
  * Abstract class representing defensive equipment that can be used by characters.

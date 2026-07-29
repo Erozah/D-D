@@ -1,7 +1,7 @@
 /**
  * Interface for all types of dice in the game.
  */
-package fr.campus.d_and_d.gameLogic;
+package fr.campus.d_and_d.gameLogic.dice;
 
 /**
  * The Dice interface defines the contract for all dice types in the game.

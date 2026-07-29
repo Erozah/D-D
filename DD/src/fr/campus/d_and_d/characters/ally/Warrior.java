@@ -2,9 +2,10 @@
  * Represents a warrior in the Dungeons and Dragons game.
  * This class extends Character and defines warrior-specific attributes.
  */
-package fr.campus.d_and_d.characters;
-import fr.campus.d_and_d.items.Shield;
-import fr.campus.d_and_d.items.Weapon;
+package fr.campus.d_and_d.characters.ally;
+import fr.campus.d_and_d.characters.Character;
+import fr.campus.d_and_d.items.defensif.Shield;
+import fr.campus.d_and_d.items.offensif.Weapon;
 
 /**
  * A Warrior is a character type with high health points and strong offensive equipment.

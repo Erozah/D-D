@@ -2,10 +2,10 @@
  * Represents a wizard in the Dungeons and Dragons game.
  * This class extends Character and defines wizard-specific attributes.
  */
-package fr.campus.d_and_d.characters;
-import fr.campus.d_and_d.items.Potion;
-import fr.campus.d_and_d.items.Robe;
-import fr.campus.d_and_d.items.Spell;
+package fr.campus.d_and_d.characters.ally;
+import fr.campus.d_and_d.characters.Character;
+import fr.campus.d_and_d.items.defensif.Robe;
+import fr.campus.d_and_d.items.offensif.Spell;
 
 /**
  * A Wizard is a character type with magical abilities and potent spells.

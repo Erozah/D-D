@@ -1,6 +1,10 @@
-package fr.campus.d_and_d.characters;
+package fr.campus.d_and_d.characters.enemy;
 
-import fr.campus.d_and_d.items.*;
+import fr.campus.d_and_d.characters.Character;
+import fr.campus.d_and_d.characters.Enemy;
+import fr.campus.d_and_d.characters.ally.Warrior;
+import fr.campus.d_and_d.items.defensif.Shield;
+import fr.campus.d_and_d.items.offensif.Weapon;
 
 /**
  * Represents an orc enemy in the game.

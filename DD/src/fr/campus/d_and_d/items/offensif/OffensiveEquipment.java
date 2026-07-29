@@ -2,7 +2,7 @@
  * Represents offensive equipment in the game, such as a weapon or spell.
  * This equipment allows the character to inflict damage.
  */
-package fr.campus.d_and_d.items;
+package fr.campus.d_and_d.items.offensif;
 
 /**
  * Abstract class representing offensive equipment that can be used by characters.

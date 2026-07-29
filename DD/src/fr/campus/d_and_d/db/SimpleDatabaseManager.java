@@ -1,9 +1,13 @@
 package fr.campus.d_and_d.db;
 
 import fr.campus.d_and_d.characters.Character;
-import fr.campus.d_and_d.characters.Warrior;
-import fr.campus.d_and_d.characters.Wizard;
-import fr.campus.d_and_d.items.*;
+import fr.campus.d_and_d.characters.ally.Warrior;
+import fr.campus.d_and_d.characters.ally.Wizard;
+import fr.campus.d_and_d.items.defensif.*;
+import fr.campus.d_and_d.items.offensif.OffensiveEquipment;
+import fr.campus.d_and_d.items.offensif.Spell;
+import fr.campus.d_and_d.items.offensif.Weapon;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +44,8 @@ public class SimpleDatabaseManager {
 
             conn.commit();
             System.out.println("✅ Personnage sauvegardé dans la base de données.");
+        } finally {
+            linkDB.close();
         }
     }
 
@@ -167,8 +173,9 @@ public class SimpleDatabaseManager {
                     }
                 }
             }
+        } finally {
+            linkDB.close();
         }
-
         return characters;
     }
 
@@ -199,6 +206,8 @@ public class SimpleDatabaseManager {
             character.setDefensiveEquipment(shield);
 
             return character;
+        } finally {
+            linkDB.close();
         }
     }
 

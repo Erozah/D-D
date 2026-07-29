@@ -1,11 +1,11 @@
 /**
  * Represents a weapon in the game, which is a type of offensive equipment.
  */
-package fr.campus.d_and_d.items;
+package fr.campus.d_and_d.items.offensif;
 
 import fr.campus.d_and_d.board.CellContent;
 import fr.campus.d_and_d.characters.Character;
-import fr.campus.d_and_d.characters.Warrior;
+import fr.campus.d_and_d.characters.ally.Warrior;
 
 /**
  * A Weapon is an offensive equipment that characters can use to attack enemies.

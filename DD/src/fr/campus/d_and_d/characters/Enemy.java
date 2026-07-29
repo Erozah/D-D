@@ -2,11 +2,8 @@ package fr.campus.d_and_d.characters;
 
 import fr.campus.d_and_d.board.CellContent;
 import fr.campus.d_and_d.gameLogic.HandleBattle;
-import fr.campus.d_and_d.gameLogic.Menu;
-import fr.campus.d_and_d.gameLogic.SixSidedDice;
-import fr.campus.d_and_d.gameLogic.TwentySidedDice;
-import fr.campus.d_and_d.items.*;
-import java.util.Scanner;
+import fr.campus.d_and_d.items.defensif.DefensiveEquipment;
+import fr.campus.d_and_d.items.offensif.OffensiveEquipment;
 
 /**
  * Abstract class representing an enemy character in the game.

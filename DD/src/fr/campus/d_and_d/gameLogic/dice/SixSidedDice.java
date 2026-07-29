@@ -2,7 +2,7 @@
  * Represents a six-sided dice for determining the player's movement on the board.
  * This class generates a random number between 1 and 6.
  */
-package fr.campus.d_and_d.gameLogic;
+package fr.campus.d_and_d.gameLogic.dice;
 
 import java.util.Random;
 

@@ -5,10 +5,10 @@
  */
 package fr.campus.d_and_d.characters;
 
-import fr.campus.d_and_d.items.DefensiveEquipment;
-import fr.campus.d_and_d.items.OffensiveEquipment;
-import fr.campus.d_and_d.items.Shield;
-import fr.campus.d_and_d.items.Weapon;
+import fr.campus.d_and_d.items.defensif.DefensiveEquipment;
+import fr.campus.d_and_d.items.offensif.OffensiveEquipment;
+import fr.campus.d_and_d.items.defensif.Shield;
+import fr.campus.d_and_d.items.offensif.Weapon;
 
 /**
  * Abstract class representing a character in the game.

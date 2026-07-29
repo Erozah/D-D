@@ -3,7 +3,7 @@
  * This consumable allows the character to heal or boost stats.
  */
 
-package fr.campus.d_and_d.items;
+package fr.campus.d_and_d.items.consumable;
 
 /**
  * Abstract class representing consumable that can be used by characters.

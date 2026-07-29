@@ -2,6 +2,8 @@ package fr.campus.d_and_d.gameLogic;
 
 import fr.campus.d_and_d.characters.Character;
 import fr.campus.d_and_d.characters.Enemy;
+import fr.campus.d_and_d.gameLogic.dice.SixSidedDice;
+import fr.campus.d_and_d.gameLogic.dice.TwentySidedDice;
 
 public class HandleBattle {
 
@@ -68,18 +70,14 @@ public class HandleBattle {
         int baseAttack = attacker.getBaseAttackPower();
         int equipmentAttack = attacker.getOffensiveEquipment().getAttackPower();
         int defense = defender.getDefensiveEquipment().getDefensePoints();
-
         int criticalRoll = criticalDice.roll();
-
         int totalAttack = baseAttack + equipmentAttack;
         int criticalBonus = 0;
-
         System.out.println("\n=== " + attacker.getName() + " attaque " + defender.getName() + " ===");
         System.out.println("Attaque de base : " + baseAttack);
         System.out.println("Bonus équipement offensif : +" + equipmentAttack);
         System.out.println("Attaque totale avant défense : " + totalAttack);
         System.out.println("Jet critique (D20) : " + criticalRoll);
-
         if (criticalRoll == 20) {
             criticalBonus = 2;
             System.out.println("Coup critique ! Bonus dégâts : +" + criticalBonus);
@@ -87,19 +85,14 @@ public class HandleBattle {
             totalAttack = 0;
             System.out.println("Échec critique ! Les dégâts sont annulés.");
         }
-
         int damageBeforeDefense = totalAttack + criticalBonus;
 
         System.out.println("Dégâts avant défense : " + damageBeforeDefense);
         System.out.println("Défense équipement : -" + defense);
-
         int finalDamage = Math.max(0, damageBeforeDefense - defense);
-
         System.out.println("Dégâts infligés : " + finalDamage);
-
         int remainingHealth = Math.max(0, defender.getHealthPoints() - finalDamage);
         defender.setHealthPoints(remainingHealth);
-
         System.out.println("PV restants de " + defender.getName() + " : "
                 + defender.getHealthPoints());
         System.out.println("==============================\n");
